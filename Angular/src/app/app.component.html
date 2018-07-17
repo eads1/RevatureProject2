@@ -1,5 +1,7 @@
-<div *ngIf="userLoggedIn; else otherstuff">
-  bob
+<div *ngIf="userLoggedIn; else login">
+  content
 </div>
 
-<ng-template #otherstuff> what</ng-template>
+<ng-template #login>
+    <app-login-page></app-login-page>
+</ng-template>
