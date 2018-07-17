@@ -5,3 +5,36 @@
 /Project2/.classpath
 /Project2/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 /Project2/.classpath
+/.recommenders/
+
+# Operating System Files
+
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
+
+# Build Artifacts
+
+.gradle/
+build/
+target/
+bin/
+dependency-reduced-pom.xml
+
+# Eclipse Project Files
+
+.classpath
+.project
+.settings/
+.recommenders/
+
+# IntelliJ IDEA Files
+
+*.iml
+*.ipr
+*.iws
+*.idea
