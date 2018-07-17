@@ -18,4 +18,10 @@ public class UserDao {
 		tx.commit();
 	}
 
+	public User selectUserByEmail(String email) {
+		Session ses = HibernateUtil.getSession();
+		User user = (User) ses.createQuery("FROM User WHERE email = " + email).uniqueResult();
+		return user;
+	}
+
 }
