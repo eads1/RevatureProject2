@@ -10,7 +10,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int insertUser(User user) {
 		userDao.insert(user);
-		return 0;
+		return 1;
 	}
 	
 	@Override

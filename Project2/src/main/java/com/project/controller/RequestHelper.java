@@ -12,6 +12,8 @@ public class RequestHelper {
 		switch(req.getRequestURI()) {
 			case "/ProjectOne/html/register.do":
 				return RegisterController.register(req, resp);
+			case "/ProjectOne/html/login.do":
+			return LoginController.login(req, resp);
 			default:
 				return "html/unsuccessfullogin.html";
 		}
