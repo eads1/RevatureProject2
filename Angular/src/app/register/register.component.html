@@ -1,0 +1,33 @@
+<form class='form-group' id='registerForm'>
+    <h1 class="text-center h3 mb-3 col-lg font-weight-bold">Enter Your Information Below</h1>
+    <br/>
+    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter First Name:</h5> -->
+    <div class='form-label-group'>
+        <input type='text' id='fname' class='form-control'
+            placeholder='first name' required autofocus/><label for='fname'>First Name</label>
+    </div>
+    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Last Name:</h5> -->
+    <div class='form-label-group'>
+        <input type='text' id='lname' class='form-control'
+            placeholder='first name' required autofocus/><label for='lname'>Last Name</label>
+    </div>
+    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Email:</h5> -->
+    <div class='form-label-group'>
+        <input type='text' id='email' class='form-control'
+            placeholder='email' required autofocus/><label for='email'>Email</label>
+    </div>
+    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Password:</h5> -->
+    <div class='form-label-group'>
+        <input type='password' id='auth-email' class='form-control'
+            placeholder='password' required autofocus/><label for='password'>Password</label>
+    </div>
+    <h5 class='text-left mb-3 font-weight-normal'>Upload Profile Pic:</h5>
+    <div class='form-label-group'>
+        <input style='display: none' type='file' #findFile
+            class='form-control-file'(change)='onFileChanged($event)'/>
+        <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class='btn btn-primary' id='uploadButton' (click)='uploadImage()'>Upload File</button>
+    </div>
+</form>
+
