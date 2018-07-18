@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
-  {path: '', component: LoginPageComponent},
+  {path: '', component: AppComponent},
   {path: '/post', component: PostComponent}
 ];
 
