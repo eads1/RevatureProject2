@@ -8,8 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
-  {path: '', component: AppComponent},
-  {path: '/post', component: PostComponent}
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'post', component: PostComponent}
 ];
 
 @NgModule({
