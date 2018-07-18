@@ -6,6 +6,7 @@
 /Project2/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 /Project2/.classpath
 /.recommenders/
+/RemoteSystemsTempFiles/
 
 # Operating System Files
 
@@ -30,7 +31,6 @@ dependency-reduced-pom.xml
 .classpath
 .project
 .settings/
-.recommenders/
 
 # IntelliJ IDEA Files
 
