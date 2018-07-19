@@ -10,6 +10,7 @@ import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 import { CommentComponent } from './comment/comment.component';
+import { PostService } from './shared/post.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService],
+  providers: [RegisterService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

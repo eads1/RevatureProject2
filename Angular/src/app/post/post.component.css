@@ -1,0 +1,45 @@
+.card {
+    max-width: 30rem;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width:50%;
+}
+
+.btn:hover {
+    background-color: #a8a8a8;
+}
+
+img {
+    height: 300px;
+    width: auto;
+    border: 1px black;
+}
+
+.centerPost {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: #cfcfcf;
+}
+
+.date {
+    float: right;
+}
+
+.name {
+    cursor: pointer !important;
+    font-weight: 700;
+    float: left;
+}
+
+.postHeader {
+    clear: both;
+}
+
+.class {
+    width: 100%;
+    margin: 0 auto;
+}
