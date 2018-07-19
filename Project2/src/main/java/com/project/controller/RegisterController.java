@@ -18,20 +18,23 @@ public class RegisterController {
 		if (req.getMethod().equals("GET")) {
 			return "html/login.html";
 		}
+		boolean success = false;
+		int num = 0;
+		User user = null;
 		String fname = req.getParameter("fname");
 		String lname = req.getParameter("lname");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		password = hashPassword(password);
-		User user = new User(fname, lname, password, email);
-		boolean success = false;
-		int num = 0;
-		if (userService.getUserByEmail(email) != null) {
-			System.out.println("create failed");
+		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
+			System.out.println("Create failed. Need more input");
+		} else if (userService.getUserByEmail(email) != null) {
+			System.out.println("Create failed. User already exists");
 		} else {
+			password = hashPassword(password);
+			user = new User(fname, lname, password, email);
 			num = userService.insertUser(user);
 		}
-	
+
 		if (num != 0) {
 			success = true;
 		}
