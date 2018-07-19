@@ -8,10 +8,10 @@ import { map } from 'rxjs/operators';
 })
 export class RegisterService {
 
-  constructor(private httpServ: HttpClient) { }
+  constructor(private _httpServ: HttpClient) { }
 
-  registerAccount(): Observable<string> {
-    return this.httpServ.get('register.cs').pipe(map(resp => resp as string));
+  registerAccount(_url: string, _param: {}): Observable<string> {
+    return this._httpServ.post(_url, _param).pipe(map(resp => resp as string));
   }
 
 }
