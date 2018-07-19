@@ -1,26 +1,28 @@
 package com.project.dao;
 
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.transaction.Transactional;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.project.model.User;
-import com.project.util.HibernateUtil;
-
+@Repository("userDao")
+@Transactional
 public class UserDao {
-	
+	@Autowired
+	private SessionFactory sessFact;
+	public UserDao() {
+		
+	}
 	public void insert(User user) {
-		Session ses = HibernateUtil.getSession();
-		
-		Transaction tx = ses.beginTransaction();
-		
-		ses.save(user);
-		tx.commit();
+		sessFact.getCurrentSession().save(user);
 	}
 
 	public User selectUserByEmail(String email) {
-		Session ses = HibernateUtil.getSession();
-		User user = (User) ses.createQuery("FROM User WHERE email = " + email).uniqueResult();
+		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
+		
 		return user;
 	}
 

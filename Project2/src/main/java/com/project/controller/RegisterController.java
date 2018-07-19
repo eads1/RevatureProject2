@@ -4,44 +4,40 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.project.model.User;
 import com.project.service.UserService;
-import com.project.service.UserServiceImpl;
 
+@Controller
 public class RegisterController {
-	private static UserService userService = new UserServiceImpl();
-	public static String register(HttpServletRequest req, HttpServletResponse resp) {
-		if (req.getMethod().equals("GET")) {
-			return "html/login.html";
-		}
-		String fname = req.getParameter("fname");
-		String lname = req.getParameter("lname");
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-		password = hashPassword(password);
-		User user = new User(fname, lname, password, email);
-		boolean success = false;
-		int num = 0;
-		if (userService.getUserByEmail(email) != null) {
-			System.out.println("create failed");
-		} else {
-			num = userService.insertUser(user);
-		}
+
+	@Autowired
+	private UserService userService;
 	
-		if (num != 0) {
-			success = true;
+	public RegisterController() {
+		
+	}
+	@PostMapping(value="/register.do")
+	public String register(String fname, String lname, String password, String email) {
+		String outcome = "fail";
+		User user = null;
+		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
+			System.out.println("Create failed. Need more input");
+		} else if (userService.getUserByEmail(email) != null) {
+			System.out.println("Create failed. User already exists");
+		} else {
+			password = hashPassword(password);
+			user = new User(fname, lname, password, email);
+			userService.insertUser(user);
+			outcome = "success";
 		}
-		try {
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(success) + "\n");
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(user));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return "redirect:http://google.com";
+		//return "redirect:/"+outcome;
 	}
 	private static String hashPassword(String password) {
 		MessageDigest md = null;
