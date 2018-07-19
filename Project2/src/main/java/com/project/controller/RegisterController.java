@@ -4,27 +4,28 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.project.model.User;
 import com.project.service.UserService;
-import com.project.service.UserServiceImpl;
 
+@Controller
 public class RegisterController {
-	private static UserService userService = new UserServiceImpl();
-	public static String register(HttpServletRequest req, HttpServletResponse resp) {
-		if (req.getMethod().equals("GET")) {
-			return "html/login.html";
-		}
-		boolean success = false;
-		int num = 0;
+
+	@Autowired
+	private UserService userService;
+	
+	public RegisterController() {
+		
+	}
+	@PostMapping(value="/register.do")
+	public String register(String fname, String lname, String password, String email) {
+		String outcome = "fail";
 		User user = null;
-		String fname = req.getParameter("fname");
-		String lname = req.getParameter("lname");
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
 		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
 			System.out.println("Create failed. Need more input");
 		} else if (userService.getUserByEmail(email) != null) {
@@ -32,19 +33,11 @@ public class RegisterController {
 		} else {
 			password = hashPassword(password);
 			user = new User(fname, lname, password, email);
-			num = userService.insertUser(user);
+			userService.insertUser(user);
+			outcome = "success";
 		}
-
-		if (num != 0) {
-			success = true;
-		}
-		try {
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(success) + "\n");
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(user));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return "redirect:http://google.com";
+		//return "redirect:/"+outcome;
 	}
 	private static String hashPassword(String password) {
 		MessageDigest md = null;
