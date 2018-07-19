@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../shared/post.service';
 
 @Component({
   selector: 'app-post',
@@ -20,7 +21,7 @@ export class PostComponent implements OnInit {
   // should probably make an interface for comments
   comments: Comment[];
 
-  constructor() { }
+  constructor(postService: PostService) { }
 
   ngOnInit() {
   }
