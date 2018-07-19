@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
+import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),
