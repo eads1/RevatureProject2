@@ -7,6 +7,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { PostService } from './shared/post.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -22,9 +23,9 @@ const routes: Routes = [
     PostComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(routes)
+    BrowserModule, RouterModule.forRoot(routes), HttpClientModule
   ],
-  providers: [PostService],
+  providers: [PostService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
