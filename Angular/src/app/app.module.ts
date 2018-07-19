@@ -11,10 +11,10 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 
 const routes: Routes = [
-  {path: '/login', component: LoginPageComponent},
-  {path: '/register', component: RegisterComponent},
-  {path: '/post', component: PostComponent},
-  {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'post', component: PostComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({

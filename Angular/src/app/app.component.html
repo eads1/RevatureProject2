@@ -2,9 +2,12 @@
 
 <div class="container">
   <div *ngIf="userLoggedIn; else login">
-      <router-outlet></router-outlet>
+    <!-- home -->
   </div>
-  <ng-template #login>
+
+<router-outlet></router-outlet>
+
+  <!-- <ng-template #login>
     <app-login-page></app-login-page>
-  </ng-template>
+  </ng-template> -->
 </div>
