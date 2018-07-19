@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       profilePic: profile
     };
 
-    this._reg.registerAccount('register.cs', newUser).subscribe(res => console.log(res));
+    this._reg.registerAccount('register.do', newUser).subscribe(res => console.log(res));
   }
 
 }
