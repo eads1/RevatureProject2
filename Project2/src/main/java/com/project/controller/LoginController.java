@@ -4,41 +4,38 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.model.User;
 import com.project.service.UserService;
 
 @Controller
-public class RegisterController {
-
+public class LoginController {
+	
 	@Autowired
 	private UserService userService;
 	
-	public RegisterController() {
+	public LoginController() {
 		
 	}
-	@PostMapping(value="/register.do")
-	public String register(String fname, String lname, String password, String email) {
-		String outcome = "fail";
-		User user = null;
-		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
-			System.out.println("Create failed. Need more input");
-		} else if (userService.getUserByEmail(email) != null) {
-			System.out.println("Create failed. User already exists");
-		} else {
-			password = hashPassword(password);
-			user = new User(fname, lname, password, email);
-			userService.insertUser(user);
-			outcome = "success";
+	
+	@PostMapping(value="/login.do")
+	public String login(String email, String password) {
+		password = hashPassword(password);
+		User user = userService.getUserByEmail(email);
+		boolean success = false;
+		if (email.isEmpty() || password.isEmpty()) {
+			System.out.println("Login failed. Need more input");
+		} else if (user == null) {
+			System.out.println("Login failed. User does not exist.");
+		} else if (password.equals(user.getPassword())){
+			return "redirect:/index.html";
 		}
-		return "redirect:http://google.com";
-		//return "redirect:/"+outcome;
+		return "redirect:/login.html";
 	}
+
 	private static String hashPassword(String password) {
 		MessageDigest md = null;
 		try {
