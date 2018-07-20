@@ -4,38 +4,36 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.model.User;
 import com.project.service.UserService;
-import com.project.service.UserServiceImpl;
 
+@Controller
 public class LoginController {
-	private static UserService userService = new UserServiceImpl();
-	public static String login(HttpServletRequest req, HttpServletResponse resp) {
-		if (req.getMethod().equals("GET")) {
-			return "html/login.html";
-		}
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
+	
+	@Autowired
+	private UserService userService;
+	
+	public LoginController() {
+		
+	}
+	
+	@PostMapping(value="/login.do")
+	public String login(String email, String password) {
 		password = hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
-		if (user == null) {
+		if (email.isEmpty() || password.isEmpty()) {
+			System.out.println("Login failed. Need more input");
+		} else if (user == null) {
 			System.out.println("Login failed. User does not exist.");
-		} else {
-			success = password.equals(user.getPassword());
+		} else if (password.equals(user.getPassword())){
+			return "redirect:/index.html";
 		}
-		
-		try {
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(success) + "\n");
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(user));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return "redirect:/login.html";
 	}
 
 	private static String hashPassword(String password) {
