@@ -10,16 +10,6 @@ import { ImageData } from '../models/imagedata.class';
 })
 export class PostComponent implements OnInit {
 
-  user = {};
-
-  @Input()
-
-
-  active: string;
-
-  Arr = Array; // Array type captured in a variable
-  num: number;
-
   // html specific fields
   likeButtonText = 'Like';
 
@@ -44,21 +34,12 @@ export class PostComponent implements OnInit {
 
   }
 
-  ngUpdated(index: number) {
-    if (index === 0) {
-      this.active = 'item active';
-    } else {
-      this.active = 'item';
-    }
-  }
-
   populatePost(data: PostData) {
     console.log(data);
     this.firstname = data.user.getFname();
     this.lastname = data.user.lname;
     this.text = data.content;
     this.image_urls = data.images;
-    this.num = data.images.length;
   }
 
   /*

@@ -19,10 +19,13 @@ img {
 }
 
 .centerPost {
-    margin-top: 30px;
     display: flex;
     justify-content: center;
     background-color: #cfcfcf;
+}
+
+.sr-only {
+    height: 100px !important;
 }
 
 .date {
