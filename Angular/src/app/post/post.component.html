@@ -1,5 +1,6 @@
+<!--this is the post portion-->
 <div class="card" >
-  
+
   <div class="card-body">
     <div class="postHeader">
         <span (click)="visitProfile()" class="name">{{firstname + " " + lastname}}</span> 
@@ -16,36 +17,29 @@
     <!-- <button (click)="toggleComments()" class="btn btn-info">Comments</button> -->
     <button (click)="displayComment()" class="btn btn-info">Comments</button>
   </div>
+
+  <!--This is the comment portion-->
   <div id='comment1' class='card-body border-top border-dark' style='background-color: bisque' *ngIf='showComment'>
     <h6 class='card-subtitle mb-2 text-muted'>Enter Comment</h6>
     <textarea rows='3' cols='60'></textarea>
     <button class='btn btn-info' id='uploadButton'>upload</button>
     <button class='btn btn-success' id='postButton'>Post</button>
-    <div class='card-body border-top border-dark'>
-      <span class='card-title'>Owner: Trevlin Wrapper</span><br/>
-      <div class='card-body' style='background-color: aliceblue'>
-        {{comments[0].content}}
-      </div>
-    </div>
-    <div class='card-body border-top border-dark'>
-        <span class='card-title'>Owner: Trevlin Wrapper Jr.</span><br/>
-        <div class='card-body' style='background-color: aliceblue'>
-          {{comments[0].date_post}}
-        </div>
-      </div>
-  </div>
-</div>
+    
+    <div class='card-body border-bottom border-dark'></div>
 
-
-<div class="card">
-  <div class="card-body">
-    <span (click)="visitProfile" class="name">{{firstname + " " + lastname}}</span> <span id="date">Posted: {{postedDate}}</span>
-    <div class="centerPost">
-      <img class="postImage" src="http://res.cloudinary.com/cs407recipes/image/upload/v1531012896/Snapchat-1106767741.jpg" alt="Card image cap">
+    <div class='' *ngFor = 'let temp of comments; let i = index'>
+      <div *ngIf='i < limit'>
+          <span class='card-title'>Owner: {{temp.owner_id}}</span><br/>
+          <div class='card-body' style='background-color: aliceblue'>
+            {{temp.content}}
+          </div>    
+      </div>
     </div>
     
-    <p class="card-text">{{text}}</p>
-    <button class="btn">Like</button>
-    <button class="btn">Comments</button>
+    <div class='card-body border-top border-dark'>
+      <button class='btn btn-secondary offset-3' id='loadMoreButton' (click)='incrementLimit()'>Load More</button>
+    </div>
+  
   </div>
+
 </div>

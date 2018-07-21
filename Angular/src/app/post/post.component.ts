@@ -27,6 +27,9 @@ export class PostComponent implements OnInit {
   // should probably make an interface for comments
   comments: CommentObject[];
 
+  // to display more or not
+  limit = 2;
+
   constructor(postService: PostService, private theList: CommentList) {
     this.comments = theList.getListComments(); // populate list with what's current
   }
@@ -77,5 +80,13 @@ export class PostComponent implements OnInit {
       this.showComment = true;
     }
   }
+
+  /*
+    This function is triggered when the 'loadMoreButton' is clicked, which will increment
+    the 'limit' variable by 2.
+  */
+ incrementLimit() {
+   this.limit += 2;
+ }
 
 }
