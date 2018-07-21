@@ -6,8 +6,8 @@
         <span class="date">Posted: {{postedDate}}</span>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner pause" >
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+      <div class="carousel-inner" >
         <div *ngFor="let image of image_urls; let k = index" [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
           <div class="centerPost" >
             <img class="postImage" src={{image.url}} alt="">
