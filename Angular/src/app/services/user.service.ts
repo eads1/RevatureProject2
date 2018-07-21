@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   private _user: object;
-  private loginUrl = 'http://localhost:12345/Project2/login.do';
+  private loginUrl = 'http://ec2-54-234-210-208.compute-1.amazonaws.com:12345/Project2/login.do';
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
-    console.log({username, password});
-    return this.http.post(this.loginUrl, {username, password});
+  login(email: string, password: string) {
+    console.log({email, password});
+    return this.http.post(this.loginUrl, {email, password});
   }
 }
