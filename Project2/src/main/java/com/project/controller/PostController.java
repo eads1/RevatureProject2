@@ -18,8 +18,9 @@ public class PostController {
 	
 	@RequestMapping(value="/getPostById.do", method=RequestMethod.GET)
 	public @ResponseBody Post getPostById( @RequestParam (value = "id")int id) {
-		System.out.println("COntroller is workingggg");
-		return ps.getPostById(id);
+		Post p = ps.getPostById(id);
+		//System.out.println(p);
+		return p;
 	}
 	
 }
