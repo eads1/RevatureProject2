@@ -9,8 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
-import { CommentComponent } from './comment/comment.component';
 import { PostService } from './shared/post.service';
+import { CommentList } from './shared/commentList.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -26,12 +26,12 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
-    CommentComponent,
+
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService, PostService],
+  providers: [RegisterService, PostService, CommentList],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

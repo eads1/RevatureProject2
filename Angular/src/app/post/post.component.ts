@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../shared/post.service';
+import { CommentList } from '../shared/commentList.service';
+import { CommentObject } from '../shared/comment';
 
 @Component({
   selector: 'app-post',
@@ -18,10 +20,16 @@ export class PostComponent implements OnInit {
   content: string;
   text = 'Here is a test String to visualize text in a post.';
   likes = 11;
-  // should probably make an interface for comments
-  comments: Comment[];
 
-  constructor(postService: PostService) { }
+  // for comments
+  showComment = false;
+
+  // should probably make an interface for comments
+  comments: CommentObject[];
+
+  constructor(postService: PostService, private theList: CommentList) {
+    this.comments = theList.getListComments(); // populate list with what's current
+  }
 
   ngOnInit() {
   }
@@ -53,8 +61,21 @@ export class PostComponent implements OnInit {
     Here we could open the comments section or close it if already open.
     The details need to be discussed.
   */
-  toggleComments() {
+/*   toggleComments() {
     console.log('comments clicked');
+  }*/
+
+  /*
+    This function is triggered when the "Comment" button is clicked. This will change
+    the value of 'showComment' from true to false, false to true, in order to display
+    the comment section underneath the post.
+  */
+  displayComment() {
+    if (this.showComment === true) {
+      this.showComment = false;
+    } else if (this.showComment === false) {
+      this.showComment = true;
+    }
   }
 
 }

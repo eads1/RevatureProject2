@@ -21,16 +21,18 @@ export class RegisterComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  ccreateAccount() {
+  createAccount() {
     const firstname = document.getElementById('fname');
     const lastname = document.getElementById('lname');
     const email = document.getElementById('email');
+    const password = document.getElementById('password');
     const profile = this.selectedFile;
 
     const newUser = {
       fname: firstname,
       lname: lastname,
       userEmail: email,
+      userPassword: password,
       profilePic: profile
     };
 
