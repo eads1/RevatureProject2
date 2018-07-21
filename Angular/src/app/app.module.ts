@@ -1,31 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { PostService } from './shared/post.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './shared/register.service';
+import { LoginComponent } from './login/login.component';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'post', component: PostComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'post', component: PostComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
+    LoginComponent,
     NavbarComponent,
-    PostComponent
+    PostComponent,
+    RegisterComponent,
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(routes), HttpClientModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
-  providers: [PostService, HttpClient],
+  providers: [UserService, RegisterService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

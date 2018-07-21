@@ -8,6 +8,8 @@ import { PostService } from '../shared/post.service';
 })
 export class PostComponent implements OnInit {
 
+  user = {};
+
   // html specific fields
   likeButtonText = 'Like';
 
@@ -33,6 +35,7 @@ export class PostComponent implements OnInit {
 
   populatePost(data) {
     console.log('Data: ' + data);
+
   }
 
   /*
