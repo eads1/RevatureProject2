@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 import { PostService } from './shared/post.service';
 import { CommentList } from './shared/commentList.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
+    ProfileComponent,
 
   ],
   imports: [

@@ -30,13 +30,15 @@ export class PostComponent implements OnInit {
   // to display more or not
   limit = 2;
 
+  // for uploaded files
+  selectedFile: any;
+
   constructor(postService: PostService, private theList: CommentList) {
     this.comments = theList.getListComments(); // populate list with what's current
   }
 
   ngOnInit() {
   }
-
   /*
   visitProfile() is triggered when the user clicks on a post owner name.
   As of July 18th, it does not have backend functionality.
@@ -59,7 +61,6 @@ export class PostComponent implements OnInit {
     }
     // this is where the servlet logic will go
   }
-
   /*
     Here we could open the comments section or close it if already open.
     The details need to be discussed.
@@ -67,7 +68,6 @@ export class PostComponent implements OnInit {
 /*   toggleComments() {
     console.log('comments clicked');
   }*/
-
   /*
     This function is triggered when the "Comment" button is clicked. This will change
     the value of 'showComment' from true to false, false to true, in order to display
@@ -80,7 +80,6 @@ export class PostComponent implements OnInit {
       this.showComment = true;
     }
   }
-
   /*
     This function is triggered when the 'loadMoreButton' is clicked, which will increment
     the 'limit' variable by 2.
@@ -88,5 +87,19 @@ export class PostComponent implements OnInit {
  incrementLimit() {
    this.limit += 2;
  }
+  /*
+    This function will be triggered when the uploadButton is pressed, which will trigger the
+    hidden input tag, which will grab the file that the user chooses.
+  */
+  onFileChanged(event) {
+  this.selectedFile = event.target.files[0];
+  }
+  /*
+    This function will be triggered when the postButton is pressed, which will commit an
+    HTTPClient request to the register service to be added to the database.
 
+    Currently, it is unimplemented.
+  */
+  addPost() {
+  }
 }

@@ -22,8 +22,12 @@
   <div id='comment1' class='card-body border-top border-dark' style='background-color: bisque' *ngIf='showComment'>
     <h6 class='card-subtitle mb-2 text-muted'>Enter Comment</h6>
     <textarea rows='3' cols='60'></textarea>
-    <button class='btn btn-info' id='uploadButton'>upload</button>
-    <button class='btn btn-success' id='postButton'>Post</button>
+
+    <input style='display: none' type='file' #findFile
+      class='form-control-file'(change)='onFileChanged($event)'/>
+    <button class='btn btn-info' id='uploadButton' (click)='findFile.click()'>upload</button>
+
+    <button class='btn btn-success' id='postButton' (click)='addPost()'>Post</button>
     
     <div class='card-body border-bottom border-dark'></div>
 
