@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../shared/post.service';
+import { PostData } from '../models/postdata.class';
 
 @Component({
   selector: 'app-post',
@@ -19,25 +20,27 @@ export class PostComponent implements OnInit {
   postedDate = 'Yesterday';
   content: string;
   text = 'Here is a test String to visualize text in a post.';
+  image_url: string;
   likes = 11;
   // should probably make an interface for comments
   comments: Comment[];
 
   constructor(private postService: PostService) {
-    console.log('post constructor');
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
     );
-    this.populatePost(this.user);
    }
 
   ngOnInit() {
 
   }
 
-  populatePost(data) {
-    console.log('Data: ' + data);
-
+  populatePost(data: PostData) {
+    console.log(data);
+    this.firstname = data.user.getFname();
+    this.lastname = data.user.lname;
+    this.text = data.content;
+    this.image_url = data.images[0];
   }
 
   /*

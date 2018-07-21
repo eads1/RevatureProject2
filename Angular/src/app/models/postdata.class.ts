@@ -1,0 +1,34 @@
+import { UserData } from './userdata.class';
+import { CommentData } from './commentdata.class';
+import { ImageData } from './imagedata.class';
+
+/*
+    This class exists solely to persist data after the observable moves on.
+*/
+export class PostData {
+    postId: number;
+    content: string;
+    user: UserData;
+    comments: CommentData[] = new Array();
+    images: string[] = new Array();
+
+    constructor(data) {
+        this.postId = data.postId;
+        this.content = data.content;
+        console.log(data);
+        this.user = new UserData(data.userId.userId, data.userId.fname, data.userId.lname,
+            data.userId.password, data.userId.imageid, data.userId.email);
+
+        // the this.user should update to the real owner in the future
+        // pulls comment data out of json response
+        for (let i = 0; i < data.comments.length; i++) {
+            this.comments.push(new CommentData(data.comments[i].commentId, 0,
+                this.user, data.comments[i].text));
+        }
+        // pulls image links out of json
+        for (let i = 0; i < data.imageList.length; i++) {
+            this.images.push(data.imageList[i].link);
+        }
+    }
+
+}

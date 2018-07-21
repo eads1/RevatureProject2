@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../shared/register.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '../../../node_modules/@angular/router';
-import { first } from '../../../node_modules/rxjs/operators';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
