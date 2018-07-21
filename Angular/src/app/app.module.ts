@@ -17,6 +17,8 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'post', component: PostComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/:name', component: ProfileComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
@@ -28,7 +30,6 @@ const routes: Routes = [
     PostComponent,
     RegisterComponent,
     ProfileComponent,
-
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),

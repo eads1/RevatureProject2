@@ -13,7 +13,8 @@ export class PostComponent implements OnInit {
   // html specific fields
   likeButtonText = 'Like';
 
-  // actual post info fields
+  // actual post info fields --> this will eventually be replaced with an actual
+  //                              user module
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';
@@ -42,6 +43,9 @@ export class PostComponent implements OnInit {
   /*
   visitProfile() is triggered when the user clicks on a post owner name.
   As of July 18th, it does not have backend functionality.
+  --> As of July 21st, this funciton shouldn't be needed since a routerLink
+    in the html page should be enough to redirect the user from this page
+    to the user's profile page
   */
   visitProfile() {
     console.log('visiting ' + this.firstname + '\'s profile page');
