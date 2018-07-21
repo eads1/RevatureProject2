@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { PostData } from '../models/postdata.class';
+import { ImageData } from '../models/imagedata.class';
 
 @Component({
   selector: 'app-post',
@@ -11,6 +12,14 @@ export class PostComponent implements OnInit {
 
   user = {};
 
+  @Input()
+
+
+  active: string;
+
+  Arr = Array; // Array type captured in a variable
+  num: number;
+
   // html specific fields
   likeButtonText = 'Like';
 
@@ -20,7 +29,7 @@ export class PostComponent implements OnInit {
   postedDate = 'Yesterday';
   content: string;
   text = 'Here is a test String to visualize text in a post.';
-  image_url: string;
+  image_urls: ImageData[] = new Array();
   likes = 11;
   // should probably make an interface for comments
   comments: Comment[];
@@ -35,12 +44,21 @@ export class PostComponent implements OnInit {
 
   }
 
+  ngUpdated(index: number) {
+    if (index === 0) {
+      this.active = 'item active';
+    } else {
+      this.active = 'item';
+    }
+  }
+
   populatePost(data: PostData) {
     console.log(data);
     this.firstname = data.user.getFname();
     this.lastname = data.user.lname;
     this.text = data.content;
-    this.image_url = data.images[0];
+    this.image_urls = data.images;
+    this.num = data.images.length;
   }
 
   /*

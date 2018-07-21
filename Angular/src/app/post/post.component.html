@@ -6,9 +6,25 @@
         <span class="date">Posted: {{postedDate}}</span>
     </div>
 
-    <div class="centerPost">
-      <img class="postImage" src={{this.image_url}} alt="Card image cap">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner pause" >
+        <div *ngFor="let image of image_urls; let k = index" [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
+          <div class="centerPost" >
+            <img class="postImage" src={{image.url}} alt="">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
+
+    
 
     <p class="card-text">{{text}}</p>
     <span>Likes: {{likes}}</span> <br/>

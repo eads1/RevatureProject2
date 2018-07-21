@@ -10,7 +10,7 @@ export class PostData {
     content: string;
     user: UserData;
     comments: CommentData[] = new Array();
-    images: string[] = new Array();
+    images: ImageData[] = new Array();
 
     constructor(data) {
         this.postId = data.postId;
@@ -27,7 +27,9 @@ export class PostData {
         }
         // pulls image links out of json
         for (let i = 0; i < data.imageList.length; i++) {
-            this.images.push(data.imageList[i].link);
+            this.images.push(new ImageData(data.imageList[0].image_id,
+                data.imageList[i].link, this.user));
+                console.log(data.imageList[i].link);
         }
     }
 
