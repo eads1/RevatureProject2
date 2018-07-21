@@ -23,13 +23,15 @@ export class PostComponent implements OnInit {
   // should probably make an interface for comments
   comments: Comment[];
 
-  constructor(private postService: PostService) { }
-
-  ngOnInit() {
+  constructor(private postService: PostService) {
     console.log('post constructor');
     this.postService.getPostInfo(9998).subscribe(
-      data => this.populatePost(data)
+      data => this.populatePost( new PostData(data))
     );
+    this.populatePost(this.user);
+   }
+
+  ngOnInit() {
 
   }
 
