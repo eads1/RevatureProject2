@@ -2,17 +2,20 @@ package com.project.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.dao.PostDaoImpl;
+import com.project.dao.PostDao;
 import com.project.model.Post;
 
 @Service("postService")
+@Transactional
 public class PostServiceImpl implements PostService {
 
 	@Autowired
-	private PostDaoImpl pd = new PostDaoImpl();
+	private PostDao pd;
 	
 	@Override
 	public void insertPost(Post post) {

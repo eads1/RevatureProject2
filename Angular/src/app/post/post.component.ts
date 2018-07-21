@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit() {
+    console.log('post constructor');
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost(data)
     );
@@ -31,7 +32,7 @@ export class PostComponent implements OnInit {
   }
 
   populatePost(data) {
-    console.log(data);
+    console.log('Data: ' + data);
   }
 
   /*
