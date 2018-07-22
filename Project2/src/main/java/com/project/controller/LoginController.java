@@ -15,30 +15,33 @@ import com.project.service.UserService;
 
 @RestController
 @CrossOrigin
-public class RegisterController {
+public class LoginController {
 
 	@Autowired
 	private UserService userService;
-	
-	public RegisterController() {
-		
+
+	public LoginController() {
+
 	}
-	@PostMapping(value="/register.do", produces = "application/json")
-	public Map<String, Boolean> register(String fname, String lname, String password, String email) {
-		User user = null;
-		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
-			System.out.println("Create failed. Need more input");
-		} else if (userService.getUserByEmail(email) != null) {
-			System.out.println("Create failed. User already exists");
-		} else {
-			password = hashPassword(password);
-			user = new User(fname, lname, password, email);
-			userService.insertUser(user);
+
+	@PostMapping(value = "/login.do")
+	public Map<String, Boolean> login(String email, String password) {
+		System.out.println(email);
+		System.out.println(password);
+
+		password = hashPassword(password);
+		User user = userService.getUserByEmail(email);
+		boolean success = false;
+		if (email.isEmpty() || password.isEmpty()) {
+			System.out.println("Login failed. Need more input");
+		} else if (user == null) {
+			System.out.println("Login failed. User does not exist.");
+		} else if (password.equals(user.getPassword())) {
 			return Collections.singletonMap("success", true);
 		}
 		return Collections.singletonMap("success", false);
-		//return "redirect:/"+outcome;
 	}
+
 	private static String hashPassword(String password) {
 		MessageDigest md = null;
 		try {

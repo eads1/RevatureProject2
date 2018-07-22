@@ -1,37 +1,57 @@
-<form class='form-group' id='registerForm'>
-    <h1 class="text-center h3 mb-3 col-lg font-weight-bold">Create Account</h1>
-    <br/>
-    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter First Name:</h5> -->
-    <div class='form-label-group'>
-        <input type='text' id='fname' class='form-control'
-            placeholder='first name' required autofocus/><label for='fname'>First Name</label>
+<form class='form-group' name='registerForm' id='registerForm'>
+  <h1 class='text-center h3 mb-3 col-lg font-weight-bold'>Create Account</h1>
+  <br/>
+  
+  <div class='form-label-group'>
+    <input type='text' name='firstname' id='fname' class='form-control' [(ngModel)]='firstname' placeholder='first name' required  #fname='ngModel'
+      autofocus/>
+    <label for='fname'>First Name</label>
+    <div *ngIf='fname.invalid && (fname.dirty || fname.touched)' class='alert alert-danger'>
+      <div *ngIf='fname.errors.required'>
+        First name is required.
+      </div>
     </div>
-    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Last Name:</h5> -->
-    <div class='form-label-group'>
-        <input type='text' id='lname' class='form-control'
-            placeholder='first name' required autofocus/><label for='lname'>Last Name</label>
+  </div>
+  
+  <div class='form-label-group'>
+    <input type='text' name='lastname' id='lname' class='form-control' [(ngModel)]='lastname' placeholder='first name' required #lname='ngModel' />
+    <label for='lname'>Last Name</label>
+    <div *ngIf='lname.invalid && (lname.dirty || lname.touched)' class='alert alert-danger'>
+      <div *ngIf='lname.errors.required'>
+        Last name is required.
+      </div>
     </div>
-    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Email:</h5> -->
-    <div class='form-label-group'>
-        <input type='text' id='email' class='form-control'
-            placeholder='email' required autofocus/><label for='email'>Email</label>
+  </div>
+  
+  <div class='form-label-group'>
+    <input type='email' name='email' id='email' class='form-control' [(ngModel)]='email' placeholder='email' required #userEmail='ngModel' />
+    <label for='email'>Email</label>
+    <div *ngIf='userEmail.invalid && (userEmail.dirty || userEmail.touched)' class='alert alert-danger'>
+      <div *ngIf='userEmail.errors.required'>
+        Email is required.
+      </div>
     </div>
-    <!-- <h5 class='text-left mb-3 font-weight-normal'>Enter Password:</h5> -->
-    <div class='form-label-group'>
-        <input type='password' id='password' class='form-control'
-            placeholder='password' required autofocus/><label for='password'>Password</label>
-    </div>
-    <!-- <h6 class='text-left mb-3 font-weight-normal'>Upload Profile Pic:</h6> -->
-    <div class='form-label-group'>
-        <input style='display: none' type='file' #findFile
-            class='form-control-file'(change)='onFileChanged($event)'/>
-            <span class='col-sm-1'>
-                <span class='font-weight-bold'>Upload Profile Pic:</span>&nbsp;
-                <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
-            </span>
-    </div>
-    <div class='form-label-group'>
-        <button class='btn btn-lg btn-primary btn-block' id='registerButton' (click)='createAccount()'>Register</button>
-    </div>
-</form>
+  </div>
 
+  <div class='form-label-group'>
+    <input type='password' name='password' id='password' class='form-control' [(ngModel)]='password' placeholder='password' required  #userPassword='ngModel' />
+    <label for='password'>Password</label>
+    <div *ngIf='userPassword.invalid && (userPassword.dirty || userPassword.touched)' class='alert alert-danger'>
+      <div *ngIf='userPassword.errors.required'>
+        Password is required.
+      </div>
+    </div>
+  </div>
+  
+  <div class='form-label-group'>
+    <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)' />
+    <span class='col-sm-1'>
+      <span class='font-weight-bold'>Upload Profile Pic:</span>&nbsp;
+      <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+    </span>
+  </div>
+
+  <div class='form-label-group'>
+    <button class='btn btn-lg btn-primary btn-block' id='registerButton' (click)='createAccount()'>Register</button>
+  </div>
+</form>
