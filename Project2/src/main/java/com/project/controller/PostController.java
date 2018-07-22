@@ -24,22 +24,20 @@ public class PostController {
 	@RequestMapping(value = "/getPostById.do", method = RequestMethod.GET)
 	public @ResponseBody Post getPostById(@RequestParam(value = "id") int id) {
 		Post p = ps.getPostById(id);
-		System.out.println(p);
 		return p;
 	}
 
 	@GetMapping(value = "/getPostLikesById.do")
-	public @ResponseBody long getPostLikesById(@RequestParam(value = "postId") int postId,
-			@RequestParam(value = "userId") int userId) {
+	public @ResponseBody long getPostLikesById(@RequestParam(value = "postId") int postId) {
 		System.out.println("getting likes");
-		return ps.getPostLikesById(postId, userId);
+		return ps.getPostLikesById(postId);
 
 	}
 
 	@GetMapping(value = "/incrementLikesById.do")
 	public void incrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-		
+		System.out.println("Incrementing");
 		ps.incrementLikesById(postId, userId);
 	}
 

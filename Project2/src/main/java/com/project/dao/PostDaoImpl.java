@@ -64,12 +64,8 @@ public class PostDaoImpl implements PostDao {
 		
 	}
 
-	/*
-	 * I wanted to condense two calls into one. This will check if the user has liked the post and count how many likes the post has.
-	 * structure "<succes/failure>:<likeCount>"
-	 */
 	@Override
-	public long getPostLikesById(long postId, long userId) {		
+	public long getPostLikesById(long postId) {		
 		long likes = (long) sessFact.getCurrentSession().createQuery("Select COUNT(*) FROM Like WHERE posts=" + postId).getSingleResult();
 		return likes;
 	}
@@ -77,18 +73,18 @@ public class PostDaoImpl implements PostDao {
 	// checks if a user has liked the Post
 	// returns 1 i already liked
 	// returns 0 if not
-//	@Override
-//	public long userHasLiked(long userId, long postId) {
-//		Like liked = null;
-//		try {
-//			String hql = "FROM Like WHERE users=" + userId + " AND postId=" + postId;
-//			liked = sessFact.getCurrentSession().createQuery(hql, Like.class).getSingleResult();
-//		} catch (NoResultException e) {
-//			// this seems to be the simplest way to check for the existence of something that probably doesn't exist
-//			return 0;
-//		}
-//		return 1;
-//	}
+	@Override
+	public long userHasLiked(long userId, long postId) {
+		Like liked = null;
+		try {
+			String hql = "FROM Like WHERE users=" + userId + " AND postId=" + postId;
+			liked = sessFact.getCurrentSession().createQuery(hql, Like.class).getSingleResult();
+		} catch (NoResultException e) {
+			// this seems to be the simplest way to check for the existence of something that probably doesn't exist
+			return 0;
+		}
+		return 1;
+	}
 	
 	@Override
 	public long incrementLikesById(long postId, long userId) {

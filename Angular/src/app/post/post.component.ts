@@ -23,8 +23,10 @@ export class PostComponent implements OnInit {
   content: string;
   text = 'Here is a test String to visualize text in a post.';
   image_urls: ImageData[] = new Array();
-  likes = 11;
+  likes: any;
   likeString: string;
+  postId: number;
+  userId: number;
 
   // for comments
   showComment = false;
@@ -39,7 +41,8 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService, private theList: CommentList,
               private likeService: LikeService) {
-    this.likeService.getPostLikes(9998, 21).subscribe(data => console.log(data));
+    console.log('constructing');
+    this.likeService.getPostLikes(9998, 21).subscribe(data => this.likes = data);
     this.comments = theList.getListComments(); // populate list with what's current
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
@@ -48,8 +51,11 @@ export class PostComponent implements OnInit {
    }
 
   populatePost(data: PostData) {
+    console.log('Populating');
     console.log(data);
-    this.firstname = data.user.getFname();
+    this.userId = data.user.userId;
+    this.postId = data.postId;
+    this.firstname = data.user.fname;
     this.lastname = data.user.lname;
     this.text = data.content;
     this.image_urls = data.images;
@@ -73,9 +79,11 @@ export class PostComponent implements OnInit {
     if (this.likeButtonText === 'Like') {
       this.likes++;
       this.likeButtonText = 'Unlike';
+      this.likeService.incrementPostLikes(this.postId, this.userId);
     } else {
       this.likes--;
       this.likeButtonText = 'Like';
+      this.likeService.decrementPostLikes(this.postId, this.userId);
     }
   }
   /*

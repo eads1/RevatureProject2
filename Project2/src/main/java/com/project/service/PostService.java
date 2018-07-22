@@ -15,7 +15,8 @@ public interface PostService {
 	 * I wanted to condense two calls into one. This will check if the user has liked the post and count how many likes the post has.
 	 * structure "<succes/failure>:<likeCount>"
 	 */
-	public long getPostLikesById(long postId, long userId);
+	public long getPostLikesById(long postId);
+	public long userHasLiked(long userId, long postId);
 	public long incrementLikesById(long postId, long userId);
 	public long decrementLikesById(long postId, long userId);
 	public List<Post> getAllPosts();
