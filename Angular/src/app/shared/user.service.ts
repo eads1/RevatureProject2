@@ -12,15 +12,30 @@ export class UserService {
   private _email = this.cookies.get('email');
   isLoggedIn = this.cookies.check('isLoggedIn');
 
-  private loginUrl = 'http://localhost:12345/Project2/login.do';
+  private apiUrl = 'http://localhost:12345/Project2/';
 
   constructor(private http: HttpClient, private cookies: CookieService) { }
 
   login(email: string, password: string) {
-    return this.http.post(this.loginUrl, null, {
+    return this.http.post(this.apiUrl + 'login.do', null, {
       params: {
         email,
         password,
+      },
+    });
+  }
+
+  registerAccount(param: Object) {
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const password = param['password'];
+    return this.http.post(this.apiUrl + 'register.do', null, {
+      params: {
+        fname,
+        lname,
+        email,
+        password
       },
     });
   }
