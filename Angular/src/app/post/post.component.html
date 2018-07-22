@@ -1,23 +1,27 @@
-<<<<<<< HEAD
+<!--this is the post portion-->
 <div class="card" >
 
   <div class="card-body">
     <div class="postHeader">
-        <span (click)="visitProfile()" class="name">{{firstname + " " + lastname}}</span>
-=======
-<!--this is the post portion-->
-<div class="card">
-
-  <div class="card-body">
-    <div class="postHeader">
-        <span class="name"><a [routerLink]="['/profile',firstname,lastname,email]" skipLocationChange=true>
-          {{firstname + " " + lastname}}</a></span> 
->>>>>>> Profile
-        <span class="date">Posted: {{postedDate}}</span>
-    </div>
-
-    <div class="centerPost">
-      <img class="postImage" src="http://res.cloudinary.com/cs407recipes/image/upload/v1524843188/y7dgkalcib5axsemhaja.png" alt="Card image cap">
+      <span (click)="visitProfile()" class="name">{{firstname + " " + lastname}}</span>
+      <span class="date">Posted: {{postedDate}}</span>
+  </div><br>
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+      <div class="carousel-inner" >
+        <div *ngFor="let image of image_urls; let k = index" [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
+          <div class="centerPost" >
+            <img class="postImage" src={{image.url}} alt="">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
 
     <p class="card-text">{{text}}</p>
@@ -26,9 +30,6 @@
     <!-- <button (click)="toggleComments()" class="btn btn-info">Comments</button> -->
     <button (click)="displayComment()" class="btn btn-info">Comments</button>
   </div>
-<<<<<<< HEAD
-
-=======
 
   <!--This is the comment portion-->
   <div id='comment1' class='card-body border-top border-dark' style='background-color: bisque' *ngIf='showComment'>
@@ -40,7 +41,7 @@
     <button class='btn btn-info' id='uploadButton' (click)='findFile.click()'>upload</button>
 
     <button class='btn btn-success' id='postButton' (click)='addPost()'>Post</button>
-    
+
     <div class='card-body border-bottom border-dark'></div>
 
     <div class='' *ngFor = 'let temp of comments; let i = index'>
@@ -48,15 +49,14 @@
           <span class='card-title'>Owner: {{temp.owner_id}}</span><br/>
           <div class='card-body' style='background-color: aliceblue'>
             {{temp.content}}
-          </div>    
+          </div>
       </div>
     </div>
-    
+
     <div class='card-body border-top border-dark'>
       <button class='btn btn-secondary offset-3' id='loadMoreButton' (click)='incrementLimit()'>Load More</button>
     </div>
-  
+
   </div>
 
->>>>>>> Profile
 </div>

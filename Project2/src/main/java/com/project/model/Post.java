@@ -1,6 +1,7 @@
 package com.project.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,18 +26,18 @@ public class Post {
 	@Column(name="post_id")
 	private int postId;
 	
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private User userId;
 	
 	@Column(name="content")
 	private String content;
 	
-	@OneToMany(mappedBy="postId",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="postId",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Comment> comments;
 	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	List<Image> imageList;
+	@ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private Set<Image> imageList;
 	
 	public Post() {
 		// TODO Auto-generated constructor stub
@@ -77,9 +78,22 @@ public class Post {
 		this.content = content;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	public Set<Image> getImageList() {
+		return imageList;
+	}
+	public void setImageList(Set<Image> imageList) {
+		this.imageList = imageList;
+	}
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", userId=" + userId + ", content=" + content + "]";
+		return "Post [postId=" + postId + ", userId=" + userId + ", content=" + content + ", comments=" + comments
+				+ ", imageList=" + imageList + "]";
 	}
 
 	

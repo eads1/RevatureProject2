@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
+import { PostData } from '../models/postdata.class';
+import { ImageData } from '../models/imagedata.class';
 
 @Component({
   selector: 'app-post',
@@ -21,6 +23,7 @@ export class PostComponent implements OnInit {
   email = 'bobby.johnson@getReck.com';
   content: string;
   text = 'Here is a test String to visualize text in a post.';
+  image_urls: ImageData[] = new Array();
   likes = 11;
 
   // for comments
@@ -38,17 +41,21 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService, private theList: CommentList) {
     this.comments = theList.getListComments(); // populate list with what's current
-  }
+    this.postService.getPostInfo(9998).subscribe(
+      data => this.populatePost( new PostData(data))
+    );
+   }
 
   ngOnInit() {
-    this.postService.getPostInfo(9998).subscribe(
-      data => this.populatePost(data)
-    );
 
   }
 
-  populatePost(data) {
+  populatePost(data: PostData) {
     console.log(data);
+    this.firstname = data.user.getFname();
+    this.lastname = data.user.lname;
+    this.text = data.content;
+    this.image_urls = data.images;
   }
 
   /*

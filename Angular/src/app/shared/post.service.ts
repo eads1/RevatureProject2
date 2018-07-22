@@ -12,7 +12,7 @@ export class PostService {
   constructor(private client: HttpClient) { }
 
   getPostInfo(id: number): Observable<string> {
-    const url = 'localhost:8080/getPostById?id=' + id;
+    const url = 'http://localhost:12345/Project2/getPostById.do?id=' + id;
     return this.client.get(url).pipe(map(resp => resp as string));
   }
 }
