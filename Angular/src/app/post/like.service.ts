@@ -7,12 +7,13 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class LikeServiceService {
+export class LikeService {
 
   constructor(private client: HttpClient) { }
 
-  getPostLikes(postId: number): Observable<string> {
-    const url = 'http://localhost:12345/Project2/getPostLikesById.do?postId=' + postId;
+  getPostLikes(postId: number, userId: number): Observable<string> {
+    const params = '?postId=' + postId + '&userId=' + userId;
+    const url = 'http://localhost:12345/Project2/getPostLikesById.do' + params;
     return this.client.get(url).pipe(map(resp => resp as string));
   }
 

@@ -4,6 +4,7 @@ import { PostData } from '../models/postdata.class';
 import { ImageData } from '../models/imagedata.class';
 import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
+import { LikeService } from './like.service';
 
 @Component({
   selector: 'app-post',
@@ -23,6 +24,7 @@ export class PostComponent implements OnInit {
   text = 'Here is a test String to visualize text in a post.';
   image_urls: ImageData[] = new Array();
   likes = 11;
+  likeString: string;
 
   // for comments
   showComment = false;
@@ -35,11 +37,14 @@ export class PostComponent implements OnInit {
     // for uploaded files
     selectedFile: any;
 
-  constructor(private postService: PostService, private theList: CommentList) {
+  constructor(private postService: PostService, private theList: CommentList,
+              private likeService: LikeService) {
+    this.likeService.getPostLikes(9998, 21).subscribe(data => this.likeString = data);
     this.comments = theList.getListComments(); // populate list with what's current
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
     );
+    console.log(likeService);
    }
 
   populatePost(data: PostData) {
@@ -72,7 +77,6 @@ export class PostComponent implements OnInit {
       this.likes--;
       this.likeButtonText = 'Like';
     }
-    // this is where the servlet logic will go
   }
   /*
     Here we could open the comments section or close it if already open.

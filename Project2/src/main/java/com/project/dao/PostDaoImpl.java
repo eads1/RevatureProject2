@@ -69,60 +69,41 @@ public class PostDaoImpl implements PostDao {
 	 * structure "<succes/failure>:<likeCount>"
 	 */
 	@Override
-	public String getPostLikesById(long postId, long userId) {
-		String message = "";
-		Like liked = null;
+	public long getPostLikesById(long postId, long userId) {		
 		long likes = (long) sessFact.getCurrentSession().createQuery("Select COUNT(*) FROM Like WHERE posts=" + postId).getSingleResult();
-		try {
-			liked = sessFact.getCurrentSession().createQuery("FROM Like WHERE users=" + userId, Like.class).getSingleResult();
-		} catch (NoResultException e) {
-			// this seems to be the simplest way to check for the existence of something that probably doesn't exist
-		}
-		
-		if(liked != null) {
-			message += "success:";
-		} else {
-			message += "failure:";
-		}
-		message+= likes;
-		System.out.println(message);
-		return message;
+		return likes;
 	}
 
+	// checks if a user has liked the Post
+	// returns 1 i already liked
+	// returns 0 if not
+//	@Override
+//	public long userHasLiked(long userId, long postId) {
+//		Like liked = null;
+//		try {
+//			String hql = "FROM Like WHERE users=" + userId + " AND postId=" + postId;
+//			liked = sessFact.getCurrentSession().createQuery(hql, Like.class).getSingleResult();
+//		} catch (NoResultException e) {
+//			// this seems to be the simplest way to check for the existence of something that probably doesn't exist
+//			return 0;
+//		}
+//		return 1;
+//	}
+	
 	@Override
 	public long incrementLikesById(long postId, long userId) {
 		UserPostPK key = new UserPostPK((int) postId, (int) userId);
 		Like like = new Like(key);
-		System.out.println(like);
 		sessFact.getCurrentSession().save(like);
 		return 0;
 	}
 
 	@Override
 	public long decrementLikesById(long postId, long userId) {
-		Session session = sessFact.getCurrentSession();
 		HibernateTemplate h = new HibernateTemplate(sessFact);
-		
-		
-		// Transaction x = session.beginTransaction();
 		UserPostPK key = new UserPostPK((int) postId, (int) userId);
 		Like like = new Like(key);
-		System.out.println(like);
-		h.delete(like);
-		
-		
-		//		String hql = "delete from Like where USERS= :userId AND POSTS = :postId";
-//		Query q = session.createQuery(hql);
-//		q.setParameter("userId", userId);
-//		q.setParameter("postId", postId);
-//		System.out.println(q.executeUpdate());
-//		if(session.getTransaction().isActive()) {
-//			session.getTransaction().commit();
-//			System.out.println("committing");
-//		} else {
-//			System.out.println("wtf");
-//		}
-//		
+		h.delete(like);	
 		return 0;
 	}
 }

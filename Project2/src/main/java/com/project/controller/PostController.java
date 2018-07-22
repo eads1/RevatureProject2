@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,7 +29,7 @@ public class PostController {
 	}
 
 	@GetMapping(value = "/getPostLikesById.do")
-	public @ResponseBody String getPostLikesById(@RequestParam(value = "postId") int postId,
+	public @ResponseBody long getPostLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
 		System.out.println("getting likes");
 		return ps.getPostLikesById(postId, userId);
@@ -44,7 +46,6 @@ public class PostController {
 	@GetMapping(value = "/decrementLikesById.do")
 	public void decrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-
 		ps.decrementLikesById(postId, userId);
 	}
 }
