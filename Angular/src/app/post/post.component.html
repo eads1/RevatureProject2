@@ -3,7 +3,8 @@
 
   <div class="card-body">
     <div class="postHeader">
-        <span class="name"><a [routerLink]="['/profile',firstname]">{{firstname + " " + lastname}}</a></span> 
+        <span class="name"><a [routerLink]="['/profile',firstname,lastname,email]" skipLocationChange=true>
+          {{firstname + " " + lastname}}</a></span> 
         <span class="date">Posted: {{postedDate}}</span>
     </div>
     

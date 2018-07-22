@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'post', component: PostComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'profile/:name', component: ProfileComponent},
+  {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 

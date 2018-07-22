@@ -18,6 +18,7 @@ export class PostComponent implements OnInit {
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';
+  email = 'bobby.johnson@getReck.com';
   content: string;
   text = 'Here is a test String to visualize text in a post.';
   likes = 11;
