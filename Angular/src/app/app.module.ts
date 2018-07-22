@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
 import { PostService } from './shared/post.service';
 import { HttpClient } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
