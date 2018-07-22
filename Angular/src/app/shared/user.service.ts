@@ -47,4 +47,20 @@ export class UserService {
   set email(email: string) {
     this._email = email;
   }
+
+  // this function will update the user profile in User Table
+  updateAccount(param: Object) {
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const password = param['password'];
+    return this.http.post(this.apiUrl + 'update.do', null, {
+      params: {
+        fname,
+        lname,
+        email,
+        password
+      },
+    });
+  }
 }
