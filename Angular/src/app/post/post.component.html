@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 <div class="card" >
 
   <div class="card-body">
     <div class="postHeader">
         <span (click)="visitProfile()" class="name">{{firstname + " " + lastname}}</span>
+=======
+<!--this is the post portion-->
+<div class="card">
+
+  <div class="card-body">
+    <div class="postHeader">
+        <span class="name"><a [routerLink]="['/profile',firstname,lastname,email]" skipLocationChange=true>
+          {{firstname + " " + lastname}}</a></span> 
+>>>>>>> Profile
         <span class="date">Posted: {{postedDate}}</span>
     </div>
 
@@ -13,7 +23,40 @@
     <p class="card-text">{{text}}</p>
     <span>Likes: {{likes}}</span> <br/>
     <button (click)="toggleLike()" class="btn btn-secondary">{{likeButtonText}}</button>
-    <button (click)="toggleComments()" class="btn btn-info">Comments</button>
+    <!-- <button (click)="toggleComments()" class="btn btn-info">Comments</button> -->
+    <button (click)="displayComment()" class="btn btn-info">Comments</button>
+  </div>
+<<<<<<< HEAD
+
+=======
+
+  <!--This is the comment portion-->
+  <div id='comment1' class='card-body border-top border-dark' style='background-color: bisque' *ngIf='showComment'>
+    <h6 class='card-subtitle mb-2 text-muted'>Enter Comment</h6>
+    <textarea rows='3' cols='60'></textarea>
+
+    <input style='display: none' type='file' #findFile
+      class='form-control-file'(change)='onFileChanged($event)'/>
+    <button class='btn btn-info' id='uploadButton' (click)='findFile.click()'>upload</button>
+
+    <button class='btn btn-success' id='postButton' (click)='addPost()'>Post</button>
+    
+    <div class='card-body border-bottom border-dark'></div>
+
+    <div class='' *ngFor = 'let temp of comments; let i = index'>
+      <div *ngIf='i < limit'>
+          <span class='card-title'>Owner: {{temp.owner_id}}</span><br/>
+          <div class='card-body' style='background-color: aliceblue'>
+            {{temp.content}}
+          </div>    
+      </div>
+    </div>
+    
+    <div class='card-body border-top border-dark'>
+      <button class='btn btn-secondary offset-3' id='loadMoreButton' (click)='incrementLimit()'>Load More</button>
+    </div>
+  
   </div>
 
+>>>>>>> Profile
 </div>
