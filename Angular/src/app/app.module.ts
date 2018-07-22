@@ -20,7 +20,7 @@ import { UpdateaccountService } from './shared/updateaccount.service';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
@@ -38,13 +38,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 
-// const routes: Routes = [
-//   {path: '', component: LoginComponent},
-//   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
-//   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
-//   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]}
-// ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,8 +52,16 @@ import { LoggedInGuard } from './guards/logged-in.guard';
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService, PostService, CommentList, ResetpasswordService, UpdateaccountService,
-    NotfoundComponent, UserService, CookieService],
+  providers: [
+    RegisterService,
+    PostService,
+    CommentList,
+    ResetpasswordService,
+    UpdateaccountService,
+    NotfoundComponent,
+    UserService,
+    CookieService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
