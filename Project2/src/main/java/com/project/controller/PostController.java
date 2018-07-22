@@ -29,22 +29,29 @@ public class PostController {
 
 	@GetMapping(value = "/getPostLikesById.do")
 	public @ResponseBody long getPostLikesById(@RequestParam(value = "postId") int postId) {
-		System.out.println("getting likes");
 		return ps.getPostLikesById(postId);
 
 	}
 
 	@GetMapping(value = "/incrementLikesById.do")
-	public void incrementLikesById(@RequestParam(value = "postId") int postId,
+	public @ResponseBody long incrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
 		System.out.println("Incrementing");
-		ps.incrementLikesById(postId, userId);
+		return ps.incrementLikesById(postId, userId);
 	}
 
 	@GetMapping(value = "/decrementLikesById.do")
-	public void decrementLikesById(@RequestParam(value = "postId") int postId,
+	public @ResponseBody long decrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-		ps.decrementLikesById(postId, userId);
+		System.out.println("Decrementing");
+		return ps.decrementLikesById(postId, userId);
+	}
+	
+	@GetMapping(value="/hasUserLiked.do")
+	public @ResponseBody long hasUserLiked(@RequestParam(value = "postId") int postId,
+			@RequestParam(value = "userId") int userId) {
+		System.out.println("Checking");
+		return ps.userHasLiked(userId, postId);
 	}
 }
 

@@ -42,17 +42,25 @@ export class PostComponent implements OnInit {
   constructor(private postService: PostService, private theList: CommentList,
               private likeService: LikeService) {
     console.log('constructing');
+    // this method gets the like count
     this.likeService.getPostLikes(9998, 21).subscribe(data => this.likes = data);
+
+    // checks if the user has already liked the post and updates the button accordingly
+    this.likeService.hasUserLiked(9998, 21).subscribe(data => {
+      if (data === 1) {
+        this.likeButtonText = 'Unlike';
+      } else {
+        this.likeButtonText = 'Like';
+      }
+    });
     this.comments = theList.getListComments(); // populate list with what's current
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
     );
-    console.log(likeService);
    }
 
   populatePost(data: PostData) {
     console.log('Populating');
-    console.log(data);
     this.userId = data.user.userId;
     this.postId = data.postId;
     this.firstname = data.user.fname;
@@ -79,11 +87,11 @@ export class PostComponent implements OnInit {
     if (this.likeButtonText === 'Like') {
       this.likes++;
       this.likeButtonText = 'Unlike';
-      this.likeService.incrementPostLikes(this.postId, this.userId);
+      this.likeService.incrementPostLikes(this.postId, this.userId).subscribe();
     } else {
       this.likes--;
       this.likeButtonText = 'Like';
-      this.likeService.decrementPostLikes(this.postId, this.userId);
+      this.likeService.decrementPostLikes(this.postId, this.userId).subscribe();
     }
   }
   /*

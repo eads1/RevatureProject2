@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -67,6 +68,7 @@ public class PostDaoImpl implements PostDao {
 	@Override
 	public long getPostLikesById(long postId) {		
 		long likes = (long) sessFact.getCurrentSession().createQuery("Select COUNT(*) FROM Like WHERE posts=" + postId).getSingleResult();
+		System.out.println("likes: " + likes);
 		return likes;
 	}
 
@@ -77,7 +79,7 @@ public class PostDaoImpl implements PostDao {
 	public long userHasLiked(long userId, long postId) {
 		Like liked = null;
 		try {
-			String hql = "FROM Like WHERE users=" + userId + " AND postId=" + postId;
+			String hql = "FROM Like WHERE users=" + userId + " AND posts=" + postId;
 			liked = sessFact.getCurrentSession().createQuery(hql, Like.class).getSingleResult();
 		} catch (NoResultException e) {
 			// this seems to be the simplest way to check for the existence of something that probably doesn't exist
@@ -88,16 +90,18 @@ public class PostDaoImpl implements PostDao {
 	
 	@Override
 	public long incrementLikesById(long postId, long userId) {
-		UserPostPK key = new UserPostPK((int) postId, (int) userId);
+		UserPostPK key = new UserPostPK((int) userId, (int) postId);
 		Like like = new Like(key);
-		sessFact.getCurrentSession().save(like);
+		Serializable id = sessFact.getCurrentSession().save(like);
+		System.out.println(like);
+		System.out.println(id);
 		return 0;
 	}
 
 	@Override
 	public long decrementLikesById(long postId, long userId) {
 		HibernateTemplate h = new HibernateTemplate(sessFact);
-		UserPostPK key = new UserPostPK((int) postId, (int) userId);
+		UserPostPK key = new UserPostPK((int) userId, (int) postId);
 		Like like = new Like(key);
 		h.delete(like);	
 		return 0;

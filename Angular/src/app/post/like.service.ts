@@ -17,6 +17,13 @@ export class LikeService {
     return this.client.get(url).pipe(map(resp => resp as string));
   }
 
+  hasUserLiked(postId: number, userId: number): Observable<number> {
+    const params = '?postId=' + postId + '&userId=' + userId;
+    const url = 'http://localhost:12345/Project2/hasUserLiked.do' + params;
+    console.log(url);
+    return this.client.get(url).pipe(map(resp => resp as number));
+  }
+
   incrementPostLikes(postId: number, userId: number): Observable<string> {
     const params = '?postId=' + postId + '&userId=' + userId;
     const url = 'http://localhost:12345/Project2/incrementLikesById.do' + params;
