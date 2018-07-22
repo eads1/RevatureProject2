@@ -10,6 +10,7 @@ export class UserService {
    * This is actually just the email of the currently logged in user.
    */
   private _email = this.cookies.get('email');
+  userId = this.cookies.get('userId');
   isLoggedIn = this.cookies.check('isLoggedIn');
 
   private apiUrl = 'http://localhost:12345/Project2/';
