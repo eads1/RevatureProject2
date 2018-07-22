@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './services/user.service';
+import { UserService } from './shared/user.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
