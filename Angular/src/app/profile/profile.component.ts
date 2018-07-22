@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
-  password = 'JesusIsAFriendOfMine';
 
   _inputFname = '';
   // return the variable automatically each time there's a change
@@ -42,15 +41,6 @@ export class ProfileComponent implements OnInit {
   set inputEmail(temp: string) {
     this._inputEmail = temp;
   }
-  _inputPassword = '';  // return the variable automatically each time there's a change
-  get inputPassword(): string {
-    return this._inputPassword;
-  }
-  // set the inputted value automatically into the variable
-  set inputPassword(temp: string) {
-    this._inputPassword = temp;
-  }
-
 //  for demo purposes
 //  profile_pic = 'http://images6.fanpop.com/image/photos/38500000/Takeo-the-handsome-my-love-story-ore-monogatari-38582718-500-280.jpg';
 
@@ -62,8 +52,6 @@ export class ProfileComponent implements OnInit {
     This function gets the values from the Post page or anywhere else that routes to this profile page.
     Below are the parameters that will be grabbed and assigned to the values above to be displayed
     on the html side.
-
-    The only thing missing here is the password.
 
     If possible, we might want to send only the userId and then do a HttpClient request here to get
     the user info. If not, then we'll have to do this manually like this.
@@ -92,19 +80,16 @@ export class ProfileComponent implements OnInit {
   */
   updateAccount() {
     console.log('First Name: ' + this._inputFname);
-    console.log('Password: ' + this._inputPassword);
     console.log('Last Name: ' + this._inputLname);
     console.log('Email: ' + this._inputEmail);
 
     const tempFName = this.checkEmpty(this.fname, this._inputFname);
     const tempLname = this.checkEmpty(this.lname, this._inputLname);
     const tempEmail = this.checkEmpty(this.email, this._inputEmail);
-    const tempPassword = this.checkEmpty(this.password, this._inputPassword);
     const inputParam = {
       'fname': tempFName,
       'lname': tempLname,
       'email': tempEmail,
-      'password': tempPassword
     };
 
     /* this is only a placeholder at the moment since the particular parts of

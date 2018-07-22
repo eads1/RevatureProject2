@@ -21,12 +21,6 @@
           placeholder='email' required autofocus [(ngModel)]='inputEmail'/>
             <label for='email'>Enter New Email</label>
   </div>
-  <h6 class='text-left mb-3 font-weight-bold'>Password: {{password}}</h6>
-  <div class='form-label-group'>
-      <input type='password' id='password' class='form-control'
-          placeholder='password' required autofocus [(ngModel)]='inputPassword'/>
-            <label for='password'>Enter New Password</label>
-  </div>
   <div class='form-label-group'>
     <input style='display: none' type='file' #findFile
         class='form-control-file'(change)='onFileChanged($event)'/>
