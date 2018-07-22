@@ -1,27 +1,27 @@
 <div class='form-group' id='profileTable' style='background-color: cadetblue'>
   <div class='text-center'>
-    <img src={{profile_pic}} class='rounded-circle' style='border: 2px solid black' width="400" height="236"/>
+    <img src={{profile_pic}} class='rounded-circle' style='border: 2px solid black' width="205" height="200"/>
   </div>
   <br/>
   <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
   <div class='form-label-group'>
       <input type='text' id='fname' class='form-control'
-          placeholder='first name' required autofocus/><label for='fname'>First Name</label>
+          placeholder='first name' required autofocus/><label for='fname'>Enter New First Name</label>
   </div>
   <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
   <div class='form-label-group'>
       <input type='text' id='lname' class='form-control'
-          placeholder='first name' required autofocus/><label for='lname'>Last Name</label>
+          placeholder='first name' required autofocus/><label for='lname'>Enter New Last Name</label>
   </div>
   <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
   <div class='form-label-group'>
       <input type='email' id='email' class='form-control'
-          placeholder='email' required autofocus/><label for='email'>Email</label>
+          placeholder='email' required autofocus/><label for='email'>Enter New Email</label>
   </div>
-  <h6 class='text-left mb-3 font-weight-bold'>Password:</h6>
+  <h6 class='text-left mb-3 font-weight-bold'>Password: {{password}}</h6>
   <div class='form-label-group'>
       <input type='password' id='password' class='form-control'
-          placeholder='password' required autofocus/><label for='password'>Password</label>
+          placeholder='password' required autofocus/><label for='password'>Enter New Password</label>
   </div>
   <div class='form-label-group'>
     <input style='display: none' type='file' #findFile
@@ -32,6 +32,6 @@
       </span>
   </div>
   <div class='form-label-group'>
-      <button class='btn btn-lg btn-success btn-block' id='updateButton'>Update</button>
+      <button class='btn btn-lg btn-success btn-block' id='updateButton' (click)='updateAccount()'>Update</button>
   </div>
 </div>
