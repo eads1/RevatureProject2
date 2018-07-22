@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PasswordComponent } from './password/password.component';
 import { ResetpasswordService } from './shared/resetpassword.service';
 import { UpdateaccountService } from './shared/updateaccount.service';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
+  {path: 'other', component: OtherprofileComponent},
+  {path: 'other/:fname/:lname/:email', component: OtherprofileComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
@@ -36,6 +39,7 @@ const routes: Routes = [
     RegisterComponent,
     ProfileComponent,
     PasswordComponent,
+    OtherprofileComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
