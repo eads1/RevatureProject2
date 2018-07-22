@@ -19,8 +19,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
   {path: 'profile/:fname/:lname/:email', component: ProfileComponent, canActivate: [AuthGuard]},

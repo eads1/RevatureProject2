@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
         this.user.email = this.email;
         this.user.isLoggedIn = true;
         this.cookies.set('email', this.email);
-        this.cookies.set('loggedIn', 'true');
-        this.router.navigate(['/']);
+        this.cookies.set('isLoggedIn', 'true');
+        this.router.navigate(['/home']);
       } else {
         console.log(response);
         this.failed = true;

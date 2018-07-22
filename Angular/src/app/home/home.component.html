@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+<div *ngIf="user.isLoggedIn; else login">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-signin" (ngSubmit)="submit()">
+        <div class="form-label-group">
+          <input type="text" id="post" class="form-control" required autofocus [(ngModel)]="post" name="post">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #login><app-login></app-login></ng-template>
