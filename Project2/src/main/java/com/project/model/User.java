@@ -36,7 +36,15 @@ public class User {
 	public User() {
 
 	}
-
+	
+	public User(int user_id, String fname, String lname, String email) {
+		super();
+		this.user_id = user_id;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+	}
+	
 	public User(int user_id, String fname, String lname, String password, String email) {
 		super();
 		this.user_id = user_id;

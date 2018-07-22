@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
     this.userService.registerAccount(newUser).subscribe(response => {
       if (response['success']) {
-        console.log(response);
+        // console.log(response);
         this.router.navigate(['/']);
       }
     });

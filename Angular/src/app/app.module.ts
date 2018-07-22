@@ -21,7 +21,6 @@ import { CommentList } from './shared/commentList.service';
 import { PostService } from './shared/post.service';
 import { RegisterService } from './shared/register.service';
 import { ResetpasswordService } from './shared/resetpassword.service';
-import { UpdateaccountService } from './shared/updateaccount.service';
 import { UserService } from './shared/user.service';
 
 const routes: Routes = [
@@ -56,7 +55,6 @@ const routes: Routes = [
     PostService,
     CommentList,
     ResetpasswordService,
-    UpdateaccountService,
     NotfoundComponent,
     UserService,
     CookieService,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 import { UpdateaccountService } from '../shared/updateaccount.service';
+import { UserService } from '../shared/user.service';
+import { CookieService } from '../../../node_modules/ngx-cookie-service';
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +11,7 @@ import { UpdateaccountService } from '../shared/updateaccount.service';
 })
 export class ProfileComponent implements OnInit {
 
+  userId = parseInt(this.cookies.get('userId'), 10);
   selectedFile: any;
   fname: string;
   lname: string;
@@ -41,15 +44,13 @@ export class ProfileComponent implements OnInit {
   set inputEmail(temp: string) {
     this._inputEmail = temp;
   }
-//  for demo purposes
-//  profile_pic = 'http://images6.fanpop.com/image/photos/38500000/Takeo-the-handsome-my-love-story-ore-monogatari-38582718-500-280.jpg';
 
 // default profile_pic if none is provided
   profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  constructor(private route: ActivatedRoute, private updater: UpdateaccountService) {
+  constructor(private user: UserService, private route: ActivatedRoute, private router: Router, private cookies: CookieService) {
   }
   /*
-    This function gets the values from the Post page or anywhere else that routes to this profile page.
+    The ngOnInit() gets the values from the Post page or anywhere else that routes to this profile page.
     Below are the parameters that will be grabbed and assigned to the values above to be displayed
     on the html side.
 
@@ -72,21 +73,19 @@ export class ProfileComponent implements OnInit {
   /*At the moment, this function isn't implemented yet.
     This function will be triggered when the updateButton is clicked. WHen it is triggered, it
     will grab all of the input values from the html side and check for each value.
-      --> If the value is null, use the original value from the variables above.
-      --> If the value isn't null, then replace the original value with the inputted value from
-            the user, if it passes any authentications.
     Once the checks are done, then these value will be sent to the middle-end to be send and
-    update the database of the respective user based on their user_id.
+    update the database of the respective user
   */
   updateAccount() {
-    console.log('First Name: ' + this._inputFname);
-    console.log('Last Name: ' + this._inputLname);
-    console.log('Email: ' + this._inputEmail);
+    // console.log('First Name: ' + this._inputFname);
+    // console.log('Last Name: ' + this._inputLname);
+    // console.log('Email: ' + this._inputEmail);
 
     const tempFName = this.checkEmpty(this.fname, this._inputFname);
     const tempLname = this.checkEmpty(this.lname, this._inputLname);
     const tempEmail = this.checkEmpty(this.email, this._inputEmail);
     const inputParam = {
+      'userId': this.userId,
       'fname': tempFName,
       'lname': tempLname,
       'email': tempEmail,
@@ -95,9 +94,22 @@ export class ProfileComponent implements OnInit {
     /* this is only a placeholder at the moment since the particular parts of
         sending it to the middle-end is unclear to me yet.
     */
-    this.updater.updateAccount('updateAccount.do', inputParam).subscribe(res => console.log(res));
+    this.user.updateAccount(inputParam).subscribe(response => {
+      if (response) {
+        this.user.email = this.email;
+        this.fname = this._inputFname;
+        this.lname = this._inputLname;
+        this.email = this._inputEmail;
+        // this.router.navigate(['/']);
+      }
+    });
   }
 
+  /*
+  --> If the value is empty, return the original value from the variables above.
+  --> If the value isn't empty, then replace the original value with the inputted value from
+        the user, if it passes any authentications.
+  */
   checkEmpty(original_input: string, target_input: string): string {
     if (target_input === '') {
       return original_input;
