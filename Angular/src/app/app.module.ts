@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterService } from './shared/register.service';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
+import { PostService } from './shared/post.service';
+import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -33,7 +34,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [UserService, RegisterService],
+  providers: [UserService, PostService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

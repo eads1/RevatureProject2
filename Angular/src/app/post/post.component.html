@@ -1,8 +1,19 @@
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
+<div class="card" >
+
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="postHeader">
+        <span (click)="visitProfile()" class="name">{{firstname + " " + lastname}}</span>
+        <span class="date">Posted: {{postedDate}}</span>
+    </div>
+
+    <div class="centerPost">
+      <img class="postImage" src="http://res.cloudinary.com/cs407recipes/image/upload/v1524843188/y7dgkalcib5axsemhaja.png" alt="Card image cap">
+    </div>
+
+    <p class="card-text">{{text}}</p>
+    <span>Likes: {{likes}}</span> <br/>
+    <button (click)="toggleLike()" class="btn btn-secondary">{{likeButtonText}}</button>
+    <button (click)="toggleComments()" class="btn btn-info">Comments</button>
   </div>
+
 </div>
