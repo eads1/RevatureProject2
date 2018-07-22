@@ -4,19 +4,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './services/user.service';
+import { UserService } from './shared/user.service';
+import { AuthGuard } from './guards/auth.guard';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'post', component: PostComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', component: LoginComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
+  {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
+  {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -26,6 +31,7 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [UserService, RegisterService],
+  providers: [UserService, RegisterService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

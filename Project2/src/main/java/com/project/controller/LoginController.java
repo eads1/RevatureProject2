@@ -2,10 +2,13 @@ package com.project.controller;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.User;
@@ -23,10 +26,10 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/login.do")
-	public String login(String email, String password) {
+	public Map<String, Boolean> login(String email, String password) {
 		System.out.println(email);
 		System.out.println(password);
-		
+
 		password = hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
@@ -35,9 +38,9 @@ public class LoginController {
 		} else if (user == null) {
 			System.out.println("Login failed. User does not exist.");
 		} else if (password.equals(user.getPassword())) {
-			return "Success";
+			return Collections.singletonMap("success", true);
 		}
-		return "Failure";
+		return Collections.singletonMap("success", false);
 	}
 
 	private static String hashPassword(String password) {
