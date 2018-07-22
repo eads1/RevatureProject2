@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { PostData } from '../models/postdata.class';
 import { ImageData } from '../models/imagedata.class';
+import { CommentList } from '../shared/commentList.service';
+import { CommentObject } from '../shared/comment';
 
 @Component({
   selector: 'app-post',
@@ -21,18 +23,24 @@ export class PostComponent implements OnInit {
   text = 'Here is a test String to visualize text in a post.';
   image_urls: ImageData[] = new Array();
   likes = 11;
-  // should probably make an interface for comments
-  comments: Comment[];
 
-  constructor(private postService: PostService) {
+  // for comments
+  showComment = false;
+
+  // should probably make an interface for comments
+  comments: CommentObject[];
+  // to display more or not
+  limit = 2;
+
+    // for uploaded files
+    selectedFile: any;
+
+  constructor(private postService: PostService, private theList: CommentList) {
+    this.comments = theList.getListComments(); // populate list with what's current
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
     );
    }
-
-  ngOnInit() {
-
-  }
 
   populatePost(data: PostData) {
     console.log(data);
@@ -42,6 +50,8 @@ export class PostComponent implements OnInit {
     this.image_urls = data.images;
   }
 
+  ngOnInit() {
+  }
   /*
   visitProfile() is triggered when the user clicks on a post owner name.
   As of July 18th, it does not have backend functionality.
@@ -64,13 +74,45 @@ export class PostComponent implements OnInit {
     }
     // this is where the servlet logic will go
   }
-
   /*
     Here we could open the comments section or close it if already open.
     The details need to be discussed.
   */
-  toggleComments() {
+/*   toggleComments() {
     console.log('comments clicked');
+  }*/
+  /*
+    This function is triggered when the "Comment" button is clicked. This will change
+    the value of 'showComment' from true to false, false to true, in order to display
+    the comment section underneath the post.
+  */
+  displayComment() {
+    if (this.showComment === true) {
+      this.showComment = false;
+    } else if (this.showComment === false) {
+      this.showComment = true;
+    }
   }
+  /*
+    This function is triggered when the 'loadMoreButton' is clicked, which will increment
+    the 'limit' variable by 2.
+  */
+ incrementLimit() {
+   this.limit += 2;
+ }
+  /*
+    This function will be triggered when the uploadButton is pressed, which will trigger the
+    hidden input tag, which will grab the file that the user chooses.
+  */
+  onFileChanged(event) {
+  this.selectedFile = event.target.files[0];
+  }
+  /*
+    This function will be triggered when the postButton is pressed, which will commit an
+    HTTPClient request to the register service to be added to the database.
 
+    Currently, it is unimplemented.
+  */
+  addPost() {
+  }
 }

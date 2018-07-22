@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './shared/register.service';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './shared/user.service';
+import { CommentList } from './shared/commentList.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
     NavbarComponent,
     PostComponent,
     RegisterComponent,
+    ProfileComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [UserService, RegisterService, PostService],
+  providers: [RegisterService, PostService, CommentList, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

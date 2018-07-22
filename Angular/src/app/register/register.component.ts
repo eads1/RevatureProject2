@@ -22,16 +22,17 @@ export class RegisterComponent implements OnInit {
   }
 
   createAccount() {
-    const firstname: HTMLInputElement = <HTMLInputElement> document.getElementById('fname');
-    const lastname: HTMLInputElement = <HTMLInputElement> document.getElementById('lname');
-    const email: HTMLInputElement = <HTMLInputElement>  document.getElementById('email');
-    const password: HTMLInputElement = <HTMLInputElement>  document.getElementById('password');
+    const firstname = document.getElementById('fname');
+    const lastname = document.getElementById('lname');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
     const profile = this.selectedFile;
-    console.log(firstname.value);
+    // console.log(firstname.value);
     const newUser = {
       fname: firstname,
       lname: lastname,
-      email: email,
+      userEmail: email,
+      userPassword: password,
       profilePic: profile
     };
 
