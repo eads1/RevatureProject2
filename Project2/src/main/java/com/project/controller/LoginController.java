@@ -25,11 +25,11 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/login.do")
-	public Map<String, Boolean> login(String email, String password) {
+	public User login(String email, String password) {
 		System.out.println(email);
 		System.out.println(password);
 
-		password = hashPassword(password);
+		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
 		if (email.isEmpty() || password.isEmpty()) {
@@ -37,24 +37,9 @@ public class LoginController {
 		} else if (user == null) {
 			System.out.println("Login failed. User does not exist.");
 		} else if (password.equals(user.getPassword())) {
-			return Collections.singletonMap("success", true);
+			return user;
 		}
-		return Collections.singletonMap("success", false);
+		return null;
 	}
 
-	private static String hashPassword(String password) {
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
-		md.update(password.getBytes());
-		byte byteData[] = md.digest();
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < byteData.length; i++) {
-			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-		}
-		return sb.toString();
-	}
 }
