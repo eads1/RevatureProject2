@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Post getPostById(int id) {
+	public Post getPostById(long id) {
 		return pd.getPostById(id);
 	}
 
@@ -33,18 +33,33 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getPostsByUserId(int id) {
+	public List<Post> getPostsByUserId(long id) {
 		return pd.getPostsByUserId(id);
 	}
 
 	@Override
-	public int updatePost(Post post) {
+	public long updatePost(Post post) {
 		return pd.updatePost(post);
 	}
 	
 	@Override
 	public void deletePost(Post post) {
 		pd.deletePost(post);
+	}
+
+	@Override
+	public String getPostLikesById(long postId, long userId) {
+		return pd.getPostLikesById(postId, userId);
+	}
+
+	@Override
+	public long incrementLikesById(long postId, long userId) {
+		return pd.incrementLikesById(postId, userId);
+	}
+
+	@Override
+	public long decrementLikesById(long postId, long userId) {
+		return pd.decrementLikesById(postId, userId);
 	}
 
 }
