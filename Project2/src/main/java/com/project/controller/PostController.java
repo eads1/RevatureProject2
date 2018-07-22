@@ -35,19 +35,17 @@ public class PostController {
 	}
 
 	@GetMapping(value = "/incrementLikesById.do")
-	public @ResponseBody Long incrementLikesById(@RequestParam(value = "postId") int postId,
+	public void incrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-
-		return new Long(userId);
-
+		
+		ps.incrementLikesById(postId, userId);
 	}
 
 	@GetMapping(value = "/decrementLikesById.do")
-	public @ResponseBody Integer decrementLikesById(@RequestParam(value = "postId") int postId,
+	public void decrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
 
-		return userId;
-
+		ps.decrementLikesById(postId, userId);
 	}
 }
 

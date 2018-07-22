@@ -3,15 +3,19 @@ package com.project.dao;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.project.model.Like;
 import com.project.model.Post;
+import com.project.model.UserPostPK;
 
 @Repository("PostDao")
 @Transactional
@@ -86,14 +90,39 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public long incrementLikesById(long postId, long userid) {
-		// TODO Auto-generated method stub
+	public long incrementLikesById(long postId, long userId) {
+		UserPostPK key = new UserPostPK((int) postId, (int) userId);
+		Like like = new Like(key);
+		System.out.println(like);
+		sessFact.getCurrentSession().save(like);
 		return 0;
 	}
 
 	@Override
-	public long decrementLikesById(long postId, long userid) {
-		// TODO Auto-generated method stub
+	public long decrementLikesById(long postId, long userId) {
+		Session session = sessFact.getCurrentSession();
+		HibernateTemplate h = new HibernateTemplate(sessFact);
+		
+		
+		// Transaction x = session.beginTransaction();
+		UserPostPK key = new UserPostPK((int) postId, (int) userId);
+		Like like = new Like(key);
+		System.out.println(like);
+		h.delete(like);
+		
+		
+		//		String hql = "delete from Like where USERS= :userId AND POSTS = :postId";
+//		Query q = session.createQuery(hql);
+//		q.setParameter("userId", userId);
+//		q.setParameter("postId", postId);
+//		System.out.println(q.executeUpdate());
+//		if(session.getTransaction().isActive()) {
+//			session.getTransaction().commit();
+//			System.out.println("committing");
+//		} else {
+//			System.out.println("wtf");
+//		}
+//		
 		return 0;
 	}
 }

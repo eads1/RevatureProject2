@@ -17,4 +17,39 @@ public class UserPostPK implements Serializable {
 	@Column(name="posts")
 	private Integer post;
 	
+	public UserPostPK() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserPostPK(Integer user, Integer post) {
+		super();
+		this.user = user;
+		this.post = post;
+	}
+
+	@Override
+	public String toString() {
+		return "UserPostPK [user=" + user + ", post=" + post + "]";
+	}
+
+	public Integer getUser() {
+		return user;
+	}
+
+	public void setUser(Integer user) {
+		this.user = user;
+	}
+
+	public Integer getPost() {
+		return post;
+	}
+
+	public void setPost(Integer post) {
+		this.post = post;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }
