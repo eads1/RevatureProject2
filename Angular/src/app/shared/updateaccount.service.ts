@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from '../../../node_modules/rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ResetpasswordService {
+export class UpdateaccountService {
 
   constructor(private _httpServ: HttpClient) { }
 
-  resetPassword(_url: string, _param: string): Observable<string> {
+  updateAccount(_url: string, _param: {}): Observable<string> {
     return this._httpServ.post(_url, _param).pipe(map(resp => resp as string));
   }
 }

@@ -15,6 +15,7 @@ import { CommentList } from './shared/commentList.service';
 import { ProfileComponent } from './profile/profile.component';
 import { PasswordComponent } from './password/password.component';
 import { ResetpasswordService } from './shared/resetpassword.service';
+import { UpdateaccountService } from './shared/updateaccount.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -39,7 +40,7 @@ const routes: Routes = [
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService, PostService, CommentList, ResetpasswordService],
+  providers: [RegisterService, PostService, CommentList, ResetpasswordService, UpdateaccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

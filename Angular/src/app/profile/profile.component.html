@@ -6,22 +6,26 @@
   <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
   <div class='form-label-group'>
       <input type='text' id='fname' class='form-control'
-          placeholder='first name' required autofocus/><label for='fname'>Enter New First Name</label>
+          placeholder='first name' required autofocus [(ngModel)]='inputFname'/>
+            <label for='fname'>Enter New First Name</label>
   </div>
   <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
   <div class='form-label-group'>
       <input type='text' id='lname' class='form-control'
-          placeholder='first name' required autofocus/><label for='lname'>Enter New Last Name</label>
+          placeholder='first name' required autofocus [(ngModel)]='inputLname'/>
+            <label for='lname'>Enter New Last Name</label>
   </div>
   <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
   <div class='form-label-group'>
       <input type='email' id='email' class='form-control'
-          placeholder='email' required autofocus/><label for='email'>Enter New Email</label>
+          placeholder='email' required autofocus [(ngModel)]='inputEmail'/>
+            <label for='email'>Enter New Email</label>
   </div>
   <h6 class='text-left mb-3 font-weight-bold'>Password: {{password}}</h6>
   <div class='form-label-group'>
       <input type='password' id='password' class='form-control'
-          placeholder='password' required autofocus/><label for='password'>Enter New Password</label>
+          placeholder='password' required autofocus [(ngModel)]='inputPassword'/>
+            <label for='password'>Enter New Password</label>
   </div>
   <div class='form-label-group'>
     <input style='display: none' type='file' #findFile

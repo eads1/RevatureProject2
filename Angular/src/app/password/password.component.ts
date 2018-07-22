@@ -29,7 +29,7 @@ export class PasswordComponent implements OnInit {
     moment, this function hasn't been properly tested yet.
   */
   resetPassword(temp: any) {
-    console.log(this._inputEmail);
+    // console.log(this._inputEmail);
     this._resetAction.resetPassword('reset.do', this._inputEmail).subscribe(data => console.log(data));
   }
 
