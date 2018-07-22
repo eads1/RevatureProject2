@@ -5,6 +5,7 @@ import { ImageData } from '../models/imagedata.class';
 import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
 import { LikeService } from './like.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-post',
@@ -26,7 +27,7 @@ export class PostComponent implements OnInit {
   likes: any;
   likeString: string;
   postId: number;
-  userId: number;
+  userId = parseInt(this.cookies.get('userId'), 10);
 
   // for comments
   showComment = false;
@@ -40,13 +41,13 @@ export class PostComponent implements OnInit {
     selectedFile: any;
 
   constructor(private postService: PostService, private theList: CommentList,
-              private likeService: LikeService) {
+              private likeService: LikeService, private cookies: CookieService) {
     console.log('constructing');
     // this method gets the like count
-    this.likeService.getPostLikes(9998, 21).subscribe(data => this.likes = data);
+    this.likeService.getPostLikes(9998, this.userId).subscribe(data => this.likes = data);
 
     // checks if the user has already liked the post and updates the button accordingly
-    this.likeService.hasUserLiked(9998, 21).subscribe(data => {
+    this.likeService.hasUserLiked(9998, this.userId).subscribe(data => {
       if (data === 1) {
         this.likeButtonText = 'Unlike';
       } else {
