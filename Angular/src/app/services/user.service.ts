@@ -7,11 +7,32 @@ import { Injectable } from '@angular/core';
 export class UserService {
   private _user: object;
   private loginUrl = 'http://localhost:12345/Project2/login.do';
+  private registerUrl = 'http://localhost:12345/Project2/register.do';
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
-    console.log({username, password});
-    return this.http.post(this.loginUrl, {username, password});
+  login(email: string, password: string) {
+    return this.http.post(this.loginUrl, null, {
+      params: {
+        email,
+        password,
+      },
+      responseType: 'text',
+    });
+  }
+  registerAccount(param: Object) {
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const password = param['password'];
+    return this.http.post(this.registerUrl, null, {
+      params: {
+        fname,
+        lname,
+        email,
+        password
+      },
+      responseType: 'text',
+    });
   }
 }
