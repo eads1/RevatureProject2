@@ -39,7 +39,7 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService, private theList: CommentList,
               private likeService: LikeService) {
-    this.likeService.getPostLikes(9998, 21).subscribe(data => this.likeString = data);
+    this.likeService.getPostLikes(9998, 21).subscribe(data => console.log(data));
     this.comments = theList.getListComments(); // populate list with what's current
     this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
