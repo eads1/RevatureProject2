@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterService } from '../shared/register.service';
-import { HttpClient } from '@angular/common/http';
+import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +8,12 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  private firstname: string;
+  private lastname: string;
+  private email: string;
+  private password: string;
   selectedFile: File;
-  constructor(private _router: Router, private _reg: RegisterService) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -22,21 +23,20 @@ export class RegisterComponent implements OnInit {
   }
 
   createAccount() {
-    const firstname = document.getElementById('fname');
-    const lastname = document.getElementById('lname');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
     const profile = this.selectedFile;
-    // console.log(firstname.value);
     const newUser = {
-      fname: firstname,
-      lname: lastname,
-      userEmail: email,
-      userPassword: password,
+      fname: this.firstname,
+      lname: this.lastname,
+      email: this.email,
+      password: this.password,
       profilePic: profile
     };
 
-    this._reg.registerAccount('register.do', newUser).subscribe(res => console.log(res));
+    this.userService.registerAccount(newUser).subscribe(response => {
+      if (response['success'] === true) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
@@ -13,12 +16,15 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './shared/user.service';
 import { CommentList } from './shared/commentList.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'post', component: PostComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', component: LoginComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
+  {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
+  {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -29,7 +35,7 @@ const routes: Routes = [
     PostComponent,
     RegisterComponent,
     ProfileComponent,
-
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService, PostService, CommentList, UserService],
+  providers: [RegisterService, PostService, CommentList, UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

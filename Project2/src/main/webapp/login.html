@@ -13,13 +13,36 @@
 	</table>
 
 	<p>This is the home page for the HelloWorld Web application.</p>
-	<form method="post" action="login.do">
-		<label>E-mail: </label>
-		<input type="email" name="email" placeholder="E-mail" />
-		<label>Password: </label>
-		<input type="password" name="password" placeholder="Password" />
-		<input type="submit" value="Login" />
+	<form id="form" method="post" action="login.do">
+		<label>E-mail: </label> <input type="email" name="email"
+			placeholder="E-mail" /> <label>Password: </label> <input
+			type="password" name="password" placeholder="Password" /> <input
+			type="submit" value="Login" />
 	</form>
+
+
+	<script>
+document.getElementsByTagName('form')[0].onsubmit = (e) => {
+	const email = document.getElementsByName('email')[0].value;
+	const password = document.getElementsByName('password')[0].value;
+	
+	console.log({email, password});
+	
+	const xhr = new XMLHttpRequest();
+	
+	xhr.open('post', 'login.do');
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.onreadystatechange = function() {//Call a function when the state changes.
+	    if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+	        console.log(xhr.response);
+	    }
+	}
+	
+	xhr.send(`email=${email}&password=${password}`);
+	
+	return false;
+};
+</script>
 
 </body>
 </html>
