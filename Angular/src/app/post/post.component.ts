@@ -27,6 +27,7 @@ export class PostComponent implements OnInit {
   likes: any;
   likeString: string;
   postId: number;
+  ownerId: number;
   userId = parseInt(this.cookies.get('userId'), 10);
 
   // for comments
@@ -62,7 +63,7 @@ export class PostComponent implements OnInit {
 
   populatePost(data: PostData) {
     console.log('Populating');
-    this.userId = data.user.userId;
+    this.ownerId = data.user.userId;
     this.postId = data.postId;
     this.firstname = data.user.fname;
     this.lastname = data.user.lname;
