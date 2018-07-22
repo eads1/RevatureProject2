@@ -31,27 +31,12 @@ public class RegisterController {
 		} else if (userService.getUserByEmail(email) != null) {
 			System.out.println("Create failed. User already exists");
 		} else {
-			password = hashPassword(password);
+			password = userService.hashPassword(password);
 			user = new User(fname, lname, password, email);
 			userService.insertUser(user);
 			return Collections.singletonMap("success", true);
 		}
 		return Collections.singletonMap("success", false);
 		//return "redirect:/"+outcome;
-	}
-	private static String hashPassword(String password) {
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
-		md.update(password.getBytes());
-		byte byteData[] = md.digest();
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < byteData.length; i++) {
-			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-		}
-		return sb.toString();
 	}
 }
