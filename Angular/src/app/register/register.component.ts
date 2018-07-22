@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,8 +37,7 @@ export class RegisterComponent implements OnInit {
     };
 
     this.userService.registerAccount(newUser).subscribe(response => {
-      const json = JSON.parse(response);
-      if (json.success === true) {
+      if (response['success'] === true) {
         this.router.navigate(['/']);
       }
     });

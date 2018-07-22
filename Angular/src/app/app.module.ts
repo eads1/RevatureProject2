@@ -2,27 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './services/user.service';
+import { UserService } from './shared/user.service';
 import { PostService } from './shared/post.service';
-import { HttpClient } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { CommentList } from './shared/commentList.service';
 import { ProfileComponent } from './profile/profile.component';
+import { CommentList } from './shared/commentList.service';
+import { AuthGuard } from './guards/auth.guard';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'post', component: PostComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
+  {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
+  {path: 'profile/:fname/:lname/:email', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -34,6 +38,7 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [UserService, PostService, HttpClient, CommentList],
+  providers: [UserService, PostService, HttpClient, CommentList, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

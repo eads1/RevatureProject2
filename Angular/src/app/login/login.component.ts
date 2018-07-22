@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,32 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
   private email: string;
   private password: string;
+  private failed = false;
+  private labelStyles;
 
-  constructor(private userService: UserService) { }
+  constructor(private user: UserService, private router: Router, private cookies: CookieService) { }
 
   ngOnInit() {
   }
 
   submit() {
-    this.userService.login(this.email, this.password).subscribe(response => {
-      console.log(response);
+    this.user.login(this.email, this.password).subscribe(response => {
+      if (response['success']) {
+        this.user.email = this.email;
+        this.user.isLoggedIn = true;
+        this.cookies.set('email', this.email);
+        this.cookies.set('loggedIn', 'true');
+        this.router.navigate(['/']);
+      } else {
+        console.log(response);
+        this.failed = true;
+        this.labelStyles = { 'color': 'red' };
+      }
     });
+  }
+
+  changed() {
+    this.failed = false;
+    this.labelStyles = { 'color': 'grey' };
   }
 }

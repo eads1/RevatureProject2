@@ -1,11 +1,5 @@
 <app-navbar></app-navbar>
 
 <div class="wrapper">
-  <div *ngIf="userLoggedIn; else login">
-    content
-  </div>
-
-  <ng-template #login>
-    <app-login-page></app-login-page>
-  </ng-template>
+  <router-outlet></router-outlet>
 </div>
