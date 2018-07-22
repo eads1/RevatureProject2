@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,6 +13,8 @@ import { RegisterService } from './shared/register.service';
 import { PostService } from './shared/post.service';
 import { CommentList } from './shared/commentList.service';
 import { ProfileComponent } from './profile/profile.component';
+import { PasswordComponent } from './password/password.component';
+import { ResetpasswordService } from './shared/resetpassword.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -19,6 +22,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
+  {path: 'reset', component: PasswordComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
@@ -30,11 +34,12 @@ const routes: Routes = [
     PostComponent,
     RegisterComponent,
     ProfileComponent,
+    PasswordComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(routes),
+    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [RegisterService, PostService, CommentList],
+  providers: [RegisterService, PostService, CommentList, ResetpasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
