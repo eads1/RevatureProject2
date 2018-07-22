@@ -1,26 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedInGuard } from './guards/logged-in.guard';
+import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PostComponent } from './post/post.component';
-import { RegisterComponent } from './register/register.component';
-import { RegisterService } from './shared/register.service';
-import { PostService } from './shared/post.service';
-import { CommentList } from './shared/commentList.service';
-import { ProfileComponent } from './profile/profile.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { PasswordComponent } from './password/password.component';
+import { PostComponent } from './post/post.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+import { CommentList } from './shared/commentList.service';
+import { PostService } from './shared/post.service';
+import { RegisterService } from './shared/register.service';
 import { ResetpasswordService } from './shared/resetpassword.service';
 import { UpdateaccountService } from './shared/updateaccount.service';
-import { OtherprofileComponent } from './otherprofile/otherprofile.component';
+import { UserService } from './shared/user.service';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
@@ -28,15 +32,9 @@ const routes: Routes = [
   {path: 'reset', component: PasswordComponent},
   {path: 'other', component: OtherprofileComponent},
   {path: 'other/:fname/:lname/:email', component: OtherprofileComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', component: LoginComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
-
-import { LoginComponent } from './login/login.component';
-import { UserService } from './shared/user.service';
-import { AuthGuard } from './guards/auth.guard';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { LoggedInGuard } from './guards/logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -48,6 +46,7 @@ import { LoggedInGuard } from './guards/logged-in.guard';
     ProfileComponent,
     PasswordComponent,
     OtherprofileComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
