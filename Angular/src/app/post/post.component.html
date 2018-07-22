@@ -1,11 +1,8 @@
 <!--this is the post portion-->
-<div class="card" >
+<div class="card">
 
   <div class="card-body">
     <div class="postHeader">
-        <!-- (click)="visitProfile()" -->
-        <!-- [routerLink]="['/profile', temp.name]">{{temp.name}} -->
-        <!-- [routerLink]="['/login',{{userId}}]" -->
         <span class="name"><a [routerLink]="['/profile',firstname]">{{firstname + " " + lastname}}</a></span> 
         <span class="date">Posted: {{postedDate}}</span>
     </div>

@@ -1,3 +1,37 @@
-<p>
-  Profile didn't fucking work!{{name}}
-</p>
+<div class='form-group' id='profileTable' style='background-color: cadetblue'>
+  <div class='text-center'>
+    <img src={{profile_pic}} class='rounded-circle' style='border: 2px solid black' width="400" height="236"/>
+  </div>
+  <br/>
+  <h6 class='text-left mb-3 font-weight-bold'>First Name: {{name}}</h6>
+  <div class='form-label-group'>
+      <input type='text' id='fname' class='form-control'
+          placeholder='first name' required autofocus/><label for='fname'>First Name</label>
+  </div>
+  <h6 class='text-left mb-3 font-weight-bold'>Last Name:</h6>
+  <div class='form-label-group'>
+      <input type='text' id='lname' class='form-control'
+          placeholder='first name' required autofocus/><label for='lname'>Last Name</label>
+  </div>
+  <h6 class='text-left mb-3 font-weight-bold'>Email:</h6>
+  <div class='form-label-group'>
+      <input type='email' id='email' class='form-control'
+          placeholder='email' required autofocus/><label for='email'>Email</label>
+  </div>
+  <h6 class='text-left mb-3 font-weight-bold'>Password:</h6>
+  <div class='form-label-group'>
+      <input type='password' id='password' class='form-control'
+          placeholder='password' required autofocus/><label for='password'>Password</label>
+  </div>
+  <div class='form-label-group'>
+    <input style='display: none' type='file' #findFile
+        class='form-control-file'(change)='onFileChanged($event)'/>
+      <span class='col-sm-1'>
+          <span class='font-weight-bold'>Upload Profile Pic:</span>&nbsp;
+          <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+      </span>
+  </div>
+  <div class='form-label-group'>
+      <button class='btn btn-lg btn-primary btn-block' id='updateButton'>Update</button>
+  </div>
+</div>

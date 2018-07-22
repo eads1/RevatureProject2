@@ -8,7 +8,9 @@ import { ActivatedRoute } from '../../../node_modules/@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  selectedFile: any;
   name: string;
+  profile_pic = 'http://images6.fanpop.com/image/photos/38500000/Takeo-the-handsome-my-love-story-ore-monogatari-38582718-500-280.jpg';
   constructor(private route: ActivatedRoute) {
   }
 
@@ -16,4 +18,7 @@ export class ProfileComponent implements OnInit {
     this.name = this.route.snapshot.paramMap.get('name');
   }
 
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
 }
