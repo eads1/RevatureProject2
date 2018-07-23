@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../shared/user.service';
 import { PostObject } from '../shared/post';
 
 @Component({
@@ -15,7 +14,7 @@ export class HomeComponent implements OnInit {
   private email = this.cookies.get('email');
   private uid = this.cookies.get('userId');
   private userPosts: Array<PostObject>;
-  constructor(private user: UserService, private postService: PostService, private router: Router, private cookies: CookieService) {
+  constructor(private postService: PostService, private router: Router, private cookies: CookieService) {
 
   }
 

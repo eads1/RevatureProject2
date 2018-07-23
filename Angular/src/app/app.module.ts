@@ -25,12 +25,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostService } from './shared/post.service';
 
 import { ResetpasswordService } from './shared/resetpassword.service';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
-  {path: '', component: HomeComponent},
+  {path: '', component: LandingComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
 
@@ -45,6 +46,7 @@ const routes: Routes = [
     ProfileComponent,
     PasswordComponent,
     NotfoundComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
