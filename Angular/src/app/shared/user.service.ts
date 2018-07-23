@@ -34,6 +34,9 @@ export class UserService {
     this.cookies.delete('lastName');
     this.cookies.delete('email');
     this.cookies.delete('isLoggedIn');
+    this.userId = undefined;
+    this.firstName = undefined;
+    this.lastName = undefined;
     this._email = undefined;
     this.isLoggedIn = false;
   }

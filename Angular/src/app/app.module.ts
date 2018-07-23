@@ -27,11 +27,10 @@ import { PostService } from './shared/post.service';
 import { ResetpasswordService } from './shared/resetpassword.service';
 
 const routes: Routes = [
-  {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
 

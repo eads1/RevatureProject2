@@ -56,28 +56,28 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService, private theList: CommentList,
               private likeService: LikeService, private cookies: CookieService) {
-    console.log('constructing');
-    // this method gets the like count
-    this.likeService.getPostLikes(9998, this.userId).subscribe(data => this.likes = data);
+     // populate list with what's current
+    // this.postService.getPostInfo(9998).subscribe(
+    //   data => this.populatePost( new PostData(data))
+    // );
+   }
+
+  ngOnInit() {
+    console.log('here');
+    console.log(this._userPost);
+    const post = new PostData(this._userPost);
+    this.populatePost(post);
+    this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
+    this.comments = this.theList.getListComments(post.postId);
 
     // checks if the user has already liked the post and updates the button accordingly
-    this.likeService.hasUserLiked(9998, this.userId).subscribe(data => {
+    this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
       if (data === 1) {
         this.likeButtonText = 'Unlike';
       } else {
         this.likeButtonText = 'Like';
       }
     });
-    this.comments = theList.getListComments(); // populate list with what's current
-    this.postService.getPostInfo(9998).subscribe(
-      data => this.populatePost( new PostData(data))
-    );
-   }
-
-  ngOnInit() {
-    console.log('here');
-//    console.log(this._userPost);
-    this.populatePost(new PostData(this._userPost));
   }
 
   populatePost(data: PostData) {

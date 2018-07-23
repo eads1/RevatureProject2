@@ -11,7 +11,7 @@ export class LikeService {
 
   constructor(private client: HttpClient) { }
 
-  getPostLikes(postId: number, userId: number): Observable<string> {
+  getPostLikes(postId: number): Observable<string> {
     const params = '?postId=' + postId;
     const url = 'http://localhost:12345/Project2/getPostLikesById.do' + params;
     return this.client.get(url).pipe(map(resp => resp as string));

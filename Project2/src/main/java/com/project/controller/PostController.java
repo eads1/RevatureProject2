@@ -20,7 +20,7 @@ import com.project.service.PostService;
 import com.project.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin
 public class PostController {
 
 	@Autowired
@@ -43,7 +43,7 @@ public class PostController {
 	}
 	
 	@GetMapping(value = "/getUserPostsByUid.do")
-	public @ResponseBody List<Post> getUserPostsByUid(long uid){
+	public List<Post> getUserPostsByUid(long uid){
 		List<Post> posts = ps.getPostsByUserId(uid);
 		System.out.println(posts);
 		return posts;
