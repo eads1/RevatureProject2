@@ -1,7 +1,5 @@
 package com.project.controller;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -26,9 +24,8 @@ public class LoginController {
 
 	@PostMapping(value = "/login.do")
 	public Map<String, Boolean> login(String email, String password) {
-		System.out.println(email);
-		System.out.println(password);
-
+		email = email.toLowerCase();
+		
 		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;

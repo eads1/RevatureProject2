@@ -1,7 +1,5 @@
 package com.project.controller;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -25,6 +23,7 @@ public class RegisterController {
 	}
 	@PostMapping(value="/register.do", produces = "application/json")
 	public Map<String, Boolean> register(String fname, String lname, String password, String email) {
+		email = email.toLowerCase();
 		User user = null;
 		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
 			System.out.println("Create failed. Need more input");
