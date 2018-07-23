@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.cookies.set('lastName', response['lastName']);
         this.cookies.set('email', response['email']);
         this.cookies.set('isLoggedIn', 'true');
-        this.router.navigate(['/post']); // <-- currently this login will redirect to post instead of homepage
+        this.router.navigate(['/post']);
       } else {
         this.failed = true;
         this.labelStyles = { 'color': 'red' };

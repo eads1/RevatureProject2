@@ -13,9 +13,9 @@ export class ProfileComponent implements OnInit {
 
   userId = parseInt(this.cookies.get('userId'), 10);
   selectedFile: any;
-  fname: string;
-  lname: string;
-  email: string;
+  fname = this.cookies.get('firstName');
+  lname = this.cookies.get('lastName');
+  email = this.cookies.get('email');
 
   // to display success message
   displaySuccess = false;
@@ -63,9 +63,6 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    this.fname = this.route.snapshot.paramMap.get('fname');
-    this.lname = this.route.snapshot.paramMap.get('lname');
-    this.email = this.route.snapshot.paramMap.get('email');
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by

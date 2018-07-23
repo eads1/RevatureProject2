@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { PasswordComponent } from './password/password.component';
 import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
@@ -21,7 +20,6 @@ import { PostService } from './shared/post.service';
 import { RegisterService } from './shared/register.service';
 import { ResetpasswordService } from './shared/resetpassword.service';
 import { UserService } from './shared/user.service';
-
 
 const routes: Routes = [
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
