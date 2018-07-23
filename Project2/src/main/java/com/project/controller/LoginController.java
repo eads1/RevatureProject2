@@ -1,8 +1,5 @@
 package com.project.controller;
 
-import java.util.Collections;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +20,9 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/login.do")
-	public Map<String, Boolean> login(String email, String password) {
+	public User login(String email, String password) {
 		email = email.toLowerCase();
-		
+
 		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
@@ -34,9 +31,9 @@ public class LoginController {
 		} else if (user == null) {
 			System.out.println("Login failed. User does not exist.");
 		} else if (password.equals(user.getPassword())) {
-			return Collections.singletonMap("success", true);
+			return user;
 		}
-		return Collections.singletonMap("success", false);
+		return null;
 	}
 
 }
