@@ -32,10 +32,7 @@ public class UpdateController {
 	@PostMapping(value="/updateAccount.do", produces = "application/json")
 	public Map<String, Boolean> updateProfile(String userID, String fname, String lname, String email) {
 		User user = new User(Integer.parseInt(userID), fname, lname, email);
-		int status = userService.updateUserProfile(user);
-		if (status > 0) {
-			return Collections.singletonMap("success", true);	
-		}
-		return Collections.singletonMap("success", false);
+		userService.updateUserProfile(user);
+		return Collections.singletonMap("success", true);
 	}
 }

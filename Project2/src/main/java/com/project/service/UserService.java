@@ -6,5 +6,5 @@ public interface UserService {
 	public int insertUser(User user);
 	public User getUserByEmail(String email);
 	public String hashPassword(String password);
-	public int updateUserProfile(User user);
+	public void updateUserProfile(User user);
 }
