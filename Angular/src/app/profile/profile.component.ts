@@ -109,11 +109,11 @@ export class ProfileComponent implements OnInit {
         this.fname = tempFName;
         this.lname = tempLname;
         this.email = tempEmail;
-        // console.log(response);
-        // alert('Profile Update Successful!');
+        this.cookies.set('firstName', tempFName);
+        this.cookies.set('lastName', tempLname);
+        this.cookies.set('email', tempEmail);
         this.displaySuccess = true;
       } else {
-        // alert('Error: Profile Update Unsuccessful!');
         this.displayError = true;
       }
     });
