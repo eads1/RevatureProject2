@@ -13,12 +13,13 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  private _userPost: Array<Object>;
   // html specific fields
   likeButtonText = 'Like';
 
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
+
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';
@@ -35,13 +36,23 @@ export class PostComponent implements OnInit {
   // for comments
   showComment = false;
 
-  // should probably make an interface for comments
-  comments: CommentObject[];
   // to display more or not
   limit = 2;
 
-    // for uploaded files
-    selectedFile: any;
+  // for uploaded files
+  selectedFile: any;
+
+  // should probably make an interface for comments
+  comments: CommentObject[];
+
+  @Input()
+  set userPost(userPost: Array<Object>) {
+    this._userPost = userPost;
+  }
+
+  get userPost() {
+    return this._userPost;
+  }
 
   constructor(private postService: PostService, private theList: CommentList,
               private likeService: LikeService, private cookies: CookieService) {
@@ -63,6 +74,12 @@ export class PostComponent implements OnInit {
     );
    }
 
+  ngOnInit() {
+    console.log('here');
+    console.log(this._userPost);
+    this.populatePost(new PostData(this._userPost));
+  }
+
   populatePost(data: PostData) {
     console.log('Populating');
     this.ownerId = data.user.userId;
@@ -73,8 +90,6 @@ export class PostComponent implements OnInit {
     this.image_urls = data.images;
   }
 
-  ngOnInit() {
-  }
   /*
   visitProfile() is triggered when the user clicks on a post owner name.
   As of July 18th, it does not have backend functionality.
