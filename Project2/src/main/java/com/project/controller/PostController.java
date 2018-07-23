@@ -1,7 +1,10 @@
 package com.project.controller;
 
+<<<<<<< HEAD
+=======
 import java.util.HashMap;
 import java.util.List;
+>>>>>>> dev
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,30 +55,34 @@ public class PostController {
 	@RequestMapping(value = "/getPostById.do", method = RequestMethod.GET)
 	public @ResponseBody Post getPostById(@RequestParam(value = "id") int id) {
 		Post p = ps.getPostById(id);
-		System.out.println(p);
 		return p;
 	}
 
 	@GetMapping(value = "/getPostLikesById.do")
-	public @ResponseBody String getPostLikesById(@RequestParam(value = "postId") int postId,
-			@RequestParam(value = "userId") int userId) {
-		System.out.println("getting likes");
-		return ps.getPostLikesById(postId, userId);
+	public @ResponseBody long getPostLikesById(@RequestParam(value = "postId") int postId) {
+		return ps.getPostLikesById(postId);
 
 	}
 
 	@GetMapping(value = "/incrementLikesById.do")
-	public void incrementLikesById(@RequestParam(value = "postId") int postId,
+	public @ResponseBody long incrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-		
-		ps.incrementLikesById(postId, userId);
+		System.out.println("Incrementing");
+		return ps.incrementLikesById(postId, userId);
 	}
 
 	@GetMapping(value = "/decrementLikesById.do")
-	public void decrementLikesById(@RequestParam(value = "postId") int postId,
+	public @ResponseBody long decrementLikesById(@RequestParam(value = "postId") int postId,
 			@RequestParam(value = "userId") int userId) {
-
-		ps.decrementLikesById(postId, userId);
+		System.out.println("Decrementing");
+		return ps.decrementLikesById(postId, userId);
+	}
+	
+	@GetMapping(value="/hasUserLiked.do")
+	public @ResponseBody long hasUserLiked(@RequestParam(value = "postId") int postId,
+			@RequestParam(value = "userId") int userId) {
+		System.out.println("Checking");
+		return ps.userHasLiked(userId, postId);
 	}
 }
 

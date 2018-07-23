@@ -48,8 +48,13 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public String getPostLikesById(long postId, long userId) {
-		return pd.getPostLikesById(postId, userId);
+	public long userHasLiked(long userId, long postId) {
+		return pd.userHasLiked(userId, postId);
+	}
+	
+	@Override
+	public long getPostLikesById(long postId) {
+		return pd.getPostLikesById(postId);
 	}
 
 	@Override
