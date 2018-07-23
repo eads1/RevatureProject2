@@ -1,10 +1,7 @@
 package com.project.controller;
 
-<<<<<<< HEAD
-=======
 import java.util.HashMap;
 import java.util.List;
->>>>>>> dev
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
