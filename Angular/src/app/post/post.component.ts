@@ -4,6 +4,7 @@ import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
 import { PostData } from '../models/postdata.class';
 import { ImageData } from '../models/imagedata.class';
+import { PostObject } from '../shared/post';
 
 @Component({
   selector: 'app-post',
@@ -17,6 +18,7 @@ export class PostComponent implements OnInit {
 
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
+  @Input() userPost: PostObject;
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';

@@ -7,6 +7,9 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
       </form>
+      <app-post *ngFor="let userPost of userPosts"
+        [userPost]="userPost">
+    </app-post>
     </div>
   </div>
 </div>
