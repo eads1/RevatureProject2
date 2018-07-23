@@ -21,9 +21,8 @@ public class RegisterController {
 	public RegisterController() {
 		
 	}
-	@PostMapping(value="/register.do", produces = "application/json")
+	@PostMapping(value="/register.do")
 	public Map<String, Boolean> register(String fname, String lname, String password, String email) {
-		email = email.toLowerCase();
 		User user = null;
 		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
 			System.out.println("Create failed. Need more input");

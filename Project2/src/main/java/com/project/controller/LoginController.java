@@ -21,8 +21,6 @@ public class LoginController {
 
 	@PostMapping(value = "/login.do")
 	public User login(String email, String password) {
-		email = email.toLowerCase();
-
 		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
