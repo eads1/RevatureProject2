@@ -25,6 +25,14 @@ export class UserService {
     });
   }
 
+  logout() {
+    this.cookies.delete('email');
+    this.cookies.delete('isLoggedIn');
+    this.cookies.delete('userId');
+    this._email = undefined;
+    this.isLoggedIn = false;
+  }
+
   registerAccount(param: Object) {
     const fname = param['fname'];
     const lname = param['lname'];
