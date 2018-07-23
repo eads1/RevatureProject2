@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-password',
@@ -18,7 +19,7 @@ export class PasswordComponent implements OnInit {
     this._inputEmail = temp;
   }
 
-  constructor() { }
+  constructor(private userServ: UserService) { }
 
   ngOnInit() {
   }
@@ -27,8 +28,9 @@ export class PasswordComponent implements OnInit {
     grab the inputted value and use that to send an email over to the user. At the
     moment, this function hasn't been properly tested yet.
   */
-  resetPassword(temp: any) {
-    // console.log(this._inputEmail);
+  resetPassword() {
+    this.userServ.resetPassword(this._inputEmail).subscribe(response => {
+    });
   }
 
 }

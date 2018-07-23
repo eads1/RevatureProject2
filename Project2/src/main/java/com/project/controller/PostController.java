@@ -45,7 +45,7 @@ public class PostController {
 	@GetMapping(value = "/getUserPostsByUid.do")
 	public List<Post> getUserPostsByUid(long uid){
 		List<Post> posts = ps.getPostsByUserId(uid);
-		System.out.println(posts);
+//		System.out.println(posts);
 		return posts;
 	}
 	
