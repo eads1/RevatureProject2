@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
 
