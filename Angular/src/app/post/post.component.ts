@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
+import { PostData } from '../models/postdata.class';
+import { ImageData } from '../models/imagedata.class';
 
 @Component({
   selector: 'app-post',
@@ -9,25 +11,24 @@ import { CommentObject } from '../shared/comment';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  private _userPost: Array<Object>;
   // html specific fields
   likeButtonText = 'Like';
 
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
+
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';
   email = 'bobby.johnson@getReck.com';
   content: string;
   text = 'Here is a test String to visualize text in a post.';
+  image_urls: ImageData[] = new Array();
   likes = 11;
 
   // for comments
   showComment = false;
-
-  // should probably make an interface for comments
-  comments: CommentObject[];
 
   // to display more or not
   limit = 2;
@@ -35,12 +36,41 @@ export class PostComponent implements OnInit {
   // for uploaded files
   selectedFile: any;
 
-  constructor(postService: PostService, private theList: CommentList) {
-    this.comments = theList.getListComments(); // populate list with what's current
+  // should probably make an interface for comments
+  comments: CommentObject[];
+
+  @Input()
+  set userPost(userPost: Array<Object>) {
+    this._userPost = userPost;
   }
 
-  ngOnInit() {
+  get userPost() {
+    return this._userPost;
   }
+
+  constructor(private postService: PostService, private theList: CommentList) {
+    // console.log(this._userPost);
+    this.comments = theList.getListComments(); // populate list with what's current
+    // this.populatePost(new PostData(this._userPost));
+    /* this.postService.getPostInfo(9998).subscribe(
+      data => this.populatePost( new PostData(data))
+    ); */
+   }
+
+  ngOnInit() {
+    console.log('here');
+    console.log(this._userPost);
+    this.populatePost(new PostData(this._userPost));
+  }
+
+  populatePost(data: PostData) {
+    console.log(data);
+    this.firstname = data.user.getFname();
+    this.lastname = data.user.lname;
+    this.text = data.content;
+    this.image_urls = data.images;
+  }
+
   /*
   visitProfile() is triggered when the user clicks on a post owner name.
   As of July 18th, it does not have backend functionality.
