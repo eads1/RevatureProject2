@@ -1,11 +1,10 @@
 package com.project.controller;
 
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.Post;
 import com.project.model.User;
 import com.project.service.PostService;
 import com.project.service.UserService;
 
-@Controller
+@RestController
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class PostController {
 
@@ -40,6 +40,13 @@ public class PostController {
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("success", true);
 		return map;
+	}
+	
+	@GetMapping(value = "/getUserPostsByEmail.do")
+	public @ResponseBody List<Post> getUserPostsByUid(long uid){
+		List<Post> posts = ps.getPostsByUserId(uid);
+		System.out.println(posts);
+		return posts;
 	}
 	
 	@RequestMapping(value = "/getPostById.do", method = RequestMethod.GET)
