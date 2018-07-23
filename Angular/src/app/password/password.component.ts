@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ResetpasswordService } from '../shared/resetpassword.service';
 
 @Component({
   selector: 'app-password',
@@ -19,7 +18,7 @@ export class PasswordComponent implements OnInit {
     this._inputEmail = temp;
   }
 
-  constructor(private _resetAction: ResetpasswordService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -30,7 +29,6 @@ export class PasswordComponent implements OnInit {
   */
   resetPassword(temp: any) {
     // console.log(this._inputEmail);
-    this._resetAction.resetPassword('reset.do', this._inputEmail).subscribe(data => console.log(data));
   }
 
 }

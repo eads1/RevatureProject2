@@ -11,7 +11,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PasswordComponent } from './password/password.component';
 import { PostComponent } from './post/post.component';
 
-import { RegisterService } from './shared/register.service';
 import { UserService } from './shared/user.service';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -21,10 +20,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { CommentList } from './shared/commentList.service';
 import { ProfileComponent } from './profile/profile.component';
-
 import { PostService } from './shared/post.service';
-
-import { ResetpasswordService } from './shared/resetpassword.service';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
@@ -50,10 +46,8 @@ const routes: Routes = [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
   providers: [
-    RegisterService,
     PostService,
     CommentList,
-    ResetpasswordService,
     NotfoundComponent,
     UserService,
     CookieService,
