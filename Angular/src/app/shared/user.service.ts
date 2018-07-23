@@ -9,8 +9,10 @@ export class UserService {
   /**
    * This is actually just the email of the currently logged in user.
    */
-  private _email = this.cookies.get('email');
   userId = this.cookies.get('userId');
+  private _email = this.cookies.get('email');
+  firstName = this.cookies.get('firstName');
+  lastName = this.cookies.get('lastName');
   isLoggedIn = this.cookies.check('isLoggedIn');
 
   private apiUrl = 'http://localhost:12345/Project2/';
@@ -24,6 +26,16 @@ export class UserService {
         password,
       },
     });
+  }
+
+  logout() {
+    this.cookies.delete('userId');
+    this.cookies.delete('firstName');
+    this.cookies.delete('lastName');
+    this.cookies.delete('email');
+    this.cookies.delete('isLoggedIn');
+    this._email = undefined;
+    this.isLoggedIn = false;
   }
 
   registerAccount(param: Object) {
@@ -47,5 +59,21 @@ export class UserService {
 
   set email(email: string) {
     this._email = email;
+  }
+
+  // this function will update the user profile in User Table
+  updateAccount(param: Object) {
+    const userID = param['userId'];
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    return this.http.post(this.apiUrl + 'updateAccount.do', null, {
+      params: {
+        userID,
+        fname,
+        lname,
+        email
+      },
+    });
   }
 }

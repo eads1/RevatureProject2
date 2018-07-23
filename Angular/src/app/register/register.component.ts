@@ -23,6 +23,10 @@ export class RegisterComponent implements OnInit {
   }
 
   createAccount() {
+    const firstname = document.getElementById('fname');
+    const lastname = document.getElementById('lname');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
     const profile = this.selectedFile;
     const newUser = {
       fname: this.firstname,
@@ -33,7 +37,8 @@ export class RegisterComponent implements OnInit {
     };
 
     this.userService.registerAccount(newUser).subscribe(response => {
-      if (response['success'] === true) {
+      if (response['success']) {
+        // console.log(response);
         this.router.navigate(['/']);
       }
     });

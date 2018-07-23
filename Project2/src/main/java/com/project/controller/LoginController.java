@@ -1,10 +1,5 @@
 package com.project.controller;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Collections;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +21,6 @@ public class LoginController {
 
 	@PostMapping(value = "/login.do")
 	public User login(String email, String password) {
-		System.out.println(email);
-		System.out.println(password);
-
 		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;
