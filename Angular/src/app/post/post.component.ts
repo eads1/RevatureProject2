@@ -6,6 +6,9 @@ import { CommentList } from '../shared/commentList.service';
 import { CommentObject } from '../shared/comment';
 import { LikeService } from './like.service';
 import { CookieService } from 'ngx-cookie-service';
+import { CommentData } from '../models/commentdata.class';
+import { CommentService } from '../shared/comment.service';
+import { UserData } from '../models/userdata.class';
 
 @Component({
   selector: 'app-post',
@@ -22,7 +25,7 @@ export class PostComponent implements OnInit {
 
   firstname: string;
   lastname: string;
-  // postedDate = 'Yesterday;
+  postedDate = 'Yesterday';
   email: string;
   content: string;
   text = 'Here is a test String to visualize text in a post.';
@@ -35,6 +38,7 @@ export class PostComponent implements OnInit {
 
   // for comments
   showComment = false;
+  commentText: string;
 
   // to display more or not
   limit = 2;
@@ -43,7 +47,7 @@ export class PostComponent implements OnInit {
   selectedFile: any;
 
   // should probably make an interface for comments
-  comments: CommentObject[];
+  comments: CommentData[];
 
   @Input()
   set userPost(userPost: Array<Object>) {
@@ -54,12 +58,8 @@ export class PostComponent implements OnInit {
     return this._userPost;
   }
 
-  constructor(private postService: PostService, private theList: CommentList,
-              private likeService: LikeService, private cookies: CookieService) {
-     // populate list with what's current
-    // this.postService.getPostInfo(9998).subscribe(
-    //   data => this.populatePost( new PostData(data))
-    // );
+  constructor(private postService: PostService, private likeService: LikeService,
+              private cookies: CookieService, private commentService: CommentService) {
    }
 
   ngOnInit() {
@@ -68,7 +68,7 @@ export class PostComponent implements OnInit {
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
-    this.comments = this.theList.getListComments(post.postId);
+    this.comments = post.comments;
 
     // checks if the user has already liked the post and updates the button accordingly
     this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
@@ -90,20 +90,9 @@ export class PostComponent implements OnInit {
     this.image_urls = data.images;
   }
 
-  /*
-  visitProfile() is triggered when the user clicks on a post owner name.
-  As of July 18th, it does not have backend functionality.
-  --> As of July 21st, this funciton shouldn't be needed since a routerLink
-    in the html page should be enough to redirect the user from this page
-    to the user's profile page
-  */
-/*   visitProfile() {
-    console.log('visiting ' + this.firstname + '\'s profile page');
-  } */
 
   /*
     toggleLike() is triggered when ever the like button is clicked. It toggles the text and updates the counter.
-    As of July 18th, it does not have backend functionality.
   */
   toggleLike() {
     if (this.likeButtonText === 'Like') {
@@ -155,6 +144,9 @@ export class PostComponent implements OnInit {
 
     Currently, it is unimplemented.
   */
-  addPost() {
+  addComment() {
+    const user = new UserData(this.userId, '', '', '', '', '');
+    const comment = new CommentData(0, this.postId, user, this.commentText);
+    this.commentService.newComment(comment).subscribe();
   }
 }

@@ -25,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostService } from './shared/post.service';
 
 import { ResetpasswordService } from './shared/resetpassword.service';
+import { CommentService } from './shared/comment.service';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
@@ -57,7 +58,8 @@ const routes: Routes = [
     NotfoundComponent,
     UserService,
     CookieService,
-    HttpClient
+    HttpClient,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

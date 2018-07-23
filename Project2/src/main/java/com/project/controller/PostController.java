@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.Post;
 import com.project.model.User;
+import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.UserService;
 
@@ -25,6 +26,9 @@ public class PostController {
 
 	@Autowired
 	private PostService ps;
+	
+	@Autowired
+	private CommentService cs;
 
 	@Autowired
 	private UserService us;
@@ -80,6 +84,18 @@ public class PostController {
 			@RequestParam(value = "userId") int userId) {
 		System.out.println("Checking");
 		return ps.userHasLiked(userId, postId);
+	}
+	
+	/* Everything below this point will be comment related
+	 * This part of the controller will interact directly with the angular comment service
+	 */
+	
+	@PostMapping(value="/newComment.do")
+	public @ResponseBody long newComment(String userId, String postId, String text) {
+		System.out.println("Uid: " + userId + " postId: " + postId);
+		System.out.println(text);
+		
+		return cs.newComment(Integer.parseInt(userId), Integer.parseInt(postId), text);
 	}
 }
 
