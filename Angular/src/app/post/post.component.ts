@@ -68,7 +68,7 @@ export class PostComponent implements OnInit {
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
-    this.comments = this.theList.getListComments(post.postId);
+    this.comments = this.theList.getListComments();
 
     // checks if the user has already liked the post and updates the button accordingly
     this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
