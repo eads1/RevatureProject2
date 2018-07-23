@@ -21,7 +21,7 @@ public class UserDao {
 	}
 
 	public User selectUserByEmail(String email) {
-		User user = sessFact.getCurrentSession().createQuery("FROM Users WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
+		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE lower(email) = lower(:email)", User.class).setParameter("email", email).uniqueResult();
 		return user;
 	}
 
