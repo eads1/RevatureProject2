@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
-import { UpdateaccountService } from '../shared/updateaccount.service';
 import { UserService } from '../shared/user.service';
 import { CookieService } from '../../../node_modules/ngx-cookie-service';
+
 
 @Component({
   selector: 'app-profile',
@@ -47,7 +47,8 @@ export class ProfileComponent implements OnInit {
 
 // default profile_pic if none is provided
   profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  constructor(private user: UserService, private route: ActivatedRoute, private router: Router, private cookies: CookieService) {
+  constructor(private user: UserService, private route: ActivatedRoute,
+    private router: Router, private cookies: CookieService) {
   }
   /*
     The ngOnInit() gets the values from the Post page or anywhere else that routes to this profile page.
@@ -96,11 +97,13 @@ export class ProfileComponent implements OnInit {
     */
     this.user.updateAccount(inputParam).subscribe(response => {
       if (response) {
-        this.user.email = this.email;
-        this.fname = this._inputFname;
-        this.lname = this._inputLname;
-        this.email = this._inputEmail;
-        // this.router.navigate(['/']);
+        this.fname = tempFName;
+        this.lname = tempLname;
+        this.email = tempEmail;
+        // console.log(response);
+        alert('Profile Update Successful!');
+      } else {
+        alert('Error: Profile Update Unsuccessful!');
       }
     });
   }

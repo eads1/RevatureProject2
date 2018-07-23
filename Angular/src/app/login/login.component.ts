@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.cookies.set('email', this.email);
         this.cookies.set('isLoggedIn', 'true');
         this.cookies.set('userId', response['userId']);
-        this.router.navigate(['/']);
+        this.router.navigate(['/post']); // temporary location until 'home' is build
       } else {
         this.failed = true;
         this.labelStyles = { 'color': 'red' };

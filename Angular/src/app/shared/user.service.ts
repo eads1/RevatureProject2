@@ -55,7 +55,7 @@ export class UserService {
     const fname = param['fname'];
     const lname = param['lname'];
     const email = param['email'];
-    return this.http.post(this.apiUrl + 'update.do', null, {
+    return this.http.post(this.apiUrl + 'updateAccount.do', null, {
       params: {
         userID,
         fname,
