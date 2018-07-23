@@ -44,7 +44,7 @@ public class PostDaoImpl implements PostDao {
 
 	@Override
 	public List<Post> getPostsByUserId(long id) {
-		return sessFact.getCurrentSession().createQuery("FROM POST WHERE USER_ID= :id", Post.class).setParameter("id", id).getResultList();
+		return sessFact.getCurrentSession().createQuery("FROM Post WHERE USER_ID= :id", Post.class).setParameter("id", id).getResultList();
 	}
 
 	@Override

@@ -11,12 +11,13 @@ import { ImageData } from '../models/imagedata.class';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  private _userPost: Array<Object>;
   // html specific fields
   likeButtonText = 'Like';
 
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
+
   firstname = 'Bobby';
   lastname = 'Johnson';
   postedDate = 'Yesterday';
@@ -38,16 +39,28 @@ export class PostComponent implements OnInit {
   // should probably make an interface for comments
   comments: CommentObject[];
 
+  @Input()
+  set userPost(userPost: Array<Object>) {
+    this._userPost = userPost;
+  }
+
+  get userPost() {
+    return this._userPost;
+  }
 
   constructor(private postService: PostService, private theList: CommentList) {
+    // console.log(this._userPost);
     this.comments = theList.getListComments(); // populate list with what's current
-    this.postService.getPostInfo(9998).subscribe(
+    // this.populatePost(new PostData(this._userPost));
+    /* this.postService.getPostInfo(9998).subscribe(
       data => this.populatePost( new PostData(data))
-    );
+    ); */
    }
 
   ngOnInit() {
-
+    console.log('here');
+    console.log(this._userPost);
+    this.populatePost(new PostData(this._userPost));
   }
 
   populatePost(data: PostData) {
