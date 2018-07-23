@@ -42,7 +42,7 @@ public class PostController {
 		return map;
 	}
 	
-	@GetMapping(value = "/getUserPostsByEmail.do")
+	@GetMapping(value = "/getUserPostsByUid.do")
 	public @ResponseBody List<Post> getUserPostsByUid(long uid){
 		List<Post> posts = ps.getPostsByUserId(uid);
 		System.out.println(posts);

@@ -20,8 +20,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.postService.getUserPostInfo(this.uid).subscribe(response => {
+    this.postService.getUserPostInfo(Number(this.uid)).subscribe((response: any) => {
+      console.log('2');
       console.log(response);
+      this.userPosts = response;
+      console.log( this.userPosts);
     });
   }
    submit() {

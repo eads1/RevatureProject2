@@ -10,8 +10,8 @@ export class PostService {
 
   private apiURL = 'http://localhost:12345/Project2/';
   constructor(private client: HttpClient) { }
-  getUserPostInfo(email: string): Observable<string> {
-    const url = this.apiURL + 'getUserPostsByEmail.do?email=' + email;
+  getUserPostInfo(uid: number): Observable<string> {
+    const url = this.apiURL + 'getUserPostsByUid.do?uid=' + uid;
     return this.client.get(url).pipe(map(resp => resp as string));
   }
   getPostInfo(id: number): Observable<string> {
