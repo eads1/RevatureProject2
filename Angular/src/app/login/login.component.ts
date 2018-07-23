@@ -22,14 +22,15 @@ export class LoginComponent implements OnInit {
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
       if (response) {
+        console.log(response);
         this.user.userId = response['userId'];
-        this.user.firstName = response['firstName'];
-        this.user.lastName = response['lastName'];
+        this.user.firstName = response['fname'];
+        this.user.lastName = response['lname'];
         this.user.email = response['email'];
         this.user.isLoggedIn = true;
         this.cookies.set('userId', response['userId']);
-        this.cookies.set('firstName', response['firstName']);
-        this.cookies.set('lastName', response['lastName']);
+        this.cookies.set('firstName', response['fname']);
+        this.cookies.set('lastName', response['lname']);
         this.cookies.set('email', response['email']);
         this.cookies.set('isLoggedIn', 'true');
       } else {
