@@ -17,6 +17,10 @@ export class ProfileComponent implements OnInit {
   lname: string;
   email: string;
 
+  // to display success message
+  displaySuccess = false;
+  displayError = false;
+
   _inputFname = '';
   // return the variable automatically each time there's a change
   get inputFname(): string {
@@ -92,8 +96,7 @@ export class ProfileComponent implements OnInit {
       'email': tempEmail,
     };
 
-    /* this is only a placeholder at the moment since the particular parts of
-        sending it to the middle-end is unclear to me yet.
+    /* This function has been s
     */
     this.user.updateAccount(inputParam).subscribe(response => {
       if (response) {
@@ -101,9 +104,11 @@ export class ProfileComponent implements OnInit {
         this.lname = tempLname;
         this.email = tempEmail;
         // console.log(response);
-        alert('Profile Update Successful!');
+        // alert('Profile Update Successful!');
+        this.displaySuccess = true;
       } else {
-        alert('Error: Profile Update Unsuccessful!');
+        // alert('Error: Profile Update Unsuccessful!');
+        this.displayError = true;
       }
     });
   }
@@ -118,6 +123,15 @@ export class ProfileComponent implements OnInit {
       return original_input;
     } else {
       return target_input;
+    }
+  }
+
+  displayAlertFunc() {
+    if (this.displaySuccess === true) {
+      this.displaySuccess = false;
+    }
+    if (this.displayError === true) {
+      this.displayError = false;
     }
   }
 }
