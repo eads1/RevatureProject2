@@ -25,7 +25,7 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/login.do")
-	public Map<String, Boolean> login(String email, String password) {
+	public User login(String email, String password) {
 		System.out.println(email);
 		System.out.println(password);
 
@@ -37,9 +37,9 @@ public class LoginController {
 		} else if (user == null) {
 			System.out.println("Login failed. User does not exist.");
 		} else if (password.equals(user.getPassword())) {
-			return Collections.singletonMap("success", true);
+			return user;
 		}
-		return Collections.singletonMap("success", false);
+		return null;
 	}
 
 }
