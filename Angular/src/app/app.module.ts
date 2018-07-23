@@ -12,7 +12,6 @@ import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { PasswordComponent } from './password/password.component';
 import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -27,10 +26,7 @@ const routes: Routes = [
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
-  {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
-  {path: 'other', component: OtherprofileComponent},
-  {path: 'other/:fname/:lname/:email', component: OtherprofileComponent},
   {path: '', component: LoginComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
@@ -44,7 +40,6 @@ const routes: Routes = [
     RegisterComponent,
     ProfileComponent,
     PasswordComponent,
-    OtherprofileComponent,
     NotfoundComponent,
   ],
   imports: [
