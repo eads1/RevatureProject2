@@ -22,13 +22,17 @@ export class LoginComponent implements OnInit {
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
       if (response) {
-        this.user.email = this.email;
         this.user.userId = response['userId'];
+        this.user.firstName = response['firstName'];
+        this.user.lastName = response['lastName'];
+        this.user.email = response['email'];
         this.user.isLoggedIn = true;
-        this.cookies.set('email', this.email);
-        this.cookies.set('isLoggedIn', 'true');
         this.cookies.set('userId', response['userId']);
-        this.router.navigate(['/']);
+        this.cookies.set('firstName', response['firstName']);
+        this.cookies.set('lastName', response['lastName']);
+        this.cookies.set('email', response['email']);
+        this.cookies.set('isLoggedIn', 'true');
+        this.router.navigate(['/post']); // <-- currently this login will redirect to post instead of homepage
       } else {
         this.failed = true;
         this.labelStyles = { 'color': 'red' };

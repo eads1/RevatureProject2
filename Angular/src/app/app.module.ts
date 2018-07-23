@@ -1,29 +1,39 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
+import { PasswordComponent } from './password/password.component';
 import { PostComponent } from './post/post.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './shared/user.service';
-import { PostService } from './shared/post.service';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CommentList } from './shared/commentList.service';
-import { AuthGuard } from './guards/auth.guard';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
+import { CookieService } from 'ngx-cookie-service';
+import { CommentList } from './shared/commentList.service';
+import { PostService } from './shared/post.service';
+import { RegisterService } from './shared/register.service';
+import { ResetpasswordService } from './shared/resetpassword.service';
+import { UserService } from './shared/user.service';
+
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
-  {path: 'profile/:fname/:lname/:email', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]}
+  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/:fname/:lname/:email', component: ProfileComponent},
+  {path: 'reset', component: PasswordComponent},
+  {path: 'other', component: OtherprofileComponent},
+  {path: 'other/:fname/:lname/:email', component: OtherprofileComponent},
+  {path: '', component: HomeComponent},
+  {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
+
 ];
 
 @NgModule({
@@ -35,15 +45,23 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
+    PasswordComponent,
+    OtherprofileComponent,
     NotfoundComponent,
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
+    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
   ],
-  providers: [UserService, PostService, HttpClient, CommentList, CookieService],
+  providers: [
+    RegisterService,
+    PostService,
+    CommentList,
+    ResetpasswordService,
+    NotfoundComponent,
+    UserService,
+    CookieService,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,9 +21,19 @@ public class UserDao {
 	}
 
 	public User selectUserByEmail(String email) {
-		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
-		
+		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE lower(email) = lower(:email)", User.class).setParameter("email", email).uniqueResult();
 		return user;
 	}
 
+	public int updateUserProfile(User user) {
+		int status = 0;
+		status = sessFact.getCurrentSession().createNativeQuery("UPDATE Users SET email = :email, fname = :fname, lname = :lname"+
+		" WHERE user_id = :userId", User.class)
+				.setParameter("email",user.getEmail())
+				.setParameter("fname",user.getFname())
+				.setParameter("lname",user.getLname())
+				.setParameter("userId",user.getUserId())
+				.executeUpdate();
+		return status;
+	}
 }

@@ -78,9 +78,9 @@ export class PostComponent implements OnInit {
     in the html page should be enough to redirect the user from this page
     to the user's profile page
   */
-  visitProfile() {
+/*   visitProfile() {
     console.log('visiting ' + this.firstname + '\'s profile page');
-  }
+  } */
 
   /*
     toggleLike() is triggered when ever the like button is clicked. It toggles the text and updates the counter.

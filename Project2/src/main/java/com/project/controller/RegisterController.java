@@ -1,7 +1,5 @@
 package com.project.controller;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -23,7 +21,7 @@ public class RegisterController {
 	public RegisterController() {
 		
 	}
-	@PostMapping(value="/register.do", produces = "application/json")
+	@PostMapping(value="/register.do")
 	public Map<String, Boolean> register(String fname, String lname, String password, String email) {
 		User user = null;
 		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
