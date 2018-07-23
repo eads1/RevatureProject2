@@ -11,11 +11,11 @@ import { CookieService } from '../../../node_modules/ngx-cookie-service';
 })
 export class ProfileComponent implements OnInit {
 
-  userId = parseInt(this.cookies.get('userId'), 10);
+  userId: number;
   selectedFile: any;
-  fname = this.cookies.get('firstName');
-  lname = this.cookies.get('lastName');
-  email = this.cookies.get('email');
+  fname: string;
+  lname: string;
+  email: string;
 
   // to display success message
   displaySuccess = false;
@@ -63,6 +63,15 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
+    console.log(this.cookies.get('userId'));
+    console.log(this.cookies.get('firstName'));
+    console.log(this.cookies.get('lastName'));
+    console.log(this.cookies.get('email'));
+
+    this.userId = parseInt(this.cookies.get('userId'), 10);
+    this.fname = this.cookies.get('firstName');
+    this.lname = this.cookies.get('lastName');
+    this.email = this.cookies.get('email');
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
