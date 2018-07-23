@@ -8,7 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { PasswordComponent } from './password/password.component';
 import { PostComponent } from './post/post.component';
 
@@ -26,8 +25,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostService } from './shared/post.service';
 
 import { ResetpasswordService } from './shared/resetpassword.service';
-
-
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},

@@ -20,10 +20,10 @@ export class PostComponent implements OnInit {
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
 
-  firstname = 'Bobby';
-  lastname = 'Johnson';
-  postedDate = 'Yesterday';
-  email = 'bobby.johnson@getReck.com';
+  firstname: string;
+  lastname: string;
+  // postedDate = 'Yesterday;
+  email: string;
   content: string;
   text = 'Here is a test String to visualize text in a post.';
   image_urls: ImageData[] = new Array();

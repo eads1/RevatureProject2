@@ -11,7 +11,7 @@ import { CookieService } from '../../../node_modules/ngx-cookie-service';
 })
 export class ProfileComponent implements OnInit {
 
-  userId = parseInt(this.cookies.get('userId'), 10);
+  userId: number;
   selectedFile: any;
   fname: string;
   lname: string;
@@ -63,9 +63,15 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    this.fname = this.route.snapshot.paramMap.get('fname');
-    this.lname = this.route.snapshot.paramMap.get('lname');
-    this.email = this.route.snapshot.paramMap.get('email');
+    console.log(this.cookies.get('userId'));
+    console.log(this.cookies.get('firstName'));
+    console.log(this.cookies.get('lastName'));
+    console.log(this.cookies.get('email'));
+
+    this.userId = parseInt(this.cookies.get('userId'), 10);
+    this.fname = this.cookies.get('firstName');
+    this.lname = this.cookies.get('lastName');
+    this.email = this.cookies.get('email');
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
@@ -103,11 +109,11 @@ export class ProfileComponent implements OnInit {
         this.fname = tempFName;
         this.lname = tempLname;
         this.email = tempEmail;
-        // console.log(response);
-        // alert('Profile Update Successful!');
+        this.cookies.set('firstName', tempFName);
+        this.cookies.set('lastName', tempLname);
+        this.cookies.set('email', tempEmail);
         this.displaySuccess = true;
       } else {
-        // alert('Error: Profile Update Unsuccessful!');
         this.displayError = true;
       }
     });

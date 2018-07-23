@@ -20,22 +20,19 @@ public class UpdateController {
 	
 	public UpdateController() {
 		
-	}
-	
+	}	
 	/*
 	 	This method will instantiate a new User object with the constructor(int userId, String fname, String lname, String email).
 	 	Because the password isn't passed around throughout the application, we'll be comparing with the userId. This method will
 	 	then send the object to the UserService interface, which sends it to the UserDao for update.
 	 	
-	 	There are no checks because all of that has already been done on the front-end side. This will return either a success or not.
+	 	There are no checks because all of that has already been done on the front-end side. This will return a success either way
+	 	since there is no way to check the output at the moment.
 	 */
 	@PostMapping(value="/updateAccount.do", produces = "application/json")
 	public Map<String, Boolean> updateProfile(String userID, String fname, String lname, String email) {
 		User user = new User(Integer.parseInt(userID), fname, lname, email);
-		int status = userService.updateUserProfile(user);
-		if (status > 0) {
-			return Collections.singletonMap("success", true);	
-		}
-		return Collections.singletonMap("success", false);
+		userService.updateUserProfile(user);
+		return Collections.singletonMap("success", true);
 	}
 }

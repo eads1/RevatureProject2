@@ -24,8 +24,16 @@ public class UserDao {
 		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE lower(email) = lower(:email)", User.class).setParameter("email", email).uniqueResult();
 		return user;
 	}
+	
+	public void updateUserProfile(User user) {
+		User newUser = sessFact.getCurrentSession().createQuery("FROM User WHERE user_id = :userId", User.class).setParameter("userId", user.getUserId()).uniqueResult();
+		newUser.setFname(user.getFname());
+		newUser.setLname(user.getLname());
+		newUser.setEmail(user.getEmail());
+		sessFact.getCurrentSession().update(newUser);
+	}
 
-	public int updateUserProfile(User user) {
+/*	public int updateUserProfile(User user) {
 		int status = 0;
 		status = sessFact.getCurrentSession().createNativeQuery("UPDATE Users SET email = :email, fname = :fname, lname = :lname"+
 		" WHERE user_id = :userId", User.class)
@@ -35,5 +43,5 @@ public class UserDao {
 				.setParameter("userId",user.getUserId())
 				.executeUpdate();
 		return status;
-	}
+	}*/
 }
