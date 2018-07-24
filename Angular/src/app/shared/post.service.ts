@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PostObject } from '../shared/post';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,19 @@ export class PostService {
         email,
         post
       },
+    });
+  }
+
+  fetchNextChunk(skip: number, limit: number): Promise<Array<PostObject>> {
+    return new Promise((resolve, reject) => {
+      const url = this.apiURL + 'getPostsByOffset.do?offset=' + skip + '&limit=' + limit;
+      console.log(url);
+      this.client.get(url).toPromise().then(
+        res => {
+          console.log(res);
+          resolve();
+        }
+      );
     });
   }
 }

@@ -61,7 +61,12 @@ public class PostController {
 		System.out.println(posts);
 		return posts;
 	}
-	
+	@GetMapping(value = "/getPostsByOffset.do")
+	public @ResponseBody List<Post> getPostsByOffset(int offset, int limit){
+		List<Post> posts = ps.getPostsByOffset(offset, limit);
+		System.out.println(posts);
+		return posts;
+	}
 	@RequestMapping(value = "/getPostById.do", method = RequestMethod.GET)
 	public @ResponseBody Post getPostById(@RequestParam(value = "id") int id) {
 		Post p = ps.getPostById(id);
