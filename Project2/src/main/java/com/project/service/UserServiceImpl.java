@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService {
 	public void updateUserProfile(User user) {
 		userDao.updateUserProfile(user);
 	}
+
+	@Override
+	public void updateUserNewPassword(User user) {
+		userDao.updateUserWithNewPassword(user);
+	}
 }

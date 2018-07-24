@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
       if (response) {
-        console.log(response);
+        // console.log(response);
         this.user.userId = response['userId'];
         this.user.firstName = response['fname'];
         this.user.lastName = response['lname'];

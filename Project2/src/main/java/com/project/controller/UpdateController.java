@@ -35,4 +35,19 @@ public class UpdateController {
 		userService.updateUserProfile(user);
 		return Collections.singletonMap("success", true);
 	}
+
+	/*
+ 	This method will instantiate a new User object with the constructor(int userId, String fname, String lname, String password,
+ 	String email). The new password will be hashed. This method will then send the object to the UserService interface, which sends it to the UserDao for update.
+ 	
+ 	There are no checks because all of that has already been done on the front-end side. This will return a success either way.
+	*/
+	@PostMapping(value="/updateAccount2.do", produces = "application/json")
+	public Map<String, Boolean> updateProfileWithPassword(String userID, String fname, String lname, String email, String password) {
+		String newPassword = userService.hashPassword(password);
+		System.out.println(newPassword);
+		User user = new User(Integer.parseInt(userID), fname, lname, newPassword, email);
+		userService.updateUserNewPassword(user);
+		return Collections.singletonMap("success", true);
+	}
 }

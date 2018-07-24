@@ -36,5 +36,9 @@ public class UserDao {
 	public void updateUserWithNewEmail(User user) {
 		sessFact.getCurrentSession().update(user);
 	}
+	
+	public void updateUserWithNewPassword(User user) {
+		sessFact.getCurrentSession().update(user);
+	}
 
 }

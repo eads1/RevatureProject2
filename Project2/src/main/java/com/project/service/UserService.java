@@ -7,4 +7,5 @@ public interface UserService {
 	public User getUserByEmail(String email);
 	public String hashPassword(String password);
 	public void updateUserProfile(User user);
+	public void updateUserNewPassword(User user);
 }
