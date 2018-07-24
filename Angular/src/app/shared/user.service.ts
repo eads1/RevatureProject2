@@ -81,6 +81,7 @@ export class UserService {
   }
 
   resetPassword(inputEmail: string) {
+    console.log(inputEmail);
     return this.http.post(this.apiUrl + 'reset.do', null, {
       params: {
         inputEmail

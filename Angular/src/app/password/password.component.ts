@@ -9,15 +9,7 @@ import { UserService } from '../shared/user.service';
 export class PasswordComponent implements OnInit {
 
   email: string;
-  _inputEmail = '';
-  // return the variable automatically each time there's a change
-  get inputEmail(): string {
-    return this._inputEmail;
-  }
-  // set the inputted value automatically into the variable
-  set inputEmail(temp: string) {
-    this._inputEmail = temp;
-  }
+  inputEmail: string;
 
   // to display success message
   displaySuccess = false;
@@ -33,11 +25,14 @@ export class PasswordComponent implements OnInit {
     moment, this function hasn't been properly tested yet.
   */
   resetPassword() {
-    this.userServ.resetPassword(this._inputEmail).subscribe(response => {
+    this.userServ.resetPassword(this.inputEmail).subscribe(response => {
       if (response) {
+        console.log(response);
         this.displaySuccess = true;
+        this.displayError = false;
       } else {
         this.displayError = true;
+        this.displaySuccess = false;
       }
     });
   }
