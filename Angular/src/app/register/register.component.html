@@ -51,11 +51,12 @@
     </div>
 
     <div class='form-label-group'>
-      <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)' />
+      <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)' accept="image/*"/>
       <span class='col-sm-1'>
         <span class='font-weight-bold'>Upload Profile Pic:</span>&nbsp;
         <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
       </span>
+      <img class="img-fluid" *ngIf="!!picDataUrl" [src]="picDataUrl" style="padding-top: 10px;"/>
     </div>
 
     <div class='form-label-group'>
