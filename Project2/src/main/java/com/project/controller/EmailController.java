@@ -23,17 +23,6 @@ public class EmailController {
 		
 	}
 	
-	@PostMapping(value = "/login.do")
-	private static void sendFromGMail(String name, String to, String subject, String body) {
-        Email email = EmailBuilder.startingBlank()
-                .from("GaoChain", "no.reply@gao-chain.com")
-                .to(name, to)
-                .withSubject(subject)
-                .withPlainText(body)
-                .buildEmail();
-        Mailer mailer = MailerBuilder
-                  .withSMTPServer("smtp.gmail.com", 587, "project.one.email.1@gmail.com", PASSWORD)
-                  .withTransportStrategy(TransportStrategy.SMTP_TLS)
-                  .buildMailer();
-        mailer.sendMail(email);
-    }}
+//	@PostMapping(value = "/login.do")
+
+}
