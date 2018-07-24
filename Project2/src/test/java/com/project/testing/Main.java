@@ -11,7 +11,7 @@ public class Main {
 		
 		User u1 = new User("Trevlin","Chester","p4ssw0rd","travelingHomies@gmail.com");
 		
-		ud.insert(u1);
+		ud.selectUserByEmail("");
 
 	}
 

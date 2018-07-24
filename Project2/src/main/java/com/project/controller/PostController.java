@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.Post;
 import com.project.model.User;
+import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.UserService;
 
@@ -25,6 +27,9 @@ public class PostController {
 
 	@Autowired
 	private PostService ps;
+	
+	@Autowired
+	private CommentService cs;
 
 	@Autowired
 	private UserService us;
@@ -33,10 +38,11 @@ public class PostController {
 		System.out.println(email);
 		System.out.println(post);
 		User user = us.getUserByEmail(email);
-		Post newPost = new Post(user, post);
+		Date d = new Date();
+		Post newPost = new Post(user, post, d);
 		ps.insertPost(newPost);
 		System.out.println(newPost);
-		System.out.println("Hello");
+		System.out.println(user);
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("success", true);
 		return map;
@@ -80,6 +86,18 @@ public class PostController {
 			@RequestParam(value = "userId") int userId) {
 		System.out.println("Checking");
 		return ps.userHasLiked(userId, postId);
+	}
+	
+	/* Everything below this point will be comment related
+	 * This part of the controller will interact directly with the angular comment service
+	 */
+	
+	@PostMapping(value="/newComment.do")
+	public @ResponseBody long newComment(String userId, String postId, String text) {
+		System.out.println("Uid: " + userId + " postId: " + postId);
+		System.out.println(text);
+		
+		return cs.newComment(Integer.parseInt(userId), Integer.parseInt(postId), text);
 	}
 }
 

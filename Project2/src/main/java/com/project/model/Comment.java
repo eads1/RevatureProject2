@@ -20,13 +20,13 @@ public class Comment {
 	@Column(name="comment_id")
 	private int commentId;
 
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	//@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="post_id", referencedColumnName="post_id")
-	private Post postId;
+	private int postId;
 	
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id")
-	private User userId;
+	//@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id", referencedColumnName="")
+	private int userId;
 	
 	@Column(name="content")
 	private String content;
@@ -35,14 +35,14 @@ public class Comment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comment(Post postId, User userId, String content) {
+	public Comment(int postId, int userId, String content) {
 		super();
 		this.postId = postId;
 		this.userId = userId;
 		this.content = content;
 	}
 
-	public Comment(int commentId, Post postId, User userId, String content) {
+	public Comment(int commentId, int postId, int userId, String content) {
 		super();
 		this.commentId = commentId;
 		this.postId = postId;
@@ -58,19 +58,19 @@ public class Comment {
 		this.commentId = commentId;
 	}
 
-	public Post getPostId() {
+	public int getPostId() {
 		return postId;
 	}
 
-	public void setPostId(Post postId) {
+	public void setPostId(int postId) {
 		this.postId = postId;
 	}
 
-	public User getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

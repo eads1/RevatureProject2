@@ -1,5 +1,6 @@
 package com.project.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +34,9 @@ public class Post {
 	@Column(name="content")
 	private String content;
 	
+	@Column(name="posted_date")
+	private Date postedDate;
+	
 	@OneToMany(mappedBy="postId",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Comment> comments;
 	
@@ -42,17 +46,37 @@ public class Post {
 	public Post() {
 		// TODO Auto-generated constructor stub
 	}
-	public Post(User userId, String content) {
+
+	
+	public Post(User userId, String content, Date postedDate) {
 		super();
 		this.userId = userId;
 		this.content = content;
+		this.postedDate = postedDate;
 	}
-	public Post(int postId, User userId, String content) {
+
+	public Post(int postId, User userId, String content, Date postedDate) {
 		super();
 		this.postId = postId;
 		this.userId = userId;
 		this.content = content;
+		this.postedDate = postedDate;
 	}
+
+
+
+
+	public Post(int postId, User userId, String content, Date postedDate, List<Comment> comments,
+			Set<Image> imageList) {
+		super();
+		this.postId = postId;
+		this.userId = userId;
+		this.content = content;
+		this.postedDate = postedDate;
+		this.comments = comments;
+		this.imageList = imageList;
+	}
+
 
 	public int getPostId() {
 		return postId;
@@ -90,11 +114,23 @@ public class Post {
 	public void setImageList(Set<Image> imageList) {
 		this.imageList = imageList;
 	}
-	@Override
-	public String toString() {
-		return "Post [postId=" + postId + ", userId=" + userId + ", content=" + content + ", comments=" + comments
-				+ ", imageList=" + imageList + "]";
+
+	public Date getPostedDate() {
+		return postedDate;
 	}
 
+
+	public void setPostedDate(Date postedDate) {
+		this.postedDate = postedDate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", userId=" + userId + ", content=" + content + ", postedDate=" + postedDate
+				+ "]";
+	}
+
+	
 	
 }

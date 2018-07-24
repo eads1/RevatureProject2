@@ -1,21 +1,14 @@
-<div *ngIf="user.isLoggedIn; else login">
-  <div class="card">
-    <div class="card-body">
-      <div style='text-align: center'>
-        <img src='../assets/logo1-2.png' width='300px' height='305px'/>
+<div class="card">
+  <div class="card-body">
+    <form class="form-signin" (ngSubmit)="submit()">
+      <div class="form-label-group">
+        <input type="text" id="post" class="form-control" required autofocus [(ngModel)]="post"
+          name="post">
       </div>
-      <form class="form-signin" (ngSubmit)="submit()">
-        <div class="form-label-group">
-          <input type="text" id="post" class="form-control" required autofocus [(ngModel)]="post" name="post">
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-      </form>
-      <app-post *ngFor="let userPost of userPosts" [userPost]="userPost">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+    <app-post *ngFor="let userPost of userPosts" [userPost]="userPost">
 
-      </app-post>
-    </div>
+    </app-post>
   </div>
 </div>
-<ng-template #login>
-  <app-login></app-login>
-</ng-template>
