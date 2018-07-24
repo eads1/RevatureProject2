@@ -14,7 +14,7 @@ export class OtherprofileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
-  // profile_pic: any;
+//  profile_pic: any;
 
   // default profile_pic if none is provided
   profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
@@ -33,7 +33,10 @@ export class OtherprofileComponent implements OnInit {
     this.otherId = this.route.snapshot.paramMap.get('userId');
     // getUserInfo
     this.user.getUserInfo(this.otherId).subscribe(response => {
-      this.fname = response[]
+      this.fname = response['fname'];
+      this.lname = response['lname'];
+      this.email = response['email'];
+      // this.profile_pic = response['imageid'];
     });
   }
   /*

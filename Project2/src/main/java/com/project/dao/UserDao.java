@@ -42,7 +42,8 @@ public class UserDao {
 	}
 	
 	public User selectUserByID(String id) {
-		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE user_id = :id", User.class).setParameter("id", id).uniqueResult();
+		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE user_id = :id", User.class)
+				.setParameter("id", Integer.parseInt(id)).uniqueResult();
 		return user;
 	}
 
