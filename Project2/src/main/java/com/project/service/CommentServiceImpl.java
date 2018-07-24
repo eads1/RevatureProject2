@@ -32,8 +32,7 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public long deleteComment(int commentId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cd.deleteComment(commentId);
 	}
 
 }
