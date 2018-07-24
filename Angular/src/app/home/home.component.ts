@@ -14,15 +14,17 @@ export class HomeComponent implements OnInit {
   private email = this.cookies.get('email');
   private uid = this.cookies.get('userId');
   private userPosts: Array<PostObject>;
+  private viewPortItems: Array<PostObject>;
   constructor(private postService: PostService, private router: Router, private cookies: CookieService) {
 
   }
 
   ngOnInit() {
-    this.postService.getUserPostInfo(Number(this.uid)).subscribe((response: any) => {
+    this.postService.getAllPostInfo().subscribe((response: any) => {
       console.log('2');
       console.log(response);
       this.userPosts = response;
+      this.viewPortItems = response;
       console.log( this.userPosts);
     });
   }

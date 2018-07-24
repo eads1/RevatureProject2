@@ -1,4 +1,4 @@
-<div class="card">
+<div class="container card">
   <div class="card-body">
     <form id="form-signin" class="form-signin" (ngSubmit)="submit()">
       <div class="form-label-group">
@@ -6,8 +6,11 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form>
-    <app-post *ngFor="let userPost of userPosts" [userPost]="userPost">
+    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="60" (update)="viewPortItems = $event">
+      <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
+      </app-post>
+      <div *ngIf="loading" class="loader">Loading...</div>
+    </virtual-scroll>
 
-    </app-post>
   </div>
 </div>

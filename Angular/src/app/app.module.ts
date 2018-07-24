@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -50,7 +51,7 @@ const routes: Routes = [
     LandingComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes),
+    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes), VirtualScrollModule,
   ],
   providers: [
     RegisterService,

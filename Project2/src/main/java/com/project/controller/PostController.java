@@ -48,6 +48,13 @@ public class PostController {
 		return map;
 	}
 	
+	@GetMapping(value = "/getAllPosts.do")
+	public List<Post> getAllPosts(){
+		List<Post> posts = ps.getAllPosts();
+		System.out.println(posts);
+		return posts;
+	}
+	
 	@GetMapping(value = "/getUserPostsByUid.do")
 	public List<Post> getUserPostsByUid(long uid){
 		List<Post> posts = ps.getPostsByUserId(uid);

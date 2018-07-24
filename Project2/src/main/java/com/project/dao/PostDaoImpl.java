@@ -40,7 +40,7 @@ public class PostDaoImpl implements PostDao {
 
 	@Override
 	public List<Post> getAllPosts() {
-		return sessFact.getCurrentSession().createQuery("FROM POST", Post.class).getResultList();
+		return sessFact.getCurrentSession().createQuery("FROM Post", Post.class).getResultList();
 	}
 
 	@Override
