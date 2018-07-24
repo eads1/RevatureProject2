@@ -1,11 +1,12 @@
 .card {
-    max-width: 30rem;
+    max-width: 45rem;
     height: auto;
     margin-bottom: 10px;
 }
 
 .btn {
-    width:50%;
+    width:48%;
+    margin:0.5%;
 }
 
 
