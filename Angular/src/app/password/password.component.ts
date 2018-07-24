@@ -19,6 +19,10 @@ export class PasswordComponent implements OnInit {
     this._inputEmail = temp;
   }
 
+  // to display success message
+  displaySuccess = false;
+  displayError = false;
+
   constructor(private userServ: UserService) { }
 
   ngOnInit() {
@@ -30,7 +34,21 @@ export class PasswordComponent implements OnInit {
   */
   resetPassword() {
     this.userServ.resetPassword(this._inputEmail).subscribe(response => {
+      if (response) {
+        this.displaySuccess = true;
+      } else {
+        this.displayError = true;
+      }
     });
+  }
+
+  displayAlertFunc() {
+    if (this.displaySuccess === true) {
+      this.displaySuccess = false;
+    }
+    if (this.displayError === true) {
+      this.displayError = false;
+    }
   }
 
 }
