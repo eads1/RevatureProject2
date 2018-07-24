@@ -25,8 +25,8 @@ public class CommentDaoImpl implements CommentDao {
 
 	@Override
 	public long newComment(int userId, int postId, String text) {
-		long comments = (long) sessFact.getCurrentSession().createQuery("Select COUNT(*) FROM Comment").getSingleResult();
-		comments++;
+		Comment c = new Comment(postId, userId, text);
+		sessFact.getCurrentSession().save(c);
 		
 		return 1;
 	}

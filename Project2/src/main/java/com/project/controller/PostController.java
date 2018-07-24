@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,10 +38,11 @@ public class PostController {
 		System.out.println(email);
 		System.out.println(post);
 		User user = us.getUserByEmail(email);
-		Post newPost = new Post(user, post);
+		Date d = new Date();
+		Post newPost = new Post(user, post, d);
 		ps.insertPost(newPost);
 		System.out.println(newPost);
-		System.out.println("Hello");
+		System.out.println(user);
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("success", true);
 		return map;

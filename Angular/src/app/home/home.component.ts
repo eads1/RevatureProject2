@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     });
   }
    submit() {
+     console.log(this.email);
     this.postService.submitPost(this.email, this.post).subscribe(response => {
       if (response['success']) {
         console.log(response + ' good');

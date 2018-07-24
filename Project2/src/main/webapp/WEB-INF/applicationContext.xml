@@ -25,8 +25,8 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="jdbc:oracle:thin:@wvudatabase.ctepdgislsrz.us-east-2.rds.amazonaws.com:1521:orcl" />
-		<property name="username" value="p2db" />
+			value="jdbc:oracle:thin:@wvudatabase.clafhvaxixxf.us-east-2.rds.amazonaws.com:1521:orcl" />
+		<property name="username" value="project2" />
 		<property name="password" value="p4ssw0rd" />
 	</bean>
 
@@ -38,7 +38,8 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>

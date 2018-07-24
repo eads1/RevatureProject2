@@ -64,11 +64,11 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     console.log('here');
-    console.log(this._userPost);
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
     this.comments = post.comments;
+    console.log(this.comments[0].text);
 
     // checks if the user has already liked the post and updates the button accordingly
     this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
@@ -88,6 +88,8 @@ export class PostComponent implements OnInit {
     this.lastname = data.user.lname;
     this.text = data.content;
     this.image_urls = data.images;
+    const d = new Date(data.postedDate);
+    this.postedDate = d.toLocaleDateString();
   }
 
 
