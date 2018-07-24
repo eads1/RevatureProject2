@@ -91,13 +91,19 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.0-b170201.1204</version>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.7</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.simplejavamail/simple-java-mail -->
+		<dependency>
+		    <groupId>org.simplejavamail</groupId>
+		    <artifactId>simple-java-mail</artifactId>
+		    <version>5.0.1</version>
+		</dependency>
+
 
 
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->

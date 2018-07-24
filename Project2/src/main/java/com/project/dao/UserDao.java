@@ -32,16 +32,13 @@ public class UserDao {
 		newUser.setEmail(user.getEmail());
 		sessFact.getCurrentSession().update(newUser);
 	}
+	
+	public void updateUserWithNewEmail(User user) {
+		sessFact.getCurrentSession().update(user);
+	}
+	
+	public void updateUserWithNewPassword(User user) {
+		sessFact.getCurrentSession().update(user);
+	}
 
-/*	public int updateUserProfile(User user) {
-		int status = 0;
-		status = sessFact.getCurrentSession().createNativeQuery("UPDATE Users SET email = :email, fname = :fname, lname = :lname"+
-		" WHERE user_id = :userId", User.class)
-				.setParameter("email",user.getEmail())
-				.setParameter("fname",user.getFname())
-				.setParameter("lname",user.getLname())
-				.setParameter("userId",user.getUserId())
-				.executeUpdate();
-		return status;
-	}*/
 }

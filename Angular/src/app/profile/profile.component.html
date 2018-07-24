@@ -5,18 +5,23 @@
     <br/>
     <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
     <div class='form-label-group'>
-        <input type='text' id='fname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='inputFname' />
-        <label for='fname'>Enter New First Name</label>
+        <input type='text' id='fname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='_inputFname' />
+        <label for='fname'>new first name</label>
     </div>
     <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
     <div class='form-label-group'>
-        <input type='text' id='lname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='inputLname' />
-        <label for='lname'>Enter New Last Name</label>
+        <input type='text' id='lname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='_inputLname' />
+        <label for='lname'>new last name</label>
     </div>
     <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
     <div class='form-label-group'>
-        <input type='email' id='email' class='form-control' placeholder='email' required autofocus [(ngModel)]='inputEmail' />
-        <label for='email'>Enter New Email</label>
+        <input type='email' id='email' class='form-control' placeholder='email' required autofocus [(ngModel)]='_inputEmail' />
+        <label for='email'>new email</label>
+    </div>
+    <h6 class='text-left mb-3 font-weight-bold'>Password:</h6>
+    <div class='form-label-group'>
+        <input type='password' id ='password' class='form-control' placeholder='password' required autofocus [(ngModel)]='_inputPassword' />
+        <label for='password'>new password</label>
     </div>
     <div class='form-label-group'>
         <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)' />

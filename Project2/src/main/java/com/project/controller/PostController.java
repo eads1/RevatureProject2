@@ -48,13 +48,24 @@ public class PostController {
 		return map;
 	}
 	
-	@GetMapping(value = "/getUserPostsByUid.do")
-	public List<Post> getUserPostsByUid(long uid){
-		List<Post> posts = ps.getPostsByUserId(uid);
+	@GetMapping(value = "/getAllPosts.do")
+	public List<Post> getAllPosts(){
+		List<Post> posts = ps.getAllPosts();
 		System.out.println(posts);
 		return posts;
 	}
 	
+	@GetMapping(value = "/getUserPostsByUid.do")
+	public List<Post> getUserPostsByUid(long uid){
+		List<Post> posts = ps.getPostsByUserId(uid);
+//		System.out.println(posts);
+		return posts;
+	}
+	@GetMapping(value = "/getPostsByOffset.do")
+	public @ResponseBody List<Post> getPostsByOffset(int offset, int limit){
+		List<Post> posts = ps.getPostsByOffset(offset, limit);
+		return posts;
+	}
 	@RequestMapping(value = "/getPostById.do", method = RequestMethod.GET)
 	public @ResponseBody Post getPostById(@RequestParam(value = "id") int id) {
 		Post p = ps.getPostById(id);
@@ -98,6 +109,12 @@ public class PostController {
 		System.out.println(text);
 		
 		return cs.newComment(Integer.parseInt(userId), Integer.parseInt(postId), text);
+	}
+	
+	@GetMapping(value="/deleteComment.do")
+	public @ResponseBody long deleteCommentById(int commentId) {
+		System.out.println(commentId);
+		return cs.deleteComment(commentId);
 	}
 }
 
