@@ -63,10 +63,10 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    console.log(this.cookies.get('userId'));
-    console.log(this.cookies.get('firstName'));
-    console.log(this.cookies.get('lastName'));
-    console.log(this.cookies.get('email'));
+    // console.log(this.cookies.get('userId'));
+    // console.log(this.cookies.get('firstName'));
+    // console.log(this.cookies.get('lastName'));
+    // console.log(this.cookies.get('email'));
 
     this.userId = parseInt(this.cookies.get('userId'), 10);
     this.fname = this.cookies.get('firstName');
