@@ -36,7 +36,7 @@
   <!--This is the comment portion-->
   <div id='comment1' class='card-body border-top border-dark' style='background-color: bisque' *ngIf='showComment'>
     <h6 class='card-subtitle mb-2 text-muted'>Enter Comment</h6>
-    <textarea rows='3' cols='60' maxlength="255" [(ngModel)]="commentText" placeholder="Max 255 characters"></textarea>
+    <textarea class="form-control" rows='3' maxlength="255" [(ngModel)]="commentText" placeholder="Max 255 characters"></textarea>
 
     <input style='display: none' type='file' #findFile
       class='form-control-file'(change)='onFileChanged($event)'/>
@@ -54,7 +54,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          
+
           <br/>
           <div class='card-body' style='background-color: aliceblue'>
             {{temp.text}}
