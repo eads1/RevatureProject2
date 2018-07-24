@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-password',
@@ -12,10 +13,9 @@ export class PasswordComponent implements OnInit {
   inputEmail: string;
 
   // to display success message
-  displaySuccess = false;
-  displayError = false;
+  displayMessage = false;
 
-  constructor(private userServ: UserService) { }
+  constructor(private userServ: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,21 +25,20 @@ export class PasswordComponent implements OnInit {
     moment, this function hasn't been properly tested yet.
   */
   resetPassword() {
+    this.displayMessage = false;
     this.userServ.resetPassword(this.inputEmail).subscribe(response => {
-      if (response) {
-        this.displaySuccess = true;
+      console.log(response);
+      if (response['success'] === true) {
+        // this.router.navigateByUrl('/');
       } else {
-        this.displayError = true;
+        this.displayMessage = true;
       }
     });
   }
 
   displayAlertFunc() {
-    if (this.displaySuccess === true) {
-      this.displaySuccess = false;
-    }
-    if (this.displayError === true) {
-      this.displayError = false;
+    if (this.displayMessage === true) {
+      this.displayMessage = false;
     }
   }
 
