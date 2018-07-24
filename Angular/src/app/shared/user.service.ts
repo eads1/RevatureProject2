@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { PostObject } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -102,6 +103,14 @@ export class UserService {
     return this.http.post(this.apiUrl + 'reset.do', null, {
       params: {
         inputEmail
+      }
+    });
+  }
+
+  getUserInfo(someID: string) {
+    return this.http.post(this.apiUrl + 'getUser.do', null, {
+      params: {
+        someID
       }
     });
   }

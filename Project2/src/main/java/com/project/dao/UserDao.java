@@ -40,5 +40,10 @@ public class UserDao {
 	public void updateUserWithNewPassword(User user) {
 		sessFact.getCurrentSession().update(user);
 	}
+	
+	public User selectUserByID(String id) {
+		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE user_id = :id", User.class).setParameter("id", id).uniqueResult();
+		return user;
+	}
 
 }

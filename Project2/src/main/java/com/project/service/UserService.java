@@ -8,4 +8,5 @@ public interface UserService {
 	public String hashPassword(String password);
 	public void updateUserProfile(User user);
 	public void updateUserNewPassword(User user);
+	public User getUserById(String id);
 }
