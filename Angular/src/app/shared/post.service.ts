@@ -32,17 +32,4 @@ export class PostService {
       },
     });
   }
-
-  fetchNextChunk(skip: number, limit: number): Promise<Array<PostObject>> {
-    return new Promise((resolve, reject) => {
-      const url = this.apiURL + 'getPostsByOffset.do?offset=' + skip + '&limit=' + limit;
-      console.log(url);
-      this.client.get(url).toPromise().then(
-        res => {
-          console.log(res);
-          resolve();
-        }
-      );
-    });
-  }
 }

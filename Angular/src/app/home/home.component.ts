@@ -16,15 +16,12 @@ export class HomeComponent implements OnInit {
   private uid = this.cookies.get('userId');
   private userPosts: Array<PostObject>;
   private viewPortItems: Array<PostObject>;
-  private loading: boolean;
   constructor(private postService: PostService, private router: Router, private cookies: CookieService) {
     this.userPosts = new Array<PostObject>();
   }
 
   ngOnInit() {
-     this.postService.getAllPostInfo().subscribe((response: any) => {
-      console.log('2');
-      console.log(response);
+    this.postService.getAllPostInfo().subscribe((response: any) => {
       this.userPosts = response;
       this.viewPortItems = response;
       console.log( this.userPosts);
@@ -34,22 +31,9 @@ export class HomeComponent implements OnInit {
     console.log(this.email);
     this.postService.submitPost(this.email, this.post).subscribe(response => {
       if (response['success']) {
-        console.log(response + ' good');
         this.ngOnInit();
       } else {
       }
     });
-  }
-  fetch(event: ChangeEvent) {
-    console.log('Fetching');
-    if (event.end !== this.userPosts.length - 1) {
-      return;
-    }
-    this.loading = true;
-    this.postService.fetchNextChunk(this.userPosts.length, 5).then(chunk => {
-      console.log(chunk);
-      this.userPosts = this.userPosts.concat(chunk);
-      this.loading = false;
-  }, () => this.loading = false);
   }
 }

@@ -7,10 +7,9 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form>
     <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="60"
-        (update)="viewPortItems = $event" (end)="fetch($event)">
+        (update)="viewPortItems = $event">
       <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
       </app-post>
-      <div *ngIf="loading" class="loader">Loading...</div>
     </virtual-scroll>
 
   </div>
