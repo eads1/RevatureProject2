@@ -99,5 +99,11 @@ public class PostController {
 		
 		return cs.newComment(Integer.parseInt(userId), Integer.parseInt(postId), text);
 	}
+	
+	@GetMapping(value="/deleteComment.do")
+	public @ResponseBody long deleteCommentById(int commentId) {
+		System.out.println(commentId);
+		return cs.deleteComment(commentId);
+	}
 }
 

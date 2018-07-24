@@ -19,6 +19,11 @@ export class PostComponent implements OnInit {
   private _userPost: Array<Object>;
   // html specific fields
   likeButtonText = 'Like';
+  // current user details
+  userId = parseInt(this.cookies.get('userId'), 10);
+  fname = this.cookies.get('firstName');
+  lname = this.cookies.get('lastName');
+  private email = this.cookies.get('email');
 
   // actual post info fields --> this will eventually be replaced with an actual
   //                              user module
@@ -26,7 +31,6 @@ export class PostComponent implements OnInit {
   firstname: string;
   lastname: string;
   postedDate = 'Yesterday';
-  email: string;
   content: string;
   text = 'Here is a test String to visualize text in a post.';
   image_urls: ImageData[] = new Array();
@@ -34,7 +38,6 @@ export class PostComponent implements OnInit {
   likeString: string;
   postId: number;
   ownerId: number;
-  userId = parseInt(this.cookies.get('userId'), 10);
 
   // for comments
   showComment = false;
@@ -68,7 +71,7 @@ export class PostComponent implements OnInit {
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
     this.comments = post.comments;
-    console.log(this.comments[0].text);
+    console.log(this.comments);
 
     // checks if the user has already liked the post and updates the button accordingly
     this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
@@ -146,9 +149,27 @@ export class PostComponent implements OnInit {
 
     Currently, it is unimplemented.
   */
+
+  isCurrentUser(email: string): boolean {
+    return this.email === email;
+  }
+
   addComment() {
-    const user = new UserData(this.userId, '', '', '', '', '');
+    const user = new UserData(this.userId, this.fname, this.lname, '', '', this.email);
     const comment = new CommentData(0, this.postId, user, this.commentText);
-    this.commentService.newComment(comment).subscribe();
+    this.commentService.newComment(comment).subscribe( data => comment.commentId = data);
+    console.log(comment);
+    this.comments.push(comment);
+  }
+
+  deleteComment(comment: CommentData) {
+    if (comment.commentId === 0) {
+
+    }
+    this.commentService.deleteComment(comment).subscribe();
+    const index = this.comments.indexOf(comment);
+    if (index !== -1 ) {
+      this.comments.splice(index, 1);
+    }
   }
 }

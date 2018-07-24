@@ -28,7 +28,7 @@ public class CommentDaoImpl implements CommentDao {
 		Comment c = new Comment(postId, userId, text);
 		sessFact.getCurrentSession().save(c);
 		
-		return 1;
+		return c.getCommentId();
 	}
 
 	@Override
@@ -39,8 +39,10 @@ public class CommentDaoImpl implements CommentDao {
 
 	@Override
 	public long deleteComment(int commentId) {
-		// TODO Auto-generated method stub
-		return 0;
+		Comment c = new Comment();
+		c.setCommentId(commentId);
+		sessFact.getCurrentSession().delete(c);
+		return 1;
 	}
 
 }
