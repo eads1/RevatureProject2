@@ -51,7 +51,7 @@ public class PostController {
 	@GetMapping(value = "/getUserPostsByUid.do")
 	public List<Post> getUserPostsByUid(long uid){
 		List<Post> posts = ps.getPostsByUserId(uid);
-		System.out.println(posts);
+//		System.out.println(posts);
 		return posts;
 	}
 	
@@ -98,6 +98,12 @@ public class PostController {
 		System.out.println(text);
 		
 		return cs.newComment(Integer.parseInt(userId), Integer.parseInt(postId), text);
+	}
+	
+	@GetMapping(value="/deleteComment.do")
+	public @ResponseBody long deleteCommentById(int commentId) {
+		System.out.println(commentId);
+		return cs.deleteComment(commentId);
 	}
 }
 
