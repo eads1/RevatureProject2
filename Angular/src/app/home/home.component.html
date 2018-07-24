@@ -6,7 +6,7 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form>
-    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="60"
+    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="85"
         (update)="viewPortItems = $event">
       <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
       </app-post>
