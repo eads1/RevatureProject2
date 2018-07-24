@@ -1,0 +1,11 @@
+.card {
+    max-width: 30rem;
+    height: auto;
+    margin-bottom: 10px;
+}
+#post {
+    resize: none;
+}
+#form-signin {
+    margin-bottom: 10px;
+}

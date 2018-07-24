@@ -26,11 +26,12 @@ export class HomeComponent implements OnInit {
       console.log( this.userPosts);
     });
   }
-   submit() {
-     console.log(this.email);
+  submit() {
+    console.log(this.email);
     this.postService.submitPost(this.email, this.post).subscribe(response => {
       if (response['success']) {
         console.log(response + ' good');
+        this.ngOnInit();
       } else {
       }
     });
