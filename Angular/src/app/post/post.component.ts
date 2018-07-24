@@ -66,12 +66,10 @@ export class PostComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log('here');
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
     this.comments = post.comments;
-    console.log(this.comments);
 
     // checks if the user has already liked the post and updates the button accordingly
     this.likeService.hasUserLiked(post.postId, this.userId).subscribe(data => {
@@ -84,7 +82,6 @@ export class PostComponent implements OnInit {
   }
 
   populatePost(data: PostData) {
-    console.log('Populating');
     this.ownerId = data.user.userId;
     this.postId = data.postId;
     this.firstname = data.user.fname;
@@ -130,11 +127,15 @@ export class PostComponent implements OnInit {
     }
   }
   /*
-    This function is triggered when the 'loadMoreButton' is clicked, which will increment
+    This function is triggered when the 'loadMoreButton' is clicked, which will multiply
     the 'limit' variable by 2.
+    It now only changes when more comments are available.
   */
  incrementLimit() {
-   this.limit += 2;
+   if (this.limit <= this.comments.length) {
+    this.limit *= 2;
+   }
+
  }
   /*
     This function will be triggered when the uploadButton is pressed, which will trigger the
@@ -154,12 +155,18 @@ export class PostComponent implements OnInit {
     return this.email === email;
   }
 
+  // adds comment to the existing array and sets it up in the database
   addComment() {
+    if (!this.commentText) {
+      return;
+    }
     const user = new UserData(this.userId, this.fname, this.lname, '', '', this.email);
     const comment = new CommentData(0, this.postId, user, this.commentText);
+    // this line updates the id of the new comment to match its persistent copy
+    // this allows a brand new comment to be deleted
     this.commentService.newComment(comment).subscribe( data => comment.commentId = data);
-    console.log(comment);
     this.comments.push(comment);
+    this.commentText = '';
   }
 
   deleteComment(comment: CommentData) {
