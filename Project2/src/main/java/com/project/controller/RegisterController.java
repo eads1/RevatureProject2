@@ -35,6 +35,5 @@ public class RegisterController {
 			return Collections.singletonMap("success", true);
 		}
 		return Collections.singletonMap("success", false);
-		//return "redirect:/"+outcome;
 	}
 }
