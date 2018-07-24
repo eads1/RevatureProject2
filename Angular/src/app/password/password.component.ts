@@ -26,13 +26,10 @@ export class PasswordComponent implements OnInit {
   */
   resetPassword() {
     this.userServ.resetPassword(this.inputEmail).subscribe(response => {
-      if (response) {
-        console.log(response);
+      if (response === true) {
         this.displaySuccess = true;
-        this.displayError = false;
       } else {
         this.displayError = true;
-        this.displaySuccess = false;
       }
     });
   }
