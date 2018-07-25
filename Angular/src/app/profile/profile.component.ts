@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private loading = false;
+  private picDataUrl: string;
 
   // to display success message
   displaySuccess = false;
@@ -56,6 +58,11 @@ export class ProfileComponent implements OnInit {
   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.picDataUrl = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
   }
 
   /*At the moment, this function isn't implemented yet.
