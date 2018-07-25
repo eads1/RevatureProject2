@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -23,6 +24,11 @@ public class UserServiceImpl implements UserService {
 	public int insertUser(User user) {
 		userDao.insert(user);
 		return 1;
+	}
+	
+	@Override
+	public List<User> selectAllUsers() {
+		return userDao.selectAllUsers();
 	}
 
 	@Override
@@ -55,4 +61,5 @@ public class UserServiceImpl implements UserService {
 	public void updateUserNewPassword(User user) {
 		userDao.updateUserWithNewPassword(user);
 	}
+
 }
