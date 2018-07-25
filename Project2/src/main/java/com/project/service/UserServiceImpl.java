@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -24,12 +25,27 @@ public class UserServiceImpl implements UserService {
 		userDao.insert(user);
 		return 1;
 	}
+	
+	@Override
+	public List<User> selectAllUsers() {
+		return userDao.selectAllUsers();
+	}
 
 	@Override
 	public User getUserByEmail(String email) {
 		return userDao.selectUserByEmail(email);
 	}
 
+	@Override
+	public void updateUserProfile(User user) {
+		userDao.updateUserProfile(user);
+	}
+
+	@Override
+	public void updateUserNewPassword(User user) {
+		userDao.updateUserWithNewPassword(user);
+	}
+	
 	public String hashPassword(String password) {
 		MessageDigest md = null;
 		try {
@@ -45,6 +61,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return sb.toString();
 	}
+<<<<<<< HEAD
 
 	@Override
 	public void updateUserProfile(User user) {
@@ -61,4 +78,6 @@ public class UserServiceImpl implements UserService {
 		User user = userDao.selectUserByID(id);
 		return user;
 	}
+=======
+>>>>>>> dev
 }

@@ -17,5 +17,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  search(searchText: string) {
+    console.log(searchText);
+    this._routeServ.navigate(['search/' + searchText]);
+  }
 }
