@@ -38,6 +38,7 @@ export class PostComponent implements OnInit {
   likeString: string;
   postId: number;
   ownerId: number;
+  ownerEmail: string;
 
   // for comments
   showComment = false;
@@ -66,6 +67,9 @@ export class PostComponent implements OnInit {
    }
 
   ngOnInit() {
+    // automatically set cookie of ownerId to -1 upon loading
+    this.cookies.set('ownerId', '-1');
+
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
@@ -86,6 +90,7 @@ export class PostComponent implements OnInit {
     this.postId = data.postId;
     this.firstname = data.user.fname;
     this.lastname = data.user.lname;
+    this.ownerEmail = data.user.email;
     this.text = data.content;
     this.image_urls = data.images;
     const d = new Date(data.postedDate);

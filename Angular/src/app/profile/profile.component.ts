@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private loading = false;
+  private picDataUrl: string;
 
   // to display success message
   displaySuccess = false;
