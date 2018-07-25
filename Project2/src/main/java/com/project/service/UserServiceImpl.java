@@ -30,6 +30,18 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUserByEmail(email);
 	}
 
+	@Override
+	public void updateUserProfile(User user) {
+		userDao.updateUserProfile(user);
+	}
+
+	@Override
+	public void updateUserNewPassword(User user) {
+		userDao.updateUserWithNewPassword(user);
+	}
+	
+
+
 	public String hashPassword(String password) {
 		MessageDigest md = null;
 		try {
@@ -44,15 +56,5 @@ public class UserServiceImpl implements UserService {
 			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
 		return sb.toString();
-	}
-
-	@Override
-	public void updateUserProfile(User user) {
-		userDao.updateUserProfile(user);
-	}
-
-	@Override
-	public void updateUserNewPassword(User user) {
-		userDao.updateUserWithNewPassword(user);
 	}
 }

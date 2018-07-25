@@ -50,20 +50,7 @@ export class UserService {
   }
 
   registerAccount(param: Object) {
-    const fname = param['fname'];
-    const lname = param['lname'];
-    const email = param['email'];
-    const password = param['password'];
-    const picDataUrl = param['picDataUrl'];
-    return this.http.post(this.apiUrl + 'register.do', null, {
-      params: {
-        fname,
-        lname,
-        email,
-        password,
-        picDataUrl,
-      },
-    });
+    return this.http.post(this.apiUrl + 'register.do', param);
   }
 
 

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   private email: string;
   private password: string;
   private selectedFile: File;
+  private loading = false;
 
   private picDataUrl: string;
 
@@ -38,13 +39,16 @@ export class RegisterComponent implements OnInit {
       lname: this.lastname,
       email: this.email,
       password: this.password,
-      picDataUrl: this.picDataUrl,
+      imageid: this.picDataUrl,
     };
+
+    this.loading = true;
 
     this.userService.registerAccount(newUser).subscribe(response => {
       if (response['success']) {
         this.router.navigate(['/']);
       }
+      this.loading = false;
     });
   }
 
