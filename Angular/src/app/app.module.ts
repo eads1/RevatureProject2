@@ -34,7 +34,6 @@ const routes: Routes = [
   {path: 'other/:userId', component: OtherprofileComponent},
   {path: '', component: LandingComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
-  // {path: 'other', component: OtherprofileComponent},
 ];
 
 @NgModule({
