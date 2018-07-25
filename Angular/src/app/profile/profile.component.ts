@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
 
 
   picDataUrl: string;
+  password: string;
 
 
   constructor(private user: UserService, private route: ActivatedRoute,
@@ -45,11 +46,6 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    // console.log(this.cookies.get('userId'));
-    // console.log(this.cookies.get('firstName'));
-    // console.log(this.cookies.get('lastName'));
-    // console.log(this.cookies.get('email'));
-
     this.userId = parseInt(this.cookies.get('userId'), 10);
     this.fname = this.cookies.get('firstName');
     this.lname = this.cookies.get('lastName');
@@ -77,88 +73,25 @@ export class ProfileComponent implements OnInit {
     update the database of the respective user
   */
   updateAccount() {
-    // console.log('First Name: ' + this._inputFname);
-    // console.log('Last Name: ' + this._inputLname);
-    // console.log('Email: ' + this._inputEmail);
 
-    const tempFName = this.checkEmpty(this.fname, this._inputFname);
-    const tempLname = this.checkEmpty(this.lname, this._inputLname);
-    const tempEmail = this.checkEmpty(this.email, this._inputEmail);
-    const determine = this.checkPassword(this._inputPassword);
-    if (determine === 0) { // no need to modify password
-      const inputParam = {
-        'userId': this.userId,
-        'fname': tempFName,
-        'lname': tempLname,
-        'email': tempEmail,
-        'imageid': this.profile_pic,
-      };
-      // send it to the middle-end and subscribe
-      this.user.updateAccount(inputParam).subscribe(response => {
-        if (response['success'] === true) {
-          console.log(response);
-          this.fname = tempFName;
-          this.lname = tempLname;
-          this.email = tempEmail;
-          this.cookies.set('firstName', tempFName);
-          this.cookies.set('lastName', tempLname);
-          this.cookies.set('email', tempEmail);
-          this.cookies.set('picUrl', this.profile_pic);
-          this.displaySuccess = true;
-        } else {
-          this.displayError = true;
-        }
-      });
-    } else if (determine === 1) { // need to modify password
-      console.log(this._inputPassword);
-      const inputParam = {
-        'userId': this.userId,
-        'fname': tempFName,
-        'lname': tempLname,
-        'email': tempEmail,
-        'password': this._inputPassword,
-        'imageid': this.profile_pic,
-      };
-      this.user.updateAccountWithPassword(inputParam).subscribe(response => {
-        console.log(response);
-        if (response['success'] === true) {
-          this.fname = tempFName;
-          this.lname = tempLname;
-          this.email = tempEmail;
-          this.cookies.set('firstName', tempFName);
-          this.cookies.set('lastName', tempLname);
-          this.cookies.set('email', tempEmail);
-          this.cookies.set('picUrl', this.profile_pic);
-          this.displaySuccess = true;
-        } else {
-          this.displayError = true;
-        }
-      });
-    }
+    const userObj = {
+      userId: this.userId,
+      fname: this._inputFname ? this._inputFname : null,
+      lname: this._inputLname ? this._inputLname : null,
+      email: this._inputEmail ? this._inputEmail : null,
+      password: this._inputPassword ? this._inputPassword : null,
+      imageid: this.profile_pic ? this.profile_pic : null
+    };
 
-    /* This function has been s
-    */
-  }
+    this.user.updateAccount(userObj, this.password).subscribe(response => {
+      if (response['success'] === true) {
 
-  /*
-  --> If the value is empty, return the original value from the variables above.
-  --> If the value isn't empty, then replace the original value with the inputted value from
-        the user, if it passes any authentications.
-  */
-  checkEmpty(original_input: string, target_input: string): string {
-    if (target_input === '') {
-      return original_input;
-    } else {
-      return target_input;
-    }
-  }
-
-  checkPassword(target: string): number {
-    if (target === '') {
-      return 0; // if nothing is inputted
-    } else {
-      return 1; // if something is inputted
-    }
+        this.cookies.set('picUrl', this.profile_pic);
+        this.displaySuccess = true;
+      } else {
+        this.displayError = true;
+      }
+    });
   }
 
   displayAlertFunc() {

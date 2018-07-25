@@ -54,37 +54,10 @@ export class UserService {
   }
 
 
-  // this function will update the user profile in User Table (without modifying password)
-  updateAccount(param: Object) {
-    const userID = param['userId'];
-    const fname = param['fname'];
-    const lname = param['lname'];
-    const email = param['email'];
-    return this.http.post(this.apiUrl + 'updateAccount.do', null, {
-      params: {
-        userID,
-        fname,
-        lname,
-        email
-      },
-    });
-  }
-
-  // this function will update the user profile in User Table (modifying password)
-  updateAccountWithPassword(param: Object) {
-    const userID = param['userId'];
-    const fname = param['fname'];
-    const lname = param['lname'];
-    const email = param['email'];
-    const password = param['password'];
-    return this.http.post(this.apiUrl + 'updateAccount2.do', null, {
-      params: {
-        userID,
-        fname,
-        lname,
-        email,
-        password
-      },
+  // this function will update the user profile in User Table
+  updateAccount(userObj: object, password: string) {
+    return this.http.post(this.apiUrl + 'updateAccount.do', userObj, {
+      params: { password },
     });
   }
 
