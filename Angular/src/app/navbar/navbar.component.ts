@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
+import { CookieService } from '../../../node_modules/ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +10,17 @@ import { UserService } from '../shared/user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private _routeServ: Router, private user: UserService) { }
+  userId: number;
+
+  constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService
+    ) { }
 
   logout() {
     this.user.logout();
   }
 
   ngOnInit() {
+    this.userId = parseInt(this.cookies.get('userId'), 10);
   }
   search(searchText: string) {
     console.log(searchText);
