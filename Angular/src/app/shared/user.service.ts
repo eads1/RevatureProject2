@@ -70,7 +70,7 @@ export class UserService {
     });
   }
 
-  // this function will update the user profile in User Table (without modifying password)
+  // this function will update the user profile in User Table (modifying password)
   updateAccountWithPassword(param: Object) {
     const userID = param['userId'];
     const fname = param['fname'];
