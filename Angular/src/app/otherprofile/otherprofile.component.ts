@@ -31,13 +31,16 @@ export class OtherprofileComponent implements OnInit {
   */
   ngOnInit() {
     this.otherId = this.route.snapshot.paramMap.get('userId');
+    this.fname = this.route.snapshot.paramMap.get('fname');
+    this.lname = this.route.snapshot.paramMap.get('lname');
+    this.email = this.route.snapshot.paramMap.get('email');
     // getUserInfo
-    this.user.getUserInfo(this.otherId).subscribe(response => {
+/*     this.user.getUserInfo(this.otherId).subscribe(response => {
       this.fname = response['fname'];
       this.lname = response['lname'];
       this.email = response['email'];
       // this.profile_pic = response['imageid'];
-    });
+    }); */
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by

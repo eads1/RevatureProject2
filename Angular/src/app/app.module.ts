@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
   {path: 'profile', component: ProfileComponent},
   {path: 'reset', component: PasswordComponent},
-  {path: 'other/:userId', component: OtherprofileComponent},
+  {path: 'other/:userId/:fname/:lname/:email', component: OtherprofileComponent},
   {path: '', component: LandingComponent},
   {path: '**', component: NotfoundComponent, canActivate: [AuthGuard]},
 ];
