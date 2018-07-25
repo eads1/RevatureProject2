@@ -1,4 +1,11 @@
-<div class="card">
-  <div *ngFor="let user of users">{{user.fname}}</div>
-  <div *ngIf="!hasResults">No results</div>
+<div class="container card">
+  <div class="card-body">
+    <div class="card" *ngFor="let user of users">
+      <div class="card-body">
+        <div><a href='profile/{{user.userId}}'> {{user.fname}} {{user.lname}}</a></div>
+        <div>{{user.email}}</div>
+      </div>
+    </div>
+    <div *ngIf="!hasResults">No results</div>
+  </div>
 </div>
