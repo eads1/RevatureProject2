@@ -47,7 +47,16 @@ public class PostDaoImpl implements PostDao {
 	public List<Post> getPostsByUserId(long id) {
 		return sessFact.getCurrentSession().createQuery("FROM Post WHERE USER_ID= :id", Post.class).setParameter("id", id).getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Post> getPostsByOffset(int offset, int limit) {
+		Query q = sessFact.getCurrentSession().createQuery("FROM Post", Post.class);
+		q.setFirstResult(offset);
+		q.setMaxResults(limit);
+		return q.getResultList();	
+	}
+	
 	@Override
 	public long updatePost(Post post) {
 		try {

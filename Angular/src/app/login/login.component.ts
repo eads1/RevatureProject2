@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       console.log('login response');
       console.log(response);
       if (response) {
-        console.log(response);
+        // console.log(response);
         this.user.userId = response['userId'];
         this.user.firstName = response['fname'];
         this.user.lastName = response['lname'];
