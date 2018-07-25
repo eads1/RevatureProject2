@@ -12,7 +12,12 @@ export class RegisterComponent implements OnInit {
   private lastname: string;
   private email: string;
   private password: string;
-  selectedFile: File;
+  private selectedFile: File;
+  private loading = false;
+
+  private picDataUrl: string;
+
+
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -20,27 +25,30 @@ export class RegisterComponent implements OnInit {
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.picDataUrl = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
   }
 
   createAccount() {
-    const firstname = document.getElementById('fname');
-    const lastname = document.getElementById('lname');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const profile = this.selectedFile;
     const newUser = {
       fname: this.firstname,
       lname: this.lastname,
       email: this.email,
       password: this.password,
-      profilePic: profile
+      imageid: this.picDataUrl,
     };
+
+    this.loading = true;
 
     this.userService.registerAccount(newUser).subscribe(response => {
       if (response['success']) {
-        // console.log(response);
         this.router.navigate(['/']);
       }
+      this.loading = false;
     });
   }
 
