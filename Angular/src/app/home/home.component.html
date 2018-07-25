@@ -1,14 +1,18 @@
-<div class="card">
-  <div class="card-body">
-    <form class="form-signin" (ngSubmit)="submit()">
+<div class="container card border-light mb-3">
+  <div class='card-header'>
+  <form id="form-signin" class="form-signin" (ngSubmit)="submit()">
       <div class="form-label-group">
-        <input type="text" id="post" class="form-control" required autofocus [(ngModel)]="post"
-          name="post">
-      </div>
+          <textarea id="post" class="form-control" required [(ngModel)]="post"
+            name="post" placeholder="create post"></textarea>
+      </div><br/>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form>
-    <app-post *ngFor="let userPost of userPosts" [userPost]="userPost">
-
-    </app-post>
+  </div>
+  <div class="card-body">
+    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="85"
+        (update)="viewPortItems = $event">
+      <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
+      </app-post>
+    </virtual-scroll>
   </div>
 </div>

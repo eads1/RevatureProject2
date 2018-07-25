@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
+      console.log('login response');
+      console.log(response);
       if (response) {
         // console.log(response);
         this.user.userId = response['userId'];
