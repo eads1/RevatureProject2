@@ -111,19 +111,13 @@
 		</dependency>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a6de7d93d7f2f8d7cf900413a425f07525fc30bb
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.11.372</version>
-<<<<<<< HEAD
-=======
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -134,7 +128,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
 			<version>5.0.7.RELEASE</version>
->>>>>>> a6de7d93d7f2f8d7cf900413a425f07525fc30bb
 		</dependency>
 
 

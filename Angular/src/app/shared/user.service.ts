@@ -17,7 +17,7 @@ export class UserService {
     this._email = email;
   }
 
-  userId = this.cookies.get('userId');
+  userId = parseInt(this.cookies.get('userId'), 10);
   private _email = this.cookies.get('email');
   firstName = this.cookies.get('firstName');
   lastName = this.cookies.get('lastName');
@@ -35,6 +35,26 @@ export class UserService {
         password,
       },
     });
+  }
+
+  /**
+   * Sets the logged in user to be the user described by the parameter.
+   *
+   * @param user The user that should be logged in.
+   */
+  setLoggedIn(user) {
+    this.userId = user.userId;
+    this.email = user.email;
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
+    this.picUrl = user.picUrl;
+    this.isLoggedIn = true;
+    this.cookies.set('userId', user.userId);
+    this.cookies.set('email', user.email);
+    this.cookies.set('firstName', user.firstName);
+    this.cookies.set('lastName', user.lastName);
+    this.cookies.set('picUrl', user.picUrl);
+    this.cookies.set('isLoggedIn', 'true');
   }
 
   logout() {

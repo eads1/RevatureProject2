@@ -40,7 +40,7 @@ export class OtherprofileComponent implements OnInit {
       this.fname = response['fname'];
       this.lname = response['lname'];
       this.email = response['email'];
-      // this.profile_pic = response['imageid'];
+      this.profile_pic = response['imageid'] ? response['imageid'] : this.profile_pic;
     });
 
     this.postService.getUserPostInfo(parseInt(this.otherId, 10)).subscribe((response: any) => {

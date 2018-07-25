@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   lname: string;
   email: string;
   private loading = false;
-  private picDataUrl: string;
 
   // to display success message
   displaySuccess = false;
@@ -33,7 +32,7 @@ export class ProfileComponent implements OnInit {
 
 
   picDataUrl: string;
-  password: string;
+  currentPassword: string;
 
 
   constructor(private user: UserService, private route: ActivatedRoute,
@@ -48,10 +47,10 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    this.userId = parseInt(this.cookies.get('userId'), 10);
-    this.fname = this.cookies.get('firstName');
-    this.lname = this.cookies.get('lastName');
-    this.email = this.cookies.get('email');
+    this.userId = this.user.userId;
+    this.fname = this.user.firstName;
+    this.lname = this.user.lastName;
+    this.email = this.user.email;
     this.profile_pic = this.user.picUrl;
   }
   /*
@@ -82,13 +81,19 @@ export class ProfileComponent implements OnInit {
       lname: this._inputLname ? this._inputLname : null,
       email: this._inputEmail ? this._inputEmail : null,
       password: this._inputPassword ? this._inputPassword : null,
-      imageid: this.profile_pic ? this.profile_pic : null
+      imageid: this.picDataUrl ? this.picDataUrl : null
     };
 
-    this.user.updateAccount(userObj, this.password).subscribe(response => {
-      if (response['success'] === true) {
-
-        this.cookies.set('picUrl', this.profile_pic);
+    this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
+      if (response && (response['email'] != null)) {
+        const user = {
+          userId: response['userId'] ? response['userId'] : this.userId,
+          firstName: response['fname'] ? response['fname'] : this.fname,
+          lastName: response['lname'] ? response['lname'] : this.lname,
+          email: response['email'] ? response['email'] : this.email,
+          picUrl: response['imageid'] ? response['imageid'] : this.profile_pic,
+        };
+        this.user.setLoggedIn(user);
         this.displaySuccess = true;
       } else {
         this.displayError = true;

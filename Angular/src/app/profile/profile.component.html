@@ -37,15 +37,24 @@
       <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
     </span>
   </div>
+
+
+  <div class="form-label-group text-center">
+    <input type="password" id="currentPassword" class="form-control text-center" placeholder="Current password"
+      required [(ngModel)]="currentPassword" />
+    <label for="currentPassword">Current password</label>
+  </div>
+
+
   <div class='form-label-group'>
     <button class='btn btn-lg btn-success btn-block' id='updateButton' (click)='updateAccount()'>Update</button>
   </div>
   <div class="alert alert-success alert-dismissible" *ngIf='displaySuccess'>
     <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
-    <strong>Success!</strong> Profile Update Successful!.
+    <strong>Success!</strong> Profile Update Successful!
   </div>
-  <div class="alert alert-success alert-dismissible" *ngIf='displayError'>
+  <div class="alert alert-danger alert-dismissible" *ngIf='displayError'>
     <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
-    <strong>Success!</strong> Profile Update Successful!.
+    <strong>Failure!</strong> Profile Update failed.
   </div>
 </div>
