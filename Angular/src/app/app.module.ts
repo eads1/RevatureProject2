@@ -26,6 +26,7 @@ import { PostService } from './shared/post.service';
 import { CommentService } from './shared/comment.service';
 import { LandingComponent } from './landing/landing.component';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
+import { SpecificpostComponent } from './specificpost/specificpost.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard]},
@@ -49,6 +50,7 @@ const routes: Routes = [
     NotfoundComponent,
     LandingComponent,
     OtherprofileComponent,
+    SpecificpostComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes), VirtualScrollModule,
