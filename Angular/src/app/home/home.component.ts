@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.post = '';
     this.postService.getAllPostInfo().subscribe((response: any) => {
       this.userPosts = response;
       this.viewPortItems = response;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 import { CookieService } from '../../../node_modules/ngx-cookie-service';
+import { PostObject } from '../shared/post';
+import { PostService } from '../shared/post.service';
 
 @Component({
   selector: 'app-otherprofile',
@@ -14,11 +16,13 @@ export class OtherprofileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private userPosts: Array<PostObject>;
+  private viewPortItems: Array<PostObject>;
 //  profile_pic: any;
 
   // default profile_pic if none is provided
   profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  constructor(private user: UserService, private route: ActivatedRoute,
+  constructor(private user: UserService, private postService: PostService, private route: ActivatedRoute,
     private router: Router, private cookies: CookieService) {
   }
   /*
@@ -31,9 +35,6 @@ export class OtherprofileComponent implements OnInit {
   */
   ngOnInit() {
     this.otherId = this.route.snapshot.paramMap.get('userId');
-    // this.fname = this.route.snapshot.paramMap.get('fname');
-    // this.lname = this.route.snapshot.paramMap.get('lname');
-    // this.email = this.route.snapshot.paramMap.get('email');
     // getUserInfo
     this.user.getUserInfo(this.otherId).subscribe(response => {
       this.fname = response['fname'];
@@ -41,13 +42,11 @@ export class OtherprofileComponent implements OnInit {
       this.email = response['email'];
       // this.profile_pic = response['imageid'];
     });
-  }
-  /*
-    Same function as in RegisterComponent and PostComponent. This just takes the file selected by
-    the user and assign it to the 'selectedFile' variable to be passed.
-  */
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-  }
 
+    this.postService.getUserPostInfo(parseInt(this.otherId, 10)).subscribe((response: any) => {
+      this.userPosts = response;
+      this.viewPortItems = response;
+    });
+
+  }
 }

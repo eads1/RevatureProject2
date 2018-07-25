@@ -67,6 +67,9 @@ export class PostComponent implements OnInit {
    }
 
   ngOnInit() {
+    // automatically set cookie of ownerId to -1 upon loading
+    this.cookies.set('ownerId', '-1');
+
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);

@@ -26,7 +26,6 @@ import { PostService } from './shared/post.service';
 import { CommentService } from './shared/comment.service';
 import { LandingComponent } from './landing/landing.component';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
-import { SpecificpostComponent } from './specificpost/specificpost.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
@@ -52,7 +51,6 @@ const routes: Routes = [
     NotfoundComponent,
     LandingComponent,
     OtherprofileComponent,
-    SpecificpostComponent,
     SearchComponent,
   ],
   imports: [
