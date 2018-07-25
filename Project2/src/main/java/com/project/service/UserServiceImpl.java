@@ -61,23 +61,10 @@ public class UserServiceImpl implements UserService {
 		}
 		return sb.toString();
 	}
-<<<<<<< HEAD
-
-	@Override
-	public void updateUserProfile(User user) {
-		userDao.updateUserProfile(user);
-	}
-
-	@Override
-	public void updateUserNewPassword(User user) {
-		userDao.updateUserWithNewPassword(user);
-	}
 
 	@Override
 	public User getUserById(String id) {
 		User user = userDao.selectUserByID(id);
 		return user;
 	}
-=======
->>>>>>> dev
 }
