@@ -5,6 +5,12 @@
     margin-bottom: 10px;
     border: none;
 }
+.two {
+    max-width: 40rem;
+    height: 50vh;
+    margin-bottom: 5px;
+}
+
 
 #post {
     resize: none;

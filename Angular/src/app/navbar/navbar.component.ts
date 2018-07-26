@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.userId = parseInt(this.cookies.get('userId'), 10);
+      this.userId = this.user.userId;
   }
 
   search(searchText: string) {
