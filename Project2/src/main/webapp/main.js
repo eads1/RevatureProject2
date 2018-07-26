@@ -1034,6 +1034,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _shared_URL__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/URL */ "./src/app/shared/URL.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1046,28 +1047,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LikeService = /** @class */ (function () {
     function LikeService(client) {
         this.client = client;
     }
     LikeService.prototype.getPostLikes = function (postId) {
         var params = '?postId=' + postId;
-        var url = 'http://localhost:12345/Project2/getPostLikesById.do' + params;
+        var url = _shared_URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'getPostLikesById.do' + params;
         return this.client.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (resp) { return resp; }));
     };
     LikeService.prototype.hasUserLiked = function (postId, userId) {
         var params = '?postId=' + postId + '&userId=' + userId;
-        var url = 'http://localhost:12345/Project2/hasUserLiked.do' + params;
+        var url = _shared_URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'hasUserLiked.do' + params;
         return this.client.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (resp) { return resp; }));
     };
     LikeService.prototype.incrementPostLikes = function (postId, userId) {
         var params = '?postId=' + postId + '&userId=' + userId;
-        var url = 'http://localhost:12345/Project2/incrementLikesById.do' + params;
+        var url = _shared_URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'incrementLikesById.do' + params;
         return this.client.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (resp) { return resp; }));
     };
     LikeService.prototype.decrementPostLikes = function (postId, userId) {
         var params = '?postId=' + postId + '&userId=' + userId;
-        var url = 'http://localhost:12345/Project2/decrementLikesById.do' + params;
+        var url = _shared_URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'decrementLikesById.do' + params;
         return this.client.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (resp) { return resp; }));
     };
     LikeService = __decorate([
