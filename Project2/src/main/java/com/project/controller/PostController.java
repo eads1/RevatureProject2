@@ -44,7 +44,7 @@ public class PostController {
 		postWrapper.setUser(user);
 		Date d = new Date();
 		Post post = new Post(user, postWrapper.getPost(), d);
-		post.setImageList(postWrapper.getImageList());
+		post.setImageList(postWrapper.getImages());
 		System.out.println(post);
 		System.out.println(user);
 		ps.insertPost(post);

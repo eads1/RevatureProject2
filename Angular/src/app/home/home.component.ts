@@ -17,8 +17,9 @@ export class HomeComponent implements OnInit {
   private userPosts: Array<PostObject>;
   private viewPortItems: Array<PostObject>;
 
-  private selectedFile: File;
-  private picDataUrl: string;
+  private files: Array<File> = new Array<File>();
+  private picDataUrl: Array<string> = new Array<string>();
+  private imageChanged = false;
   constructor(private postService: PostService, private router: Router, private cookies: CookieService) {
     this.userPosts = new Array<PostObject>();
   }
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
     });
   }
   submit() {
+
     this.postService.submitPost(this.email, this.post, this.picDataUrl).subscribe(response => {
       if (response['success']) {
         this.ngOnInit();
@@ -41,12 +43,15 @@ export class HomeComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
+    console.log('test');
+    this.imageChanged = true;
+    this.files = event.target.files;
     const reader = new FileReader();
-
-    reader.onload = () => {
-      this.picDataUrl = reader.result;
-    };
-    reader.readAsDataURL(this.selectedFile);
+    for (let i = 0; i < this.files.length; i++) {
+      reader.onload = () => {
+        this.picDataUrl.push(reader.result);
+      };
+      reader.readAsDataURL(this.files[i]);
+    }
   }
 }
