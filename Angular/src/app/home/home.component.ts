@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('success!');
     this.firstTime = this.cookies.get('firstTime');
     if (this.firstTime === 'true') {
       this.openModal.nativeElement.click();
@@ -55,6 +54,7 @@ export class HomeComponent implements OnInit {
   onFileChanged(event) {
     console.log('test');
     this.imageChanged = true;
+    // this.files = event.target.files[0];
     this.files = event.target.files;
     const reader = new FileReader();
     for (let i = 0; i < this.files.length; i++) {
