@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.model.Post;
 import com.project.model.User;
 import com.project.service.CommentService;
+import com.project.service.ImageService;
 import com.project.service.PostService;
 import com.project.service.UserService;
+import com.project.util.PostWrapper;
 
 @RestController
 @CrossOrigin
@@ -33,16 +36,18 @@ public class PostController {
 
 	@Autowired
 	private UserService us;
+
 	@PostMapping(value = "/submitPost.do")
-	public Map<String, Boolean> submitPost(String email, String post) {
-		System.out.println(email);
-		System.out.println(post);
-		User user = us.getUserByEmail(email);
+	public Map<String, Boolean> submitPost(@RequestBody PostWrapper postWrapper) {
+		System.out.println(postWrapper);
+		User user = us.getUserByEmail(postWrapper.getEmail());
+		postWrapper.setUser(user);
 		Date d = new Date();
-		Post newPost = new Post(user, post, d);
-		ps.insertPost(newPost);
-		System.out.println(newPost);
+		Post post = new Post(user, postWrapper.getPost(), d);
+		post.setImageList(postWrapper.getImageList());
+		System.out.println(post);
 		System.out.println(user);
+		ps.insertPost(post);
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("success", true);
 		return map;
