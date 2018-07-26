@@ -12,9 +12,7 @@ import { switchMap } from 'rxjs/operators';
 export class SearchComponent implements OnInit {
   private users;
   private hasResults = false;
-  constructor(private route: ActivatedRoute,
-    private router: Router,
-    private service: UserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private service: UserService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
