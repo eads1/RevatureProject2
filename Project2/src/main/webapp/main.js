@@ -369,7 +369,6 @@ var HomeComponent = /** @class */ (function () {
         this.postService.getAllPostInfo().subscribe(function (response) {
             _this.userPosts = response;
             _this.viewPortItems = response;
-            console.log(_this.userPosts);
         });
     };
     HomeComponent.prototype.submit = function () {
@@ -384,7 +383,6 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.onFileChanged = function (event) {
         var _this = this;
-        console.log('test');
         this.imageChanged = true;
         this.files = event.target.files;
         var reader = new FileReader();
@@ -537,15 +535,11 @@ var LoginComponent = /** @class */ (function () {
         this.failed = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        console.log(this.cookies.get('picUrl'));
     };
     LoginComponent.prototype.submit = function () {
         var _this = this;
         this.user.login(this.email, this.password).subscribe(function (response) {
-            console.log('login response');
-            console.log(response);
             if (response) {
-                // console.log(response);
                 var user = {
                     userId: response['userId'],
                     firstName: response['fname'],
@@ -765,7 +759,6 @@ var NavbarComponent = /** @class */ (function () {
         }
     };
     NavbarComponent.prototype.search = function (searchText) {
-        console.log(searchText);
         this._routeServ.navigate(['search/' + searchText]);
     };
     NavbarComponent = __decorate([
@@ -1012,7 +1005,6 @@ var PasswordComponent = /** @class */ (function () {
         var _this = this;
         this.displayMessage = false;
         this.userServ.resetPassword(this.inputEmail).subscribe(function (response) {
-            console.log(response);
             if (response['success'] === true) {
                 _this.router.navigateByUrl('/');
             }
@@ -1259,7 +1251,6 @@ var PostComponent = /** @class */ (function () {
       The details need to be discussed.
     */
     /*   toggleComments() {
-        console.log('comments clicked');
       }*/
     /*
       This function is triggered when the "Comment" button is clicked. This will change
@@ -1434,7 +1425,6 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.onFileChanged = function (event) {
         var _this = this;
         this.selectedFile = event.target.files[0];
-        console.log(this.selectedFile);
         var reader = new FileReader();
         reader.onload = function () {
             _this.picDataUrl = reader.result;
@@ -1460,7 +1450,6 @@ var ProfileComponent = /** @class */ (function () {
         };
         this.loading = true;
         this.user.updateAccount(userObj, this.currentPassword).subscribe(function (response) {
-            console.log(response);
             if (response && (response['email'] != null)) {
                 var user = {
                     userId: response['userId'] ? response['userId'] : _this.userId,
@@ -1668,7 +1657,6 @@ var SearchComponent = /** @class */ (function () {
         this.route.params.subscribe(function (params) {
             _this.service.searchUser(params['searchText']).subscribe(function (response) {
                 _this.users = response;
-                console.log(_this.users);
                 if (_this.users.length !== 0) {
                     _this.hasResults = true;
                 }
@@ -1881,14 +1869,12 @@ var PostService = /** @class */ (function () {
     PostService.prototype.submitPost = function (email, post, picDataUrls) {
         var newPost;
         if (picDataUrls == null) {
-            console.log('here');
             newPost = {
                 email: email,
                 post: post,
             };
         }
         else {
-            console.log(picDataUrls);
             newPost = {
                 email: email,
                 post: post,
