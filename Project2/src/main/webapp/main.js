@@ -315,7 +315,7 @@ module.exports = ".card {\n    max-width: 45rem;\n    height: 90vh;\n    margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container card border-light mb-3\">\n  <div class='card-header'>\n  <form id=\"form-signin\" class=\"form-signin\" (ngSubmit)=\"submit()\">\n      <div class=\"form-label-group\">\n          <textarea id=\"post\" class=\"form-control\" required [(ngModel)]=\"post\"\n            name=\"post\" placeholder=\"create post\"></textarea>\n      </div><br/>\n      <div class='form-label-group'>\n        <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)'\n          accept=\"image/*\" />\n        <span class='col-sm-1'>\n          <span class='font-weight-bold'>Upload Pic: </span>\n          <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>\n        </span>\n        <img class=\"img-fluid\" *ngIf=\"!!picDataUrl\" [src]=\"picDataUrl\" style=\"padding-top: 10px;\"\n        />\n      </div>\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>\n    </form>\n  </div>\n  <div class=\"card-body\">\n    <virtual-scroll [items]=\"userPosts\" [bufferAmount]=\"5\" [childHeight]=\"85\"\n        (update)=\"viewPortItems = $event\">\n      <app-post *ngFor=\"let userPost of viewPortItems\" [userPost]=\"userPost\">\n      </app-post>\n    </virtual-scroll>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container card border-light mb-3\">\n  <div class='card-header'>\n  <form id=\"form-signin\" class=\"form-signin\" (ngSubmit)=\"submit()\">\n      <div class=\"form-label-group\">\n          <textarea id=\"post\" class=\"form-control\" required [(ngModel)]=\"post\"\n            name=\"post\" placeholder=\"create post\"></textarea>\n      </div><br/>\n      <div class='form-label-group'>\n        <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)'\n          accept=\"image/*\" />\n        <span class='col-sm-1'>\n          <span class='font-weight-bold'>Upload Pic: </span>\n          <button type=\"button\" class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>\n        </span>\n        <img class=\"img-fluid\" *ngFor=\"let url of picDataUrl\" [src]=\"url\" style=\"padding-top: 10px;\"\n        />\n      </div>\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>\n    </form>\n  </div>\n  <div class=\"card-body\">\n    <virtual-scroll [items]=\"userPosts\" [bufferAmount]=\"5\" [childHeight]=\"85\"\n        (update)=\"viewPortItems = $event\">\n      <app-post *ngFor=\"let userPost of viewPortItems\" [userPost]=\"userPost\">\n      </app-post>\n    </virtual-scroll>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -353,6 +353,9 @@ var HomeComponent = /** @class */ (function () {
         this.cookies = cookies;
         this.email = this.cookies.get('email');
         this.uid = this.cookies.get('userId');
+        this.files = new Array();
+        this.picDataUrl = new Array();
+        this.imageChanged = false;
         this.userPosts = new Array();
     }
     HomeComponent.prototype.ngOnInit = function () {
@@ -376,12 +379,16 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.onFileChanged = function (event) {
         var _this = this;
-        this.selectedFile = event.target.files[0];
+        console.log('test');
+        this.imageChanged = true;
+        this.files = event.target.files;
         var reader = new FileReader();
-        reader.onload = function () {
-            _this.picDataUrl = reader.result;
-        };
-        reader.readAsDataURL(this.selectedFile);
+        for (var i = 0; i < this.files.length; i++) {
+            reader.onload = function () {
+                _this.picDataUrl.push(reader.result);
+            };
+            reader.readAsDataURL(this.files[i]);
+        }
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1578,7 +1585,7 @@ var RegisterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card {\n    max-width: 45rem;\n    height: auto;\n    margin-bottom: 10px;\n}"
+module.exports = ".card {\n    max-width: 45rem;\n    height: auto;\n    margin-bottom: 10px;\n}\n\n\n\n.round-img-container{\n\n  /* Makes a circle */\n  border-radius:50%;\n  border: 2px solid black;\n  width: 200px;\n  height: 200px;\n\n  /* Centers circle */\n  margin: auto;\n\n  /* Centers contents of the circle */\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  /* Cuts off overflow */\n  overflow: hidden;\n}\n\n\n\n.round-contained-img{\n  max-height:100%;\n  min-width:100%;\n\n  /* Maintain aspect ratio */\n  flex-shrink: 0;\n}\n"
 
 /***/ }),
 
@@ -1589,7 +1596,7 @@ module.exports = ".card {\n    max-width: 45rem;\n    height: auto;\n    margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container card\">\n  <div class=\"card-body\">\n    <div class=\"card\" *ngFor=\"let user of users\">\n      <div class=\"card-body\">\n        <div><a href='other/{{user.userId}}'> {{user.fname}} {{user.lname}}</a></div>\n        <div>{{user.email}}</div>\n      </div>\n    </div>\n    <div *ngIf=\"!hasResults\">No results</div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container card\">\n  <div class=\"card-body\">\n    <div class=\"card\" *ngFor=\"let user of users\">\n      <div class=\"card-body\">\n          <div class='text-center round-img-container'>\n              <img src={{user.imageid}} class=\"round-contained-img\" style='border: 2px solid black'/>\n          </div>\n\n        <div><a [routerLink]=\"['/other', user.userId]\"> {{user.fname}} {{user.lname}}</a></div>\n        <div>{{user.email}}</div>\n      </div>\n    </div>\n    <div *ngIf=\"!hasResults\">No results</div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1630,6 +1637,7 @@ var SearchComponent = /** @class */ (function () {
         this.route.params.subscribe(function (params) {
             _this.service.searchUser(params['searchText']).subscribe(function (response) {
                 _this.users = response;
+                console.log(_this.users);
                 if (_this.users.length !== 0) {
                     _this.hasResults = true;
                 }
@@ -1841,9 +1849,9 @@ var PostService = /** @class */ (function () {
         var url = this.apiURL + 'getPostById.do?id=' + id;
         return this.client.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (resp) { return resp; }));
     };
-    PostService.prototype.submitPost = function (email, post, picDataUrl) {
+    PostService.prototype.submitPost = function (email, post, picDataUrls) {
         var newPost;
-        if (picDataUrl == null) {
+        if (picDataUrls == null) {
             console.log('here');
             newPost = {
                 email: email,
@@ -1851,13 +1859,11 @@ var PostService = /** @class */ (function () {
             };
         }
         else {
-            console.log(picDataUrl);
+            console.log(picDataUrls);
             newPost = {
                 email: email,
                 post: post,
-                imageList: [{
-                        link: picDataUrl,
-                    }],
+                imageList: picDataUrls,
             };
         }
         var url = this.apiURL + 'submitPost.do';
