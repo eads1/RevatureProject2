@@ -172,7 +172,7 @@
 						</goals>
 						<!-- Optional configuration which provides for running any npm command -->
 						<configuration>
-							<arguments>install --only=production</arguments>
+							<arguments>install</arguments>
 						</configuration>
 					</execution>
 
