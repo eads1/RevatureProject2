@@ -16,14 +16,13 @@
           <span class='font-weight-bold'>Upload Pic: </span>
           <button type="button" class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
         </span>
-        <img class="img-fluid" *ngFor="let url of picDataUrl" [src]="url" style="padding-top: 10px;"
-        />
+        <img class="img-fluid" *ngFor="let url of picDataUrl" [src]="url" style="padding-top: 10px;"/>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)='submit()'>Submit</button>
     </form>
   </div>
   <div class="card-body">
-    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="85"
+    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="9"
         (update)="viewPortItems = $event">
       <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
       </app-post>

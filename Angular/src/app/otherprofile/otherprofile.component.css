@@ -63,15 +63,12 @@ body {
     border: 4px solid black;
 }
 
-.card-group {
-    opacity: 1;
-}
-
 .card {
     max-width: 40rem;
     height: 60vh;
     margin-bottom: 10px;
     border: none;
+    background-color: transparent;
 }
 
 #post {

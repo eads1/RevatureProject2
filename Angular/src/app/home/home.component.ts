@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
 
     this.postService.submitPost(this.email, this.post, this.picDataUrl).subscribe(response => {
       if (response['success']) {
+        console.log('success!');
         this.ngOnInit();
       } else {
       }
