@@ -40,12 +40,12 @@ public class PostDaoImpl implements PostDao {
 
 	@Override
 	public List<Post> getAllPosts() {
-		return sessFact.getCurrentSession().createQuery("FROM Post", Post.class).getResultList();
+		return sessFact.getCurrentSession().createQuery("FROM Post ORDER BY posted_date DESC", Post.class).getResultList();
 	}
 
 	@Override
 	public List<Post> getPostsByUserId(long id) {
-		return sessFact.getCurrentSession().createQuery("FROM Post WHERE USER_ID= :id", Post.class).setParameter("id", id).getResultList();
+		return sessFact.getCurrentSession().createQuery("FROM Post WHERE USER_ID= :id ORDER BY posted_date DESC", Post.class).setParameter("id", id).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
