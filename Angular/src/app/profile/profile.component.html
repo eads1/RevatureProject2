@@ -23,7 +23,13 @@
       autofocus [(ngModel)]='_inputEmail' />
     <label for='email'>new email</label>
   </div>
-  <h6 class='text-left mb-3 font-weight-bold'>Password:</h6>
+  <h6 class='text-left mb-3 font-weight-bold'>Enter Current Password:</h6>
+  <div class="form-label-group text-center">
+    <input type="password" id="currentPassword" class="form-control text-center" placeholder="Current password"
+      required [(ngModel)]="currentPassword" />
+    <label for="currentPassword">current password</label>
+  </div>
+  <h6 class='text-left mb-3 font-weight-bold'>New Password:</h6>
   <div class='form-label-group'>
     <input type='password' id='password' class='form-control' placeholder='password'
       required autofocus [(ngModel)]='_inputPassword' />
@@ -37,14 +43,6 @@
       <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
     </span>
   </div>
-
-
-  <div class="form-label-group text-center">
-    <input type="password" id="currentPassword" class="form-control text-center" placeholder="Current password"
-      required [(ngModel)]="currentPassword" />
-    <label for="currentPassword">Current password</label>
-  </div>
-
 
   <div class='form-label-group'>
     <button class='btn btn-lg btn-success btn-block' id='updateButton' (click)='updateAccount()'>Update</button>

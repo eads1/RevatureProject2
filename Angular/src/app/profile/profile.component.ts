@@ -52,7 +52,8 @@ export class ProfileComponent implements OnInit {
     this.fname = this.user.firstName;
     this.lname = this.user.lastName;
     this.email = this.user.email;
-    this.profile_pic = this.user.picUrl;
+    // this.profile_pic = this.user.picUrl;
+    this.profile_pic = this.user.picUrl ? this.user.picUrl : this.profile_pic;
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
