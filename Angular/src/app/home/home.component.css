@@ -1,6 +1,7 @@
 .card {
-    max-width: 45rem;
+    max-width: 40rem;
     height: 50vh;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 #post {
