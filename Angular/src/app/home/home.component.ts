@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { PostService } from '../shared/post.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -11,6 +11,9 @@ import { ChangeEvent } from 'angular2-virtual-scroll';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('openModal') openModal: ElementRef;
+  firstTime: string;
+
   private post: string;
   private email = this.cookies.get('email');
   private uid = this.cookies.get('userId');
@@ -25,6 +28,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstTime = this.cookies.get('firstTime');
+    if (this.firstTime === 'true') {
+      this.openModal.nativeElement.click();
+      this.cookies.set('firstTime', 'false');
+    }
+
     this.post = '';
     this.postService.getAllPostInfo().subscribe((response: any) => {
       this.userPosts = response;

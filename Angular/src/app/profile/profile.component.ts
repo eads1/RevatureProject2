@@ -29,8 +29,8 @@ export class ProfileComponent implements OnInit {
   _inputPassword = '';
 
   // default profile_pic if none is provided
-  profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-
+  // profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  profile_pic = '../assets/gao_pencil.png';
 
   picDataUrl: string;
   currentPassword: string;

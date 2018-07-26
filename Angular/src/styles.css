@@ -4,6 +4,14 @@
     --input-padding-y: .75rem;
   }
 
+  .back-ground {
+    background-image: url('./assets/bg-4.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+
   html, body{
     height:100%;
   }

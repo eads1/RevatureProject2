@@ -40,6 +40,11 @@ export class PostService {
       };
     }
     const url = this.apiURL + 'submitPost.do';
-    return this.client.post(url, newPost);
+    return this.client.post(url, null, {
+      params: {
+        email,
+        post
+      },
+    });
   }
 }

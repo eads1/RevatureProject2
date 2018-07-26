@@ -10,18 +10,20 @@ import { CookieService } from '../../../node_modules/ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
 
-  userId: number;
+  userId = 0;
 
-  constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService
-    ) { }
+  constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService) { }
 
   logout() {
     this.user.logout();
   }
 
   ngOnInit() {
-    this.userId = parseInt(this.cookies.get('userId'), 10);
+    if (this.user.isLoggedIn) {
+      this.userId = this.user.userId;
+    }
   }
+
   search(searchText: string) {
     console.log(searchText);
     this._routeServ.navigate(['search/' + searchText]);
