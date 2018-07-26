@@ -55,6 +55,7 @@ export class UserService {
     this.cookies.set('lastName', user.lastName);
     this.cookies.set('picUrl', user.picUrl);
     this.cookies.set('isLoggedIn', 'true');
+    this.cookies.set('firstTime', 'true');
   }
 
   logout() {

@@ -19,8 +19,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = parseInt(this.cookies.get('userId'), 10);
+      this.userId = parseInt(this.cookies.get('userId'), 10);
   }
+
   search(searchText: string) {
     console.log(searchText);
     this._routeServ.navigate(['search/' + searchText]);

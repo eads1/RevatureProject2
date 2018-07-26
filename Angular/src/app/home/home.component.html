@@ -1,3 +1,6 @@
+<button type="button" id='openModal' #openModal class="btn btn-primary" [hidden]="true" data-toggle="modal"
+    data-target='#exampleModalCenter'>
+  </button>
 <div class="container card border-light mb-3">
   <div class='card-header'>
   <form id="form-signin" class="form-signin" (ngSubmit)="submit()">
@@ -14,5 +17,26 @@
       <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
       </app-post>
     </virtual-scroll>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="false"id='exampleModalCenter'>
+  <div class="modal-dialog modal-lg modal-dialog-centered" role='document'>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is shit!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
