@@ -133,4 +133,90 @@
 
 	</dependencies>
 
+
+
+
+	<!-- Angular stuff -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<!-- NB! Set <version> to the latest released version of frontend-maven-plugin, 
+					like in README.md -->
+				<version>1.6</version>
+
+				<configuration>
+					<workingDirectory>src/main/webapp/Angular</workingDirectory>
+					<installDirectory>src/main/webapp/Angular</installDirectory>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<!-- See https://nodejs.org/en/download/ for latest node and npm (lts) 
+								versions -->
+							<nodeVersion>v8.11.1</nodeVersion>
+							<npmVersion>5.6.0</npmVersion>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<!-- Optional configuration which provides for running any npm command -->
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+
+
+				</executions>
+			</plugin>
+
+
+			<!-- Actually moves the folders/files to the webapp base directory -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>default-copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<outputDirectory>src/main/webapp</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/Angular/dist/Angular</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
 </project>

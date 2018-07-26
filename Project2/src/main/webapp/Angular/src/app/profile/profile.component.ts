@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private uploadedPic = false;
   private loading = false;
 
   // to display success message
@@ -51,7 +52,8 @@ export class ProfileComponent implements OnInit {
     this.fname = this.user.firstName;
     this.lname = this.user.lastName;
     this.email = this.user.email;
-    this.profile_pic = this.user.picUrl;
+    // this.profile_pic = this.user.picUrl;
+    this.profile_pic = this.user.picUrl ? this.user.picUrl : this.profile_pic;
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
@@ -59,15 +61,17 @@ export class ProfileComponent implements OnInit {
   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
     const reader = new FileReader();
 
     reader.onload = () => {
       this.picDataUrl = reader.result;
     };
     reader.readAsDataURL(this.selectedFile);
+    this.uploadedPic = true;
   }
 
-  /*At the moment, this function isn't implemented yet.
+  /*
     This function will be triggered when the updateButton is clicked. WHen it is triggered, it
     will grab all of the input values from the html side and check for each value.
     Once the checks are done, then these value will be sent to the middle-end to be send and
@@ -84,7 +88,10 @@ export class ProfileComponent implements OnInit {
       imageid: this.picDataUrl ? this.picDataUrl : null
     };
 
+    this.loading = true;
+
     this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
+      console.log(response);
       if (response && (response['email'] != null)) {
         const user = {
           userId: response['userId'] ? response['userId'] : this.userId,
@@ -93,11 +100,22 @@ export class ProfileComponent implements OnInit {
           email: response['email'] ? response['email'] : this.email,
           picUrl: response['imageid'] ? response['imageid'] : this.profile_pic,
         };
+
+
+        this._inputFname = '';
+        this._inputLname = '';
+        this._inputEmail = '';
+        this._inputPassword = '';
+        this.profile_pic = response['imageid'] ? response['imageid'] : this.profile_pic;
+        this.picDataUrl = undefined;
+
         this.user.setLoggedIn(user);
         this.displaySuccess = true;
       } else {
         this.displayError = true;
       }
+
+      this.loading = false;
     });
   }
 

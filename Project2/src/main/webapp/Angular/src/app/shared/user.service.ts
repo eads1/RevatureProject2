@@ -84,6 +84,25 @@ export class UserService {
     });
   }
 
+  updateAccountWithPassword2(param: Object) { // with image
+    const userID = param['userId'];
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const password = param['password'];
+    const somePic = param['somePic'];
+    return this.http.post(this.apiUrl + 'updateAccount4.do', null, {
+      params: {
+        userID,
+        fname,
+        lname,
+        email,
+        password,
+        somePic
+      },
+    });
+  }
+
   searchUser(searchText: string): Observable<string> {
     const url = this.apiUrl + 'search.do?search-text=' + searchText;
     return this.http.get(url).pipe(map(resp => resp as string));

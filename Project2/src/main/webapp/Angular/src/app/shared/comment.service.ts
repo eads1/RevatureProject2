@@ -11,7 +11,6 @@ export class CommentService {
   constructor(private client: HttpClient) { }
 
   newComment(comment: CommentData) {
-    console.log('commentService');
     const userId = '' + comment.user.userId;
     const postId = '' + comment.post;
     const text = comment.text;
@@ -26,7 +25,6 @@ export class CommentService {
   }
 
   deleteComment(comment: CommentData) {
-    console.log('commentService');
     const commentId = comment.commentId + '';
     const url = 'http://localhost:12345/Project2/deleteComment.do?commentId=' + commentId;
     return this.client.get(url);
