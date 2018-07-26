@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 import { UserService } from '../shared/user.service';
 
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -18,6 +17,7 @@ export class SearchComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.service.searchUser(params['searchText']).subscribe( response => {
         this.users = response;
+        console.log(this.users);
         if (this.users.length !== 0) {
           this.hasResults = true;
         }
