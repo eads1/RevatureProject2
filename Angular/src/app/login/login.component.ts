@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private user: UserService, private router: Router, private cookies: CookieService) { }
 
   ngOnInit() {
+    console.log(this.cookies.get('picUrl'));
   }
 
   submit() {
