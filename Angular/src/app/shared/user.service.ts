@@ -73,6 +73,23 @@ export class UserService {
     });
   }
 
+  updateAccount2(param: Object) { // with image
+    const userID = param['userId'];
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const somePic = param['somePic'];
+    return this.http.post(this.apiUrl + 'updateAccount3.do', null, {
+      params: {
+        userID,
+        fname,
+        lname,
+        email,
+        somePic
+      },
+    });
+  }
+
   // this function will update the user profile in User Table (without modifying password)
   updateAccountWithPassword(param: Object) {
     const userID = param['userId'];
@@ -87,6 +104,25 @@ export class UserService {
         lname,
         email,
         password
+      },
+    });
+  }
+
+  updateAccountWithPassword2(param: Object) { // with image
+    const userID = param['userId'];
+    const fname = param['fname'];
+    const lname = param['lname'];
+    const email = param['email'];
+    const password = param['password'];
+    const somePic = param['somePic'];
+    return this.http.post(this.apiUrl + 'updateAccount4.do', null, {
+      params: {
+        userID,
+        fname,
+        lname,
+        email,
+        password,
+        somePic
       },
     });
   }

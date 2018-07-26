@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private uploadedPic = false;
   private loading = false;
   private picDataUrl: string;
 
@@ -63,6 +64,7 @@ export class ProfileComponent implements OnInit {
       this.picDataUrl = reader.result;
     };
     reader.readAsDataURL(this.selectedFile);
+    this.uploadedPic = true;
   }
 
   /*At the moment, this function isn't implemented yet.
@@ -72,63 +74,108 @@ export class ProfileComponent implements OnInit {
     update the database of the respective user
   */
   updateAccount() {
-    // console.log('First Name: ' + this._inputFname);
-    // console.log('Last Name: ' + this._inputLname);
-    // console.log('Email: ' + this._inputEmail);
-
     const tempFName = this.checkEmpty(this.fname, this._inputFname);
     const tempLname = this.checkEmpty(this.lname, this._inputLname);
     const tempEmail = this.checkEmpty(this.email, this._inputEmail);
     const determine = this.checkPassword(this._inputPassword);
+    let inputParam = {};
     if (determine === 0) { // no need to modify password
-      const inputParam = {
-        'userId': this.userId,
-        'fname': tempFName,
-        'lname': tempLname,
-        'email': tempEmail,
-      };
-      // send it to the middle-end and subscribe
-      this.user.updateAccount(inputParam).subscribe(response => {
-        if (response['success'] === true ) {
-          console.log(response);
-          this.fname = tempFName;
-          this.lname = tempLname;
-          this.email = tempEmail;
-          this.cookies.set('firstName', tempFName);
-          this.cookies.set('lastName', tempLname);
-          this.cookies.set('email', tempEmail);
-          this.displaySuccess = true;
-        } else {
-          this.displayError = true;
-        }
-      });
+      if (this.uploadedPic === true) { // a picture has been uploaded
+        inputParam = {
+          'userId': this.userId,
+          'fname': tempFName,
+          'lname': tempLname,
+          'email': tempEmail,
+          'somePic': this.picDataUrl
+        };
+        // send it to the middle-end and subscribe
+        this.user.updateAccount2(inputParam).subscribe(response => {
+          if (response['success'] === true ) {
+            console.log(response);
+            this.fname = tempFName;
+            this.lname = tempLname;
+            this.email = tempEmail;
+            this.cookies.set('firstName', tempFName);
+            this.cookies.set('lastName', tempLname);
+            this.cookies.set('email', tempEmail);
+            this.displaySuccess = true;
+          } else {
+            this.displayError = true;
+          }
+        });
+      } else { // a picture hasn't been uploaded
+        inputParam = {
+          'userId': this.userId,
+          'fname': tempFName,
+          'lname': tempLname,
+          'email': tempEmail,
+        };
+        // send it to the middle-end and subscribe
+        this.user.updateAccount(inputParam).subscribe(response => {
+          if (response['success'] === true ) {
+            console.log(response);
+            this.fname = tempFName;
+            this.lname = tempLname;
+            this.email = tempEmail;
+            this.cookies.set('firstName', tempFName);
+            this.cookies.set('lastName', tempLname);
+            this.cookies.set('email', tempEmail);
+            this.displaySuccess = true;
+          } else {
+            this.displayError = true;
+          }
+        });
+      }
     } else if (determine === 1) { // need to modify password
-      console.log(this._inputPassword);
-      const inputParam = {
-        'userId': this.userId,
-        'fname': tempFName,
-        'lname': tempLname,
-        'email': tempEmail,
-        'password': this._inputPassword
-      };
-      this.user.updateAccountWithPassword(inputParam).subscribe(response => {
-        console.log(response);
-        if (response['success'] === true ) {
-          this.fname = tempFName;
-          this.lname = tempLname;
-          this.email = tempEmail;
-          this.cookies.set('firstName', tempFName);
-          this.cookies.set('lastName', tempLname);
-          this.cookies.set('email', tempEmail);
-          this.displaySuccess = true;
-        } else {
-          this.displayError = true;
-        }
-      });
+      if (this.uploadedPic === true) { // a picture has been uploaded
+        inputParam = {
+          'userId': this.userId,
+          'fname': tempFName,
+          'lname': tempLname,
+          'email': tempEmail,
+          'password': this._inputPassword,
+          'somePic': this.picDataUrl
+        };
+        // send it to the middle-end and subscribe
+        this.user.updateAccountWithPassword2(inputParam).subscribe(response => {
+          if (response['success'] === true ) {
+            console.log(response);
+            this.fname = tempFName;
+            this.lname = tempLname;
+            this.email = tempEmail;
+            this.cookies.set('firstName', tempFName);
+            this.cookies.set('lastName', tempLname);
+            this.cookies.set('email', tempEmail);
+            this.displaySuccess = true;
+          } else {
+            this.displayError = true;
+          }
+        });
+      } else { // a picture hasn't been uploaded
+        inputParam = {
+          'userId': this.userId,
+          'fname': tempFName,
+          'lname': tempLname,
+          'email': tempEmail,
+          'password': this._inputPassword
+        };
+        // send it to the middle-end and subscribe
+        this.user.updateAccountWithPassword(inputParam).subscribe(response => {
+          if (response['success'] === true ) {
+            console.log(response);
+            this.fname = tempFName;
+            this.lname = tempLname;
+            this.email = tempEmail;
+            this.cookies.set('firstName', tempFName);
+            this.cookies.set('lastName', tempLname);
+            this.cookies.set('email', tempEmail);
+            this.displaySuccess = true;
+          } else {
+            this.displayError = true;
+          }
+        });
+      }
     }
-
-    /* This function has been s
-    */
   }
 
   /*
