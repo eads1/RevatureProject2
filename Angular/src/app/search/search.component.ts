@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.service.searchUser(params['searchText']).subscribe( response => {
         this.users = response;
+        console.log(this.users);
         if (this.users.length !== 0) {
           this.hasResults = true;
         }
