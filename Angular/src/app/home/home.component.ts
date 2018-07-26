@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('success!');
     this.firstTime = this.cookies.get('firstTime');
     if (this.firstTime === 'true') {
       this.openModal.nativeElement.click();
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit {
 
     this.postService.submitPost(this.email, this.post, this.picDataUrl).subscribe(response => {
       if (response['success']) {
-        console.log('success!');
         this.ngOnInit();
       } else {
       }
