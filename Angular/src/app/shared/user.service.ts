@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { PostObject } from './post';
 import { Observable } from '../../../node_modules/rxjs';
 import { map } from '../../../node_modules/rxjs/operators';
-import { URL } from './URL';
-
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +24,7 @@ export class UserService {
   picUrl = this.cookies.get('picUrl');
   isLoggedIn = this.cookies.check('isLoggedIn');
 
-  private apiUrl = URL;
+  private apiUrl = 'http://localhost:12345/Project2/';
 
   constructor(private http: HttpClient, private cookies: CookieService) { }
 
