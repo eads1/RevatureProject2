@@ -36,15 +36,17 @@ public class RegisterController {
 
 		Map<String, Boolean> mapping = new HashMap<String, Boolean>();
 		
-		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty() || picDataUrl == null) {
+		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || password.isEmpty()) {
 			System.out.println("Create failed. Need more input");
 			mapping.put("notenoughInput", true);
 		} else if (userService.getUserByEmail(email) != null) {
 			System.out.println("Create failed. User already exists");
 			mapping.put("emailTaken", true);
 		} else {
-
-			String picUrl = ImageService.uploadImage(email + "profile", picDataUrl);
+			String picUrl = "https://s3.amazonaws.com/gaochain-images/Bobbybbprofile.png";
+			if (!picDataUrl.isEmpty()) {
+				picUrl = ImageService.uploadImage(email + "profile", picDataUrl);
+			}
 
 			password = userService.hashPassword(password);
 			user = new User(fname, lname, password, picUrl, email);

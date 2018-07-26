@@ -1,4 +1,7 @@
 <div class="card">
+  <div *ngIf="!success" class="alert alert-danger">
+    Error. Please try again.
+  </div>
   <div class="card-header text-white bg-primary" style="padding-bottom: 0px">
     <h5>
       <b>Register</b>

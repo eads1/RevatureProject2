@@ -88,7 +88,8 @@ export class ProfileComponent implements OnInit {
       imageid: this.picDataUrl ? this.picDataUrl : null
     };
 
-    console.log(userObj['imageid']);
+    this.loading = true;
+
     this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
       console.log(response);
       if (response && (response['email'] != null)) {
@@ -99,11 +100,22 @@ export class ProfileComponent implements OnInit {
           email: response['email'] ? response['email'] : this.email,
           picUrl: response['imageid'] ? response['imageid'] : this.profile_pic,
         };
+
+
+        this._inputFname = '';
+        this._inputLname = '';
+        this._inputEmail = '';
+        this._inputPassword = '';
+        this.profile_pic = response['imageid'] ? response['imageid'] : this.profile_pic;
+        this.picDataUrl = undefined;
+
         this.user.setLoggedIn(user);
         this.displaySuccess = true;
       } else {
         this.displayError = true;
       }
+
+      this.loading = false;
     });
   }
 
