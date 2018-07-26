@@ -39,6 +39,7 @@ export class PostComponent implements OnInit {
   postId: number;
   ownerId: number;
   ownerEmail: string;
+  currPic = 0;
 
   // for comments
   showComment = false;
@@ -69,7 +70,6 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     // automatically set cookie of ownerId to -1 upon loading
     this.cookies.set('ownerId', '-1');
-
     const post = new PostData(this._userPost);
     this.populatePost(post);
     this.likeService.getPostLikes(post.postId).subscribe(data => this.likes = data);
@@ -96,6 +96,22 @@ export class PostComponent implements OnInit {
     const d = new Date(data.postedDate);
     this.postedDate = d.toLocaleDateString();
   }
+
+  nextImage() {
+    if (this.currPic < this.image_urls.length - 1) {
+      this.currPic++;
+    } else {
+      this.currPic = 0;
+    }
+  }
+
+prevImage() {
+  if (this.currPic > 0) {
+    this.currPic--;
+  } else {
+    this.currPic = this.image_urls.length - 1;
+  }
+}
 
 
   /*
