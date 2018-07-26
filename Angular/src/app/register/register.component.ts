@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   private password: string;
   private selectedFile: File;
   private loading = false;
+  private success = true;
 
   private picDataUrl: string;
 
@@ -46,7 +47,10 @@ export class RegisterComponent implements OnInit {
 
     this.userService.registerAccount(newUser).subscribe(response => {
       if (response['success']) {
+        this.success = true;
         this.router.navigate(['/']);
+      } else {
+        this.success = false;
       }
       this.loading = false;
     });
