@@ -1651,6 +1651,20 @@ var SearchComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shared/URL.js":
+/*!*******************************!*\
+  !*** ./src/app/shared/URL.js ***!
+  \*******************************/
+/*! exports provided: URL */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL", function() { return URL; });
+const URL = "http://ec2-54-145-159-16.compute-1.amazonaws.com:12345/Project2/";
+
+/***/ }),
+
 /***/ "./src/app/shared/comment.service.ts":
 /*!*******************************************!*\
   !*** ./src/app/shared/comment.service.ts ***!
@@ -1664,6 +1678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/@angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _node_modules_rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _URL__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./URL */ "./src/app/shared/URL.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1676,6 +1691,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var CommentService = /** @class */ (function () {
     function CommentService(client) {
         this.client = client;
@@ -1684,7 +1700,7 @@ var CommentService = /** @class */ (function () {
         var userId = '' + comment.user.userId;
         var postId = '' + comment.post;
         var text = comment.text;
-        var url = 'http://localhost:12345/Project2/newComment.do';
+        var url = _URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'newComment.do';
         return this.client.post(url, null, {
             params: {
                 userId: userId,
@@ -1695,7 +1711,7 @@ var CommentService = /** @class */ (function () {
     };
     CommentService.prototype.deleteComment = function (comment) {
         var commentId = comment.commentId + '';
-        var url = 'http://localhost:12345/Project2/deleteComment.do?commentId=' + commentId;
+        var url = _URL__WEBPACK_IMPORTED_MODULE_3__["URL"] + 'deleteComment.do?commentId=' + commentId;
         return this.client.get(url);
     };
     CommentService = __decorate([
@@ -1789,9 +1805,10 @@ var CommentList = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostService", function() { return PostService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _URL__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./URL */ "./src/app/shared/URL.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1804,10 +1821,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var PostService = /** @class */ (function () {
     function PostService(client) {
         this.client = client;
-        this.apiURL = 'http://localhost:12345/Project2/';
+        this.apiURL = _URL__WEBPACK_IMPORTED_MODULE_3__["URL"];
     }
     PostService.prototype.getAllPostInfo = function () {
         var url = this.apiURL + 'getAllPosts.do';
@@ -1844,10 +1862,10 @@ var PostService = /** @class */ (function () {
         return this.client.post(url, newPost);
     };
     PostService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root',
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]])
     ], PostService);
     return PostService;
 }());
@@ -1870,6 +1888,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 /* harmony import */ var _node_modules_rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _URL__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./URL */ "./src/app/shared/URL.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1879,6 +1898,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1893,7 +1913,7 @@ var UserService = /** @class */ (function () {
         this.lastName = this.cookies.get('lastName');
         this.picUrl = this.cookies.get('picUrl');
         this.isLoggedIn = this.cookies.check('isLoggedIn');
-        this.apiUrl = 'http://localhost:12345/Project2/';
+        this.apiUrl = _URL__WEBPACK_IMPORTED_MODULE_4__["URL"];
     }
     Object.defineProperty(UserService.prototype, "email", {
         get: function () {
