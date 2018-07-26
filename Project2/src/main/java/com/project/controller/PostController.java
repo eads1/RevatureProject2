@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import com.project.model.User;
 import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.UserService;
+import com.project.util.PostWrapper;
 
 @RestController
 @CrossOrigin
@@ -34,10 +36,6 @@ public class PostController {
 	@Autowired
 	private UserService us;
 	@PostMapping(value = "/submitPost.do")
-<<<<<<< HEAD
-	public Map<String, Boolean> submitPost(String email, String post) {
-		System.out.println(email);
-=======
 	public Map<String, Boolean> submitPost(@RequestBody PostWrapper postWrapper) {
 		System.out.println(postWrapper);
 		User user = us.getUserByEmail(postWrapper.getEmail());
@@ -45,7 +43,6 @@ public class PostController {
 		Date d = new Date();
 		Post post = new Post(user, postWrapper.getPost(), d);
 		post.setImageList(postWrapper.getImages());
->>>>>>> dev
 		System.out.println(post);
 		User user = us.getUserByEmail(email);
 		Date d = new Date();
