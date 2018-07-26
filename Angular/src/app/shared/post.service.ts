@@ -23,22 +23,20 @@ export class PostService {
     const url = this.apiURL + 'getPostById.do?id=' + id;
     return this.client.get(url).pipe(map(resp => resp as string));
   }
-  submitPost(email: string, post: string, picDataUrl: string) {
+  submitPost(email: string, post: string, picDataUrls: string[]) {
     let newPost: Object;
-    if (picDataUrl == null) {
+    if (picDataUrls == null) {
       console.log('here');
       newPost = {
         email: email,
         post: post,
       };
     } else {
-      console.log(picDataUrl);
+      console.log(picDataUrls);
       newPost = {
         email: email,
         post: post,
-        imageList: [{
-          link: picDataUrl,
-        }],
+        imageList: picDataUrls,
       };
     }
     const url = this.apiURL + 'submitPost.do';

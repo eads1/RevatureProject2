@@ -10,9 +10,9 @@
           accept="image/*" />
         <span class='col-sm-1'>
           <span class='font-weight-bold'>Upload Pic: </span>
-          <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+          <button type="button" class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
         </span>
-        <img class="img-fluid" *ngIf="!!picDataUrl" [src]="picDataUrl" style="padding-top: 10px;"
+        <img class="img-fluid" *ngFor="let url of picDataUrl" [src]="url" style="padding-top: 10px;"
         />
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
