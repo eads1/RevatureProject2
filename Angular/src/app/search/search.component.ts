@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 import { UserService } from '../shared/user.service';
 
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
