@@ -1,16 +1,24 @@
 .card {
-    max-width: 38rem;
+    max-width: 35rem;
     height: 28.31vh;
     margin-top: 10px;
     margin-bottom: 10px;
     border: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
 }
+
+.card-body {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .two {
     max-width: 40rem;
     height: 50vh;
     margin-bottom: 5px;
 }
-
 
 #post {
     resize: none;
