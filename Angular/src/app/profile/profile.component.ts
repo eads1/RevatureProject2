@@ -61,7 +61,6 @@ export class ProfileComponent implements OnInit {
   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile);
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -91,7 +90,6 @@ export class ProfileComponent implements OnInit {
     this.loading = true;
 
     this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
-      console.log(response);
       if (response && (response['email'] != null)) {
         const user = {
           userId: response['userId'] ? response['userId'] : this.userId,

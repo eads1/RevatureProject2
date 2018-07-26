@@ -17,15 +17,11 @@ export class LoginComponent implements OnInit {
   constructor(private user: UserService, private router: Router, private cookies: CookieService) { }
 
   ngOnInit() {
-    console.log(this.cookies.get('picUrl'));
   }
 
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
-      console.log('login response');
-      console.log(response);
       if (response) {
-        // console.log(response);
         const user = {
           userId: response['userId'],
           firstName: response['fname'],

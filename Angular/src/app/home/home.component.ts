@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
     this.postService.getAllPostInfo().subscribe((response: any) => {
       this.userPosts = response;
       this.viewPortItems = response;
-      console.log( this.userPosts);
     });
   }
   submit() {
@@ -52,7 +51,6 @@ export class HomeComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    console.log('test');
     this.imageChanged = true;
     this.files = event.target.files;
     const reader = new FileReader();

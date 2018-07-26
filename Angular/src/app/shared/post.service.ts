@@ -26,13 +26,11 @@ export class PostService {
   submitPost(email: string, post: string, picDataUrls: string[]) {
     let newPost: Object;
     if (picDataUrls == null) {
-      console.log('here');
       newPost = {
         email: email,
         post: post,
       };
     } else {
-      console.log(picDataUrls);
       newPost = {
         email: email,
         post: post,

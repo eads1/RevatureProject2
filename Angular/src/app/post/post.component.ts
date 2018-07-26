@@ -133,7 +133,6 @@ prevImage() {
     The details need to be discussed.
   */
 /*   toggleComments() {
-    console.log('comments clicked');
   }*/
   /*
     This function is triggered when the "Comment" button is clicked. This will change
