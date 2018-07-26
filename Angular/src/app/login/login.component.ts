@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       console.log('login response');
       console.log(response);
       if (response) {
-        // console.log(response);
+        console.log(response);
         const user = {
           userId: response['userId'],
           firstName: response['fname'],

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +20,6 @@ import com.project.model.User;
 import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.UserService;
-import com.project.util.PostWrapper;
 
 @RestController
 @CrossOrigin
@@ -36,6 +34,7 @@ public class PostController {
 	@Autowired
 	private UserService us;
 	@PostMapping(value = "/submitPost.do")
+
 	public Map<String, Boolean> submitPost(String email, String post) {
 		System.out.println(email);
 		System.out.println(post);
@@ -119,4 +118,3 @@ public class PostController {
 		return cs.deleteComment(commentId);
 	}
 }
-

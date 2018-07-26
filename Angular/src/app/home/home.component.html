@@ -9,6 +9,16 @@
           <textarea id="post" class="form-control" required [(ngModel)]="post"
             name="post" placeholder="create post"></textarea>
       </div><br/>
+      <div class='form-label-group'>
+        <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)'
+          accept="image/*" />
+        <span class='col-sm-1'>
+          <span class='font-weight-bold'>Upload Pic: </span>
+          <button type="button" class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+        </span>
+        <img class="img-fluid" *ngFor="let url of picDataUrl" [src]="url" style="padding-top: 10px;"
+        />
+      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form>
   </div>
