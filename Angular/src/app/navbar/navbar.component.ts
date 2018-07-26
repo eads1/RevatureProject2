@@ -10,7 +10,7 @@ import { CookieService } from '../../../node_modules/ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
 
-  userId: number;
+  userId = 0;
 
   constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService) { }
 
@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.user.isLoggedIn) {
       this.userId = this.user.userId;
+    }
   }
 
   search(searchText: string) {
