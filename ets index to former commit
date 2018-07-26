@@ -1,0 +1,1465 @@
+[33mcommit 3dac710b210d6a179fd4515bd58308594b89e949[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m)[m
+Merge: cd54948 a6de7d9
+Author: Kea <KeaUehara@gmail.com>
+Date:   Wed Jul 25 16:47:50 2018 -0400
+
+    small changes
+
+[33mcommit a6de7d93d7f2f8d7cf900413a425f07525fc30bb[m[33m ([m[1;31morigin/dev[m[33m, [m[1;31morigin/aop[m[33m)[m
+Merge: 0277511 2be5cb2
+Author: eads1 <meads30@gmail.com>
+Date:   Wed Jul 25 13:22:08 2018 -0400
+
+    Merge branch 'dev' into aop
+
+[33mcommit 0277511fc51ac31ea4c4793b1da659ef9aff4132[m
+Author: eads1 <meads30@gmail.com>
+Date:   Wed Jul 25 13:16:34 2018 -0400
+
+    logging login
+
+[33mcommit 2be5cb27642cf1b3e9ff7bf673d30217cbe9d7f7[m[33m ([m[1;31morigin/otherprofile[m[33m, [m[1;31morigin/navbar[m[33m, [m[1;31morigin/homepage[m[33m, [m[1;31morigin/Profile[m[33m)[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 13:14:30 2018 -0400
+
+    added Kea's imiage code to profile
+
+[33mcommit 37bff4d34287bf85d5b994cc983c6111e7adc5ab[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 12:54:13 2018 -0400
+
+    finally got the post component to work!
+
+[33mcommit 9355eb8b8039fef6c7586fa347c02878ce8ce0d4[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 09:25:18 2018 -0400
+
+    got some integration with the post component done, but not working correctly
+
+[33mcommit 4a5f0e28fca202cfc44d1d19ec97a83f2ad6e2f3[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 08:58:37 2018 -0400
+
+    added the post component to the otherprofile
+
+[33mcommit e933ca8ec896ce309a68bf2d0e6415846b8bf235[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 06:30:35 2018 -0400
+
+    changed some stuff in post, otherprofile, and app.module.ts, and search
+
+[33mcommit 98012d51e1c7497a6b4294bc140266e1bfe87c6f[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 06:19:01 2018 -0400
+
+    fixed some merge conflicts in maven project
+
+[33mcommit 71e59e01c97d093a93640177f606d91de1021fc3[m
+Merge: 73ce0b8 ae24aff
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 25 06:14:51 2018 -0400
+
+    Merge branch 'dev' into otherprofile
+
+[33mcommit ae24aff3f506c703d58a440f35e6b89fb5fa20cc[m
+Merge: cfa668e cbd9be5
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Wed Jul 25 00:07:09 2018 -0400
+
+    Merged with dev
+
+[33mcommit cfa668e5eddc5f72426b612fef794630712d2441[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Wed Jul 25 00:05:13 2018 -0400
+
+    Added styling to search component
+
+[33mcommit 8003ce4e26f688a88b37c2c70dd0fc9585d39edd[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 22:46:12 2018 -0400
+
+    Added rudimentary functionality to search bar
+
+[33mcommit 66a3d63931c3741ff949eb48bd73443078d83b1b[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 22:45:08 2018 -0400
+
+    Added search bar to navigation without functionality
+
+[33mcommit ca75ba180a3a4c3d40d7c2e7e27021919f7b661c[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Tue Jul 24 21:48:17 2018 -0400
+
+    Loggin Works??
+
+[33mcommit 73ce0b8651df287e9e5b70f17b972f53e16b7c52[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 20:43:40 2018 -0400
+
+    created a new component called "specificpost"
+    
+    It will display a list of posts pertaining to a specific user.
+
+[33mcommit cbd9be5d11cf9e28916faa9d0343d9a4cdf7f2b0[m
+Merge: c6f254f 2cd5825
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Tue Jul 24 20:23:23 2018 -0400
+
+    Merge branch 'dev' into pics
+
+[33mcommit c6f254f686b7e6b03f9761c6a77cdf9b7e54625e[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Tue Jul 24 20:23:12 2018 -0400
+
+    S3 file hosting working
+
+[33mcommit f5df52c630c25da9f13851ef676f2440bd4119ed[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 20:18:45 2018 -0400
+
+    added back another path to pass info from post to otherprofile
+
+[33mcommit 985291938a42ace8bcd61c8d6cf75857146e3ea1[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 20:03:55 2018 -0400
+
+    rearranged some styling in homepage
+
+[33mcommit 0c5fe04ba96f49923b14a6cbc174a9489dcd5533[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 19:45:33 2018 -0400
+
+    Ok, added the angular2-virtual-scroll
+
+[33mcommit 5ae7da94921980e7029b065b93eb232570f2321d[m
+Merge: 49449b1 2cd5825
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 19:29:52 2018 -0400
+
+    Merge branch 'dev' into otherprofile
+
+[33mcommit 49449b11d89282e7925f98fa75dcf91087821ae8[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 19:29:24 2018 -0400
+
+    just commented out a path in route in app.module.ts
+
+[33mcommit 33a1fa0c9cfc70a18fba8ca75e61381101eb68c0[m
+Merge: ddb3573 2cd5825
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 19:29:11 2018 -0400
+
+    Merge branch 'dev' into navbar
+
+[33mcommit 2cd5825e6c5a0f78008a1d17e164f4dafd59e7fa[m
+Merge: e234a38 f94487c
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 19:27:55 2018 -0400
+
+    Merge finished homepage to the dev branch
+
+[33mcommit f94487ce63805c9cb0f6166c16858edc3795579b[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 19:24:29 2018 -0400
+
+    Added css to make homepage look better
+
+[33mcommit eb1c77e5b785f76787863cb7ff7617295fdf4d43[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 18:47:51 2018 -0400
+
+    Added scrolling due to it not being in previous commit
+
+[33mcommit 6b716cfb817776bf62b29d509fb1ad96dbaa60a3[m
+Merge: eafbb3c e234a38
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Tue Jul 24 16:54:21 2018 -0400
+
+    Merge branch 'dev' into pics
+
+[33mcommit eafbb3c7bcb32881dda1a8d015a732ad92ac5e4d[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Tue Jul 24 16:53:33 2018 -0400
+
+    Working on S3 with a controller
+
+[33mcommit 4cd6368e12232875f20229058e45b4ebe1d1ac8c[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 16:50:11 2018 -0400
+
+    aop beginning
+
+[33mcommit 63fdb31c09633b1bd45440c66e02f55a050b652c[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 15:33:55 2018 -0400
+
+    Added auto load when you reach the end of the list.
+
+[33mcommit 7d419ab57554cf5ef9c7e9b2c2ea78550ee9da78[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 15:17:55 2018 -0400
+
+    got most of things working, except for pictures
+
+[33mcommit 243005e978ce253f3ac45246d3aed92180a3c702[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 15:04:38 2018 -0400
+
+    finished setting up the maven side
+
+[33mcommit e234a38c6b22d6ded99cffe3a10cd765dad6c3db[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:33:22 2018 -0400
+
+    Revert "Merge branch 'junit' into dev"
+    
+    This reverts commit ac8f6b997f2412ddc9120560acd277bc77113dc3, reversing
+    changes made to b6778de8c604cdf11b7e726cde9ea82230812391.
+
+[33mcommit a9bae2e091ba2e7c873f852bade186b43ab5b6b6[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:32:57 2018 -0400
+
+    Revert "Revert "Merge branch 'junit' into dev""
+    
+    This reverts commit 5f0e0c837545be8413c98dbae64b48bb99ad038a.
+
+[33mcommit 8b114d90f2374cdf5da6b521014677117e1dfa15[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:32:36 2018 -0400
+
+    Revert "extra jdbc"
+    
+    This reverts commit b6778de8c604cdf11b7e726cde9ea82230812391.
+
+[33mcommit 5f0e0c837545be8413c98dbae64b48bb99ad038a[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:32:30 2018 -0400
+
+    Revert "Merge branch 'junit' into dev"
+    
+    This reverts commit ac8f6b997f2412ddc9120560acd277bc77113dc3, reversing
+    changes made to b6778de8c604cdf11b7e726cde9ea82230812391.
+
+[33mcommit ac8f6b997f2412ddc9120560acd277bc77113dc3[m
+Merge: b6778de 238ce4f
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:02:19 2018 -0400
+
+    Merge branch 'junit' into dev
+
+[33mcommit b6778de8c604cdf11b7e726cde9ea82230812391[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 14:02:06 2018 -0400
+
+    extra jdbc
+
+[33mcommit 238ce4fc644879ebfd6b804cced219a90f8f68af[m[33m ([m[1;31morigin/junit[m[33m)[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 13:58:31 2018 -0400
+
+    Junit foundations
+
+[33mcommit dcef20cc5fa9d7da327c5ea8b5ae6ef8285399c0[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 24 13:19:59 2018 -0400
+
+    Added infinite scroll view and added all the posts to the homepage
+
+[33mcommit cd549487a28234548f4f61660616450ed741ffe1[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Tue Jul 24 10:44:10 2018 -0400
+
+    Changed stuff
+
+[33mcommit b0c819448fcf09070486a01ec22acf424c349262[m
+Merge: 5def866 3a4d899
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 10:08:01 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 5def866d1013d3b6afd2a07cd741633ac331f92d[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 10:07:33 2018 -0400
+
+    change password complete!
+
+[33mcommit 3a4d899fb9262d0202d99c67462eabd35cf0ce62[m[33m ([m[1;31morigin/Post[m[33m)[m
+Merge: b6e3e46 bb7f4c7
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 09:16:14 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit b6e3e465da1ff0490fd2814e014bad740a98c7cd[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 24 09:08:04 2018 -0400
+
+    add form control
+
+[33mcommit bb7f4c7e84e9a15700101eca83a2b3c130d70b59[m[33m ([m[1;31morigin/resetpassword[m[33m)[m
+Merge: 0705c28 1348574
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 08:45:57 2018 -0400
+
+    Merge branch 'dev' into resetpassword
+
+[33mcommit 0705c28a54774bbad5a978ae4a3c534cef3aa0de[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 08:45:31 2018 -0400
+
+    Finally finished the reset password
+
+[33mcommit f518f92d068146892c400d646d4fb28ce5d344a7[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 06:04:27 2018 -0400
+
+    still not working!
+
+[33mcommit 9c641ed6c01f30dd2329a979692b86784e75e9da[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 05:46:39 2018 -0400
+
+    Still not getting the alert messages to f**king work!
+
+[33mcommit 6044fd049bff83b930e6924ac6546516d2255c83[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 05:38:29 2018 -0400
+
+    GOt the damn emailing finally working!
+
+[33mcommit 6c44818d6864940b1b3feac781f33868b4337c84[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 05:20:21 2018 -0400
+
+    Finished setting up the middle-end, but seem to be getting a null email
+
+[33mcommit 3c5bec473fa153a56afd565ebd287d7f1ed30c1d[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Tue Jul 24 03:36:52 2018 -0400
+
+    finished setting up the front-end
+
+[33mcommit ddb3573739e5386df1b025805341b5e21a0f2758[m[33m ([m[1;32mnavbar[m[33m)[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Mon Jul 23 23:21:24 2018 -0400
+
+    Starting to work with S3
+
+[33mcommit 1348574ecf8a5ade62f240d81f2238fa512ec767[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 23:20:05 2018 -0400
+
+    More comment tweaks
+
+[33mcommit dec46c0c9213b13bec31ce61314dba3c34b0e7e1[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Mon Jul 23 23:19:00 2018 -0400
+
+    Added refresh to submitting a post and size of html
+
+[33mcommit 7081c17dc7ae49839da2d25fe8ed3d086f1bb5e8[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 23:11:21 2018 -0400
+
+    Add and delete comments is more fluid
+
+[33mcommit 1f18dbebd2632c80a5c37d386f1246d4ea9c61be[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 20:52:01 2018 -0400
+
+    cut out some unneeded code in maven
+
+[33mcommit 07b97fd92c27fbbaedf22c8cdc837211f0564500[m
+Merge: 2409f73 b813a68
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 20:49:57 2018 -0400
+
+    Merge branch 'dev' into resetpassword
+
+[33mcommit b813a68fab8cd79de6965db2f5b9f4c235229e79[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 20:30:37 2018 -0400
+
+    switching back to validate
+
+[33mcommit 2409f739606d68fa19ea942cf5f6fb50a1e1bc24[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 20:16:40 2018 -0400
+
+    moved the sendFromGmail method from controller to service
+
+[33mcommit 2afc703bfb687261f1e2d49ad9064354ab61a07b[m
+Merge: 2a5395f 471e8c6
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 20:15:09 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit 2a5395ff23f0715b01dea80028f68b81087a3a03[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 20:14:00 2018 -0400
+
+    resetting db credentials to original
+
+[33mcommit 98a460ea9468ac8f61bcdc8356636eafeb531d8e[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Mon Jul 23 20:09:14 2018 -0400
+
+    Fixed comment stack overflow
+
+[33mcommit 471e8c6db34a37bfec3e4b8c63f54752e2b7eb01[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Mon Jul 23 19:12:04 2018 -0400
+
+    Made landing page that branches to login and homepage.
+
+[33mcommit cb0d765ad9e87a0ad22696c98ceeeff49d6ac71b[m
+Merge: 65d3357 d61db7c
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Mon Jul 23 18:05:02 2018 -0400
+
+    Merge branch 'dev' into navbar
+
+[33mcommit 4fd8a568135120e37103f573c6be938d55e446eb[m
+Author: eads1 <meads30@gmail.com>
+Date:   Mon Jul 23 16:16:45 2018 -0400
+
+    trying to make new comments
+
+[33mcommit 37e0e2793fe7294317d97b7fad07165a6ca318c0[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 16:14:18 2018 -0400
+
+    some basic setup for Email Controller
+
+[33mcommit 65d3357c7fd7184588313c26f383da4712bd2a65[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 16:11:23 2018 -0400
+
+    Re-style login, register, and reset password
+
+[33mcommit 374bfdd8316644fcb429fe99b8e1a0d700202b61[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 15:36:34 2018 -0400
+
+    Made some changes to the appearance
+
+[33mcommit 305c31d99947594dd4acf618a3e2fbfcc304739c[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 15:03:37 2018 -0400
+
+    unnecessary changes!
+
+[33mcommit 0654b801982c25f34576b42fce314e193566e6f0[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 13:16:22 2018 -0400
+
+    got rid of unnecessary components, services
+
+[33mcommit d61db7cb9120554731710c9e852b1aac06ea9af2[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 12:37:28 2018 -0400
+
+    changed the name and added comment
+
+[33mcommit 8555b0b9c5ce5f381c30a0bd62fb2ebc0939438e[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 12:29:37 2018 -0400
+
+    assigned new values to cookies after successful update
+
+[33mcommit 8bc7f992bb2b00ce67577d6e12f617f17bd0820b[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 12:15:42 2018 -0400
+
+    Reworked the update method successfully
+
+[33mcommit fd7bc1820b42157fce5195eb5b680872858aca90[m
+Merge: 03d6120 42c5df1
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 11:36:52 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 03d6120864a08d63f6e5f3547b9608aabb0fa5f1[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 11:32:06 2018 -0400
+
+    some changes  to Post and profile components
+
+[33mcommit 42c5df148be4315890ae0fe8e71576f9931464b0[m
+Merge: 31ec737 6d93bd3
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 11:31:58 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into dev
+
+[33mcommit 31ec737a175cace2d9df578d1192c7d406703525[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 11:31:55 2018 -0400
+
+    Fixed firstName and lastName cookies.
+
+[33mcommit 6d93bd326f9a0a6c72a0db4b34fa24b260dfda43[m
+Author: eads1 <meads30@gmail.com>
+Date:   Mon Jul 23 11:31:34 2018 -0400
+
+    Post data loading
+
+[33mcommit bde07a09d35df501511da0a89132de97a5cce02f[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 11:07:28 2018 -0400
+
+    Fixed home routing
+
+[33mcommit 9145a5acf437593993568f807b55b0cb458fdae5[m
+Author: eads1 <meads30@gmail.com>
+Date:   Mon Jul 23 11:01:45 2018 -0400
+
+    Removing Head problem
+
+[33mcommit 4f5d6f24385012c5aae7b3cf6893ca5ec72c22f7[m
+Merge: bc93611 cbb4fa3
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 10:59:09 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit cbb4fa307cd748dafc34cbcc7ae6f94736604257[m
+Merge: f1645a3 013c5ef
+Author: eads1 <meads30@gmail.com>
+Date:   Mon Jul 23 10:56:16 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit bc93611f9fedd9a04cf08b4af458d1633cd52083[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 10:52:53 2018 -0400
+
+    some more changes here and there
+
+[33mcommit f1645a3a0b629aeda18a80f9d30e99821f2ea390[m
+Merge: 283177b 735ca73
+Author: eads1 <meads30@gmail.com>
+Date:   Mon Jul 23 10:44:42 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit 013c5ef9c4c8d3f7a53e814eb5d89cc29b52ba34[m
+Merge: 76211f7 8058410
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 10:41:35 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into dev
+
+[33mcommit 76211f7393e82a76fb6c1f8a82ee774054ef4b49[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 10:36:48 2018 -0400
+
+    Oops from David
+
+[33mcommit 8058410c1e465ea57522d820716277579815f2e4[m
+Merge: 9ca56f7 735ca73
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Mon Jul 23 10:32:49 2018 -0400
+
+    Pulled dev and resolved conflicts
+
+[33mcommit 735ca734e974e6d60521b8e54ee12168ce1dabd5[m
+Merge: 0ffb8d6 662002d
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Mon Jul 23 09:59:17 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 662002d17e2b35031cfb37bb4144cf8b988f3f16[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 09:50:39 2018 -0400
+
+    All user fields stored in cookies
+
+[33mcommit 592ecfa1739dd92e152ee9ef2af1378a4f61a28f[m
+Merge: e001814 87b1301
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 09:25:53 2018 -0400
+
+    Fixed merge conflicts
+
+[33mcommit e0018144196ea7ad4bc38c677cca770eb5e81dd8[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Mon Jul 23 09:23:56 2018 -0400
+
+    Temp
+
+[33mcommit 9ca56f7109ff74b4e1d6fcfe8c4ce1603e6d0cf4[m
+Merge: b2dfaab b558d59
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 23:36:27 2018 -0400
+
+    Merge branch 'homepage_broken' into homepage
+
+[33mcommit b558d59b0bc3d90566e0c8e87ad2a27cc4909f22[m[33m ([m[1;31morigin/homepage_broken[m[33m)[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 23:36:02 2018 -0400
+
+    Fixed homepage and populated with users posts
+
+[33mcommit 28700e5d6a99778df730b703e36f1bee3abb6d36[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sun Jul 22 23:35:29 2018 -0400
+
+    full logo file added
+
+[33mcommit 2033d27253f23dc4103e0c8886facba04a807bd9[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sun Jul 22 23:34:50 2018 -0400
+
+    Did stuff
+
+[33mcommit 0ffb8d60ac2c6b94bb350da97cf95ae5b5cab51c[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 21:49:57 2018 -0400
+
+    Got the alerts to work.
+
+[33mcommit 041e231841bb26a647ad69bb32a92634b442537c[m
+Merge: 27182fb 87b1301
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 21:43:11 2018 -0400
+
+    Merged with dev branch to add id cookie
+
+[33mcommit 27182fb02d7084decc3a413d0f6d66de08f5ee66[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 21:42:12 2018 -0400
+
+    Backend controller for post front end on homepage
+
+[33mcommit e24905ea6c228aa336f7fa2e1138315590ba2f3e[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 21:36:47 2018 -0400
+
+    Added angular front end for posts on home page.
+
+[33mcommit bb7827a529d811b78e482c7f750b1202999e3d75[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 21:28:17 2018 -0400
+
+    Got profile ipdate working! also got a little alert notification going on
+
+[33mcommit 70369e8e04c912589df5a56adaa99ad4cc724e5c[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 19:58:08 2018 -0400
+
+    finished writing the updateController
+
+[33mcommit e20e77a97c147af98db098e6dfccbd7558ced1cd[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 19:43:30 2018 -0400
+
+    Finished setting up the user service, and dao for updaing profile
+
+[33mcommit 544a82a7369699a982f21a9412df96f0fde3b960[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 19:13:48 2018 -0400
+
+    created an updateController and also created one more constructor in User model
+
+[33mcommit b2dfaab96583ac0d829539263fe0c9a67a41bec2[m
+Merge: 2892528 87b1301
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 18:44:36 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into homepage
+
+[33mcommit 862f153068d99daed9142ffc80e6157a86242ada[m
+Merge: 39d20f8 87b1301
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 18:34:33 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 39d20f8f987489f667c913c9a815194847abee87[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 18:31:38 2018 -0400
+
+    added updateAccount function in user.service.ts, nothing more
+
+[33mcommit 283177b2d3b7125952beb337683ad6311dc82579[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sun Jul 22 17:57:02 2018 -0400
+
+    likes based on loggedin user
+
+[33mcommit 216a03114805bc931d015882c92117445a2d525e[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sun Jul 22 17:32:48 2018 -0400
+
+    cookies
+
+[33mcommit 537e3a5ea18be5e601ead15f1ecf26795a55ffc7[m
+Merge: e25deb6 87b1301
+Author: eads1 <eads1@purdue.edu>
+Date:   Sun Jul 22 17:11:40 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit 87b1301799bf527835eab2766efc18a4893341ec[m[33m ([m[1;31morigin/login[m[33m)[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sun Jul 22 17:10:16 2018 -0400
+
+    login controller now returns entire User. login component now puts userId in cookies.
+
+[33mcommit e25deb611147e499401db9de6a105ddc6aa34b0a[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sun Jul 22 16:40:59 2018 -0400
+
+    Like are hard code functional
+
+[33mcommit 897c7fb54663640cb38627f477636d2ff690c9c3[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 15:28:34 2018 -0400
+
+    Still broken. Added post controller
+
+[33mcommit beda90f54ab59e3df90dbbd89ce2cc54cf87bfb8[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 15:28:19 2018 -0400
+
+    Broken branch. Added login check and routing to homepage.\nAdded homepage posting functionality.\nAdded post service
+
+[33mcommit 15eeec03986c3c9f76aacd4f41e3a4f3dc94e732[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Sun Jul 22 15:27:56 2018 -0400
+
+    Fixed cookies
+
+[33mcommit 95123081e48efcebb36eae4f9d17f6ca19651c87[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 15:22:40 2018 -0400
+
+    Trying to link Like/Dislike
+
+[33mcommit c4d802f9844d0fabfbbc1afb09478652ea765ab5[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 15:22:20 2018 -0400
+
+    one small change to response in register
+
+[33mcommit f00f3ea58c6ac6bf9a5cdd7e07989a33942aa59b[m
+Merge: a9e9503 c90a6fb
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 14:38:06 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 931a842e032c928139d1e7d32cb76a68f2dae1dd[m
+Merge: 4f9696e c90a6fb
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 14:37:50 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit a9e95039ab452a3a9963c592d6cc386fbe4ef6ad[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 14:37:21 2018 -0400
+
+    small changes to the profile
+
+[33mcommit 4f9696ef73bcb9b0a924af1c8196e2bfd1e9ec63[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 14:37:07 2018 -0400
+
+    printing data
+
+[33mcommit c90a6fbc1ffaff598e4d63036e98cf37053bb8c3[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Sun Jul 22 14:36:19 2018 -0400
+
+    Hotfix authguard
+
+[33mcommit 3822fe35ed262fec55507f95835891650fca96d4[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 14:24:48 2018 -0400
+
+    userService Fix
+
+[33mcommit 456394b2e28d1c280cfc5f012b9b1682fe9bff09[m
+Merge: 632b60d 5a50ec4
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 14:21:15 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit 1d865c167ba12ce3e49aa7f3c6f0b398c6408f9a[m
+Merge: 2892528 5a50ec4
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 14:14:32 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into homepage
+
+[33mcommit 204cb6303e50ae5239a687161f709a1d5975537f[m
+Merge: e7ef6b7 5a50ec4
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 14:14:21 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit 632b60d099ad97e364acb5c98fc7a76f43d5d1fe[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 14:13:24 2018 -0400
+
+    Preparing for dev merge
+
+[33mcommit e7ef6b749836c13bbbf171deb94262328c724771[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 14:13:04 2018 -0400
+
+    added dependency to project2 pom
+
+[33mcommit 5a50ec4524740052a994cb3aaca3eeadb84822d6[m[33m ([m[1;32mlogin[m[33m)[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Sun Jul 22 14:10:00 2018 -0400
+
+    Moved hashPassword method into UserService
+
+[33mcommit 3391f13e64446ee38c37199f710196b89b23d96e[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 13:54:59 2018 -0400
+
+    Project2 STS updated build commands
+
+[33mcommit ac5c48a0680fecd2eae014ecdeb0259c0729ccfe[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 13:10:14 2018 -0400
+
+    It's not broken anymore!
+
+[33mcommit 289252883a858cc2a8725f6e22af244334341b8a[m[33m ([m[1;32mhomepage[m[33m)[m
+Merge: 6c7c1ec 5cc21b7
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 13:04:07 2018 -0400
+
+    Added merge conflicts with post branch
+
+[33mcommit 6466be300d6d0fa7ed669471bb92c734ac61bc6e[m[33m ([m[1;32mPost[m[33m)[m
+Merge: ff50b11 15f7595
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 13:01:38 2018 -0400
+
+    Merge remote-tracking branch 'origin/Comments' into Post
+
+[33mcommit ff50b11c6cd0e086120bc2fee3cc13a523608f51[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 22 12:46:34 2018 -0400
+
+    moving services into shared
+
+[33mcommit aa1360eb3acfabdc2b85cd6d9e929b126e141f50[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Sun Jul 22 12:27:27 2018 -0400
+
+    package lock
+
+[33mcommit 5fc6f1da6d8d2295155e8ed7ab55688a7532fe2a[m[33m ([m[1;32mProfile[m[33m)[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 12:23:21 2018 -0400
+
+    removed login-page component
+
+[33mcommit 6c7c1ec65f3baa31bf5d406d1c16c56acf6a3319[m
+Merge: 94c4f4b 2d5206c
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sun Jul 22 12:17:55 2018 -0400
+
+    Merged with dev
+
+[33mcommit 1a997d2ebbb8a28ac013b438290dce266d1c135f[m
+Merge: ad201b2 2d5206c
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 12:16:09 2018 -0400
+
+    Merge branch 'dev' into Profile
+
+[33mcommit ad201b27b57c37f571dd24d834a1055aa325570c[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 12:03:53 2018 -0400
+
+    a little change
+
+[33mcommit 6f7bfa26ffe0dc2d44341b3e5ca9ce6af29fdc36[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 11:46:14 2018 -0400
+
+    made another profile for other users
+
+[33mcommit ef0d80ae3212b6f4e48da38f92a72b2fbdb750d3[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 11:33:30 2018 -0400
+
+    Added more functionalities to Profile component
+
+[33mcommit 09206c7d633bcec3dd0a4853a35f5dfa5d14dbdb[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 22 00:15:13 2018 -0400
+
+    Finished setting the reset password component + service, in my opinion
+
+[33mcommit 2d5206c09a6dce08ae3a2c54a28b39f5c4977571[m
+Merge: 68a50de 79efaf0
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sat Jul 21 23:26:07 2018 -0400
+
+    Resolved merge conflicts
+
+[33mcommit 94c4f4b3d7793c16ef1c04b301c5864d00aa9dbe[m
+Merge: d01d131 c92cd10
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 23:22:55 2018 -0400
+
+    Fixed index.html in project files
+
+[33mcommit 68a50dea0720cffe48f07851c952c87351042932[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sat Jul 21 23:09:12 2018 -0400
+
+    loggin finished
+
+[33mcommit 5cc21b7a7c57e3c4ba30a37c879c9b7c6baef113[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 22:44:35 2018 -0400
+
+    Like/Dislike server side functional
+
+[33mcommit c92cd108cea0188c8b32f6c441172d5013a12e2f[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 21:47:16 2018 -0400
+
+    Finished the front-front-end of Profile.
+
+[33mcommit d01d131e960206ae6d2cd8ad9606d5d862f0dd81[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 21:40:23 2018 -0400
+
+    Returned app html back to original
+
+[33mcommit a7ea1d479110d5499e294209a0993cb013c70ac4[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 21:29:45 2018 -0400
+
+    Added homepage component as home component to angular
+
+[33mcommit 940d84735c745b35a04c3e4d7e9d583caf96d1e2[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 21:20:46 2018 -0400
+
+    Almost finished with the Profile!
+
+[33mcommit ab8124fce80c7faa294e631b05ab6654d128f3e2[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 21:10:37 2018 -0400
+
+    Getting Likes Works Java side
+
+[33mcommit 333133c83dcfe61519c59fd84926499ee23ec26f[m
+Merge: 79efaf0 b20b2e2
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 21:02:09 2018 -0400
+
+    Merged with Posts branch and fixed app.module.ts merge conflicts
+
+[33mcommit 79efaf0ace98cf28bb3d8881375cc55252cd2f1c[m
+Merge: 6348fc3 4887f81
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 20:17:39 2018 -0400
+
+    Added some merge issues in user.service.ts due to adding registration to the service.
+
+[33mcommit 1524b4aaea371a4978b04bcd315db2a8524b026e[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 20:16:15 2018 -0400
+
+    The basic format of the profile has been laid out, along with dummy values
+
+[33mcommit 4887f812642e00050821e1febb8b4804f7565383[m[33m ([m[1;31morigin/register[m[33m)[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Sat Jul 21 20:14:35 2018 -0400
+
+    Added registration integration of angular front end to java back end.\nAdded front end validation for registration form.
+
+[33mcommit cd50d24f4f65b7e9f6897a9637f8c2550176451e[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 19:13:04 2018 -0400
+
+    Carousel button patch
+
+[33mcommit b943a81405ccc804307297f5a434b16a01b60cbf[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 18:41:47 2018 -0400
+
+    turning off auto play
+
+[33mcommit e28afd17d10fb573877edee643d402b828ab7107[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 18:34:59 2018 -0400
+
+    ngfor filled carousel
+
+[33mcommit 2e640c7e6b6abde89cc2ae3bbf3f9e09cf08e639[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 17:20:02 2018 -0400
+
+    Post populated from db
+
+[33mcommit d03e81bf068e7b041aed712b9c98d8289766a73d[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 16:58:45 2018 -0400
+
+    got to redirect to the profile page from post page if click on username on post
+
+[33mcommit d16e311a1f8effa7b254bbd38e008f2327637463[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 15:38:44 2018 -0400
+
+    Working on displaying Post data
+
+[33mcommit 15f759534213b033c49626ce5eb485cd00a5f69e[m[33m ([m[1;31morigin/Comments[m[33m)[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 15:23:23 2018 -0400
+
+    98% done with Comments and started up on the profile component
+
+[33mcommit 8861ee75a38b9174afcad899c6f39d03dad6673a[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 14:54:47 2018 -0400
+
+    Got the 'load more' button working
+
+[33mcommit 6348fc398ea93018fa30664b26d0068cf1527bd7[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sat Jul 21 14:37:27 2018 -0400
+
+    test
+
+[33mcommit 2bee15e7ffa75700723ab88767d8df78eed9f5b5[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Sat Jul 21 13:29:35 2018 -0400
+
+    Currently broken
+
+[33mcommit b7877f71831dce3a58cd06a183dcd9b332c2e594[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 13:19:14 2018 -0400
+
+    Post Component ready for angular testing
+
+[33mcommit bf97dff8dfda7ee4e2b2bb54a33c2b91215cb3b8[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sat Jul 21 11:45:18 2018 -0400
+
+    Comment seems to almost be done
+
+[33mcommit ed5ed1d7a2161025f49727b8d4b9b5ca2fa6076e[m
+Merge: b9dd603 b407237
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 11:02:42 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit b9dd603e98e2f5c7c7ecac9fd756142d5b250ac2[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Sat Jul 21 10:52:53 2018 -0400
+
+    Cleared up PostDao connection issues.
+
+[33mcommit b20b2e2f90ab939c146913558771ac3341dd613e[m
+Merge: 45291df d0f02b5
+Author: eads1 <meads30@gmail.com>
+Date:   Fri Jul 20 17:20:52 2018 -0400
+
+    Merge branch 'Post' of https://github.com/eads1/RevatureProject2 into Post
+
+[33mcommit 45291dfd25101aa616fd8c8964cf9fa3ed899e76[m
+Author: eads1 <meads30@gmail.com>
+Date:   Fri Jul 20 17:20:29 2018 -0400
+
+    Connecting PostService
+
+[33mcommit d0f02b557fcd97c024acef4fd4d1e739c9660ad8[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Fri Jul 20 17:10:04 2018 -0400
+
+    Post ServerSide Started
+
+[33mcommit b407237c4f605afa14fa9a97239a0343f93125f2[m
+Merge: 7cf71ad c21d175
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Fri Jul 20 15:13:54 2018 -0400
+
+    Removed login-page component in favor of login component. Added wrapper class to app html.
+
+[33mcommit 7cf71adf5e27eb1067ab130b5d31a8b95a0d1b27[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Fri Jul 20 15:01:42 2018 -0400
+
+    Removed if component that displayed login field in every page
+
+[33mcommit baeb04eb4908acd54eadcdb0d54c4f795a2d6a75[m
+Merge: 2c40023 e323330
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Fri Jul 20 13:30:10 2018 -0400
+
+    Merge branch 'dev' into register
+    
+    Grab updates from dev
+
+[33mcommit 2c400231d18692edd2c5fee6d8c5920548eb4497[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Fri Jul 20 11:40:10 2018 -0400
+
+    Fixed typo in register component.\nAdded password entry in TS.\nChanged email input to be type input in HTML
+
+[33mcommit c21d17528ea920a8b5e0663f5fe3782e767142f2[m
+Merge: 540b3b1 86cf100
+Author: Kea <KeaUehara@gmail.com>
+Date:   Fri Jul 20 11:15:51 2018 -0400
+
+    Merge branch 'dev' into login
+
+[33mcommit 86cf1002787c895b821e45e4c574b5959a8381b2[m
+Merge: 2a47260 e323330
+Author: Kea <KeaUehara@gmail.com>
+Date:   Fri Jul 20 11:15:23 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into dev
+
+[33mcommit 540b3b11e22d838b3989c4eaec497b6a7158db46[m
+Merge: a8c5245 aee3604
+Author: Kea <KeaUehara@gmail.com>
+Date:   Fri Jul 20 11:15:07 2018 -0400
+
+    For pushing to dev
+
+[33mcommit e323330296d67719e64087f6b12c88b75dd6495a[m[33m ([m[1;31morigin/auth_backend[m[33m)[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Fri Jul 20 10:16:11 2018 -0400
+
+    Converted LoginController to MVC and added html pages
+
+[33mcommit a8c5245d8e8ea1c0bd620ddca2ab5763affdc5fb[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Fri Jul 20 08:18:25 2018 -0400
+
+    meh
+
+[33mcommit aee36045bcd0ac3434aa4a77dce6f13addb215c9[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Fri Jul 20 08:17:29 2018 -0400
+
+    Didn't really do anything here
+
+[33mcommit 562407a57929ccddfa15b9294a6aaa17378f0b55[m
+Merge: 6598364 3532845
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Thu Jul 19 19:23:36 2018 -0400
+
+    Merge branch 'dev' into login
+
+[33mcommit 520b773e212e2fd976a0ab155ab36698fef75482[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Thu Jul 19 17:29:05 2018 -0400
+
+    Resolved HttpClient error
+
+[33mcommit bbb4ecd1fa0b69407c02a51e1fc1695fbe24d34c[m
+Merge: 47b4d8e 3532845
+Author: eads1 <eads1@purdue.edu>
+Date:   Thu Jul 19 17:21:15 2018 -0400
+
+    Merge branch 'dev' into Post
+
+[33mcommit 35328458ea368588e35e8db81c314a00b2f4608d[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Thu Jul 19 15:18:56 2018 -0400
+
+    Converted hibernate to SpringORM.\nConverted Servlets to DispatchServlets with SpringMVC
+
+[33mcommit 5e9f2be4b3a567a8d6221d1054fcb74390b52ccf[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Thu Jul 19 15:11:53 2018 -0400
+
+    made component object and list
+
+[33mcommit 27a8eba2c186847baf480b5756e22287a74812f1[m
+Merge: c6e9dd1 47b4d8e
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Thu Jul 19 13:52:28 2018 -0400
+
+    some more changes in comments after merging with Post
+
+[33mcommit c6e9dd1ed2dcd8eec21c824182e5cf099caf8c4b[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Thu Jul 19 13:39:48 2018 -0400
+
+    small insignificant change
+
+[33mcommit ba61e2c89e4d4f2abee580b53ce37ce05463d3e7[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Thu Jul 19 13:22:26 2018 -0400
+
+    Added Register Controller and Master Servlet
+
+[33mcommit 027ed1e4b9cd28a2eb48b69e6a6f85fe2ecd5805[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Thu Jul 19 12:49:30 2018 -0400
+
+    Added new favicon to project
+
+[33mcommit efd3a408ac90c3519c79748a9d088b6336b53da6[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Thu Jul 19 12:15:37 2018 -0400
+
+    Started the Comment Component
+
+[33mcommit 2786153e0e857152b49444f47273d9a2fa79fb72[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 18 22:04:44 2018 -0400
+
+    finished most of the stuff for register, just need to actually test it with the servlet
+
+[33mcommit d6e3d6e116e45fe46c98c35919f3741785699039[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 18 21:47:51 2018 -0400
+
+    some more additions to register
+
+[33mcommit 47b4d8e2c39964dc4a115d1924e8be24f86dd296[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Wed Jul 18 20:15:18 2018 -0400
+
+    Renaming service to match naming conventions
+
+[33mcommit a59edb09dc5f8474261cb8057d5fe2849db93367[m
+Merge: 2f27891 f8ae22d
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 18 20:14:57 2018 -0400
+
+    got the router linking with register page
+
+[33mcommit 6655161c62de131fd0f803b828d37b69da26af39[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Wed Jul 18 20:10:44 2018 -0400
+
+    Ui for post mostly done. Beginning services
+
+[33mcommit 2f278915ef2e14f399313d61fc743137fb49a58c[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Wed Jul 18 19:18:33 2018 -0400
+
+    parts with a router not working
+
+[33mcommit f8ae22d98fe78868f3ed3c4e30b6a9320e67b24b[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Wed Jul 18 18:06:19 2018 -0400
+
+    Router is working
+
+[33mcommit b039d6bdb6de794ec430a9f80ca3e0c0cc991e9e[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Wed Jul 18 17:45:58 2018 -0400
+
+    npm install
+
+[33mcommit 659836438f4c7478a9b2b2c50041ed331db0db98[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Wed Jul 18 16:26:14 2018 -0400
+
+    Put login in a card
+
+[33mcommit 0b7be90454f366498381308e04678aa5e7a4677d[m
+Author: eads1 <meads30@gmail.com>
+Date:   Wed Jul 18 13:23:31 2018 -0400
+
+    Post component started
+
+[33mcommit f3c3fea4a27b1c1e70c2519532bf254023f637f9[m
+Merge: 9c5a515 836d725
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Wed Jul 18 08:58:37 2018 -0400
+
+    Resolved gitignore conflict in auth_backend
+
+[33mcommit 836d7250d03c9182e262e8995fbd03899e1ef92a[m
+Author: eads1 <meads30@gmail.com>
+Date:   Wed Jul 18 08:14:24 2018 -0400
+
+    update npm start
+
+[33mcommit 2a47260b57a47f4bece036d13dcbf847a8c71aa9[m
+Merge: ab24afd 68d0cb2
+Author: Kea <KeaUehara@gmail.com>
+Date:   Wed Jul 18 08:06:21 2018 -0400
+
+    resolved merge conflict
+
+[33mcommit ab24afdbb49d45336ee2f07f492674e455f924cb[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Wed Jul 18 08:03:04 2018 -0400
+
+    Thinking of renaming
+
+[33mcommit 68d0cb292d67dc87edef01aba94d2f9afd210993[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 19:48:42 2018 -0400
+
+    Added test index.html
+
+[33mcommit cde46cd2fac9b5bc1291f7ca663fa7712db40bf1[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 17 19:38:08 2018 -0400
+
+    testing Jenkins/slack
+
+[33mcommit fc821ea15c03066e17481a6e87404cc310caa3e8[m
+Merge: c6e6d80 7f523ad
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 17 19:29:37 2018 -0400
+
+    Merge branch 'dev' of https://github.com/eads1/RevatureProject2 into dev
+
+[33mcommit c6e6d806c2c48b18048de1113b9f3dafdc738973[m
+Author: eads1 <meads30@gmail.com>
+Date:   Tue Jul 17 19:29:27 2018 -0400
+
+    ws
+
+[33mcommit 7f523ad433eb9f0e7f4dba54d327d03d8eea9ca4[m
+Author: eads1 <eads1@purdue.edu>
+Date:   Tue Jul 17 18:13:46 2018 -0400
+
+    Hoek dependency updated to version 5.0.3
+
+[33mcommit c970b3582c77d36f21f1674ec1031f0b9823b27b[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Tue Jul 17 18:05:34 2018 -0400
+
+    Added servlet dependency
+
+[33mcommit 80de0bfe6758a8c3af9b488ccc8b137ae02e2889[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Tue Jul 17 15:38:00 2018 -0400
+
+    dev
+
+[33mcommit 056c64e63b988108367337e37817e00a630dd43c[m
+Merge: 4adec43 dea9586
+Author: Kea <KeaUehara@gmail.com>
+Date:   Tue Jul 17 15:31:42 2018 -0400
+
+    removed merge conflicts
+
+[33mcommit 4adec439e43de7700b0b6ba6fbada7d1002443bc[m
+Author: Kea <KeaUehara@gmail.com>
+Date:   Tue Jul 17 15:27:35 2018 -0400
+
+    mandatory commit
+
+[33mcommit dea9586238771c846f0618212073181141502f39[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 15:25:44 2018 -0400
+
+    Added readme
+
+[33mcommit c60559ed280dfef6d8db534a333f3988bbbc7f94[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 15:22:41 2018 -0400
+
+    Fixed git
+
+[33mcommit 9c5a515705b6de90eb0b78d2d1b22c183878c0ae[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 15:19:37 2018 -0400
+
+    Fixed gitignore to work with repo
+
+[33mcommit 82803c5a16f92845e8176fa66af663cc6c62f062[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 15:15:57 2018 -0400
+
+    Updated .gitignore to encompass STS and Eclipse files
+
+[33mcommit 611b0d89e58fa26a4d31d9ff4611d0445571d6a3[m
+Merge: 1c55d28 f6b88ee
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 08:44:11 2018 -0400
+
+    Merge remote-tracking branch 'origin/auth_backend' into homepage
+
+[33mcommit f6b88eef1e44aea14288a18c61a592f59fc2b8a0[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 01:53:15 2018 -0400
+
+    Added authentication servlet and some front controller design
+
+[33mcommit 15969b2ed8e557757db2e2cc4ca64c03a64eed98[m
+Author: Gao Pan <gaopan1996@gmail.com>
+Date:   Tue Jul 17 01:52:58 2018 -0400
+
+    Added email functionality and user services
+
+[33mcommit 1c55d28e86a5ca1750a5909f7a05748d9b573f09[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Mon Jul 16 22:10:02 2018 -0400
+
+    Working on centering in angular
+
+[33mcommit aa24779c8dc05181a2301e6f199ffb37a3d66005[m
+Author: Kea Uehara <keal@hawaii.edu>
+Date:   Mon Jul 16 20:28:18 2018 -0400
+
+    Just did ng new
+
+[33mcommit cc8e572472ab4429ee5c8a9c82d7e22207ccd6c6[m[33m ([m[1;31morigin/User[m[33m, [m[1;31morigin/Home[m[33m, [m[1;31morigin/Development[m[33m)[m
+Merge: 391e4c3 15e71c2
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 15 16:53:31 2018 -0400
+
+    Merge branch 'master' of https://github.com/eads1/RevatureProject2
+
+[33mcommit 391e4c3cd3d0f04fd5c731822b9a3b4c8d61719d[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 15 16:53:23 2018 -0400
+
+    The hard-complicated stuff
+
+[33mcommit 15e71c2132071d701e7619339c36833801ae9dff[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 15 14:37:19 2018 -0400
+
+    update gitignore
+
+[33mcommit d2d7df9fb50fe83eca2e83236d4001cd1774f68d[m
+Author: eads1 <meads30@gmail.com>
+Date:   Sun Jul 15 14:31:44 2018 -0400
+
+    update gitignore
+
+[33mcommit e8443ade41e6df71466736229396953c6ad2003a[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 15 14:12:13 2018 -0400
+
+    Another adds to the dust
+
+[33mcommit 1163b5189bd7db1e948257acd90b8c1dac7472be[m
+Author: davidyang11 <yangd5987@gmail.com>
+Date:   Sun Jul 15 13:53:12 2018 -0400
+
+    Project 2 Maven Part
+
+[33mcommit a20ade42f9e9cabf7fbf07b7afe4bbfbc90e0e2a[m
+Author: Matthew Eads <meads30@gmail.com>
+Date:   Fri Jul 13 19:14:09 2018 -0400
+
+    Initial commit
