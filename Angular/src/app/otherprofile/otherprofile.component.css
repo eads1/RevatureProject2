@@ -64,11 +64,11 @@ body {
 }
 
 .card-group {
-    background-color: black;
+    opacity: 1;
 }
 
 .card {
-    max-width: 45rem;
+    max-width: 40rem;
     height: 60vh;
     margin-bottom: 10px;
     border: none;
