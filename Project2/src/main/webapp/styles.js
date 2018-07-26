@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\r\n:root {\r\n    --input-padding-x: .75rem;\r\n    --input-padding-y: .75rem;\r\n  }\r\n.back-ground {\r\n    background-image: url('bg-4.jpg');\r\n    background-repeat: no-repeat;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-size: cover;\r\n  }\r\nhtml, body{\r\n    height:100%;\r\n  }\r\n.loader {\r\n\r\n    /* Make a circle */\r\n    width: 50px;\r\n    height: 50px;\r\n    border: 5px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    /* Make 1/4th of it a different color */\r\n    border-top: 5px solid grey;\r\n\r\n    /* Center it */\r\n    margin: auto;\r\n    \r\n    /* Make it spin */\r\n    -webkit-animation: spin 2s linear infinite;\r\n            animation: spin 2s linear infinite;\r\n  }\r\n@-webkit-keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n  }\r\n@keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n  }"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n:root {\n    --input-padding-x: .75rem;\n    --input-padding-y: .75rem;\n  }\n.back-ground {\n    background-image: url('bg-4.jpg');\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-position: center;\n    background-size: cover;\n  }\nhtml, body{\n    height:100%;\n  }\n.loader {\n\n    /* Make a circle */\n    width: 50px;\n    height: 50px;\n    border: 5px solid #f3f3f3;\n    border-radius: 50%;\n    /* Make 1/4th of it a different color */\n    border-top: 5px solid grey;\n\n    /* Center it */\n    margin: auto;\n    \n    /* Make it spin */\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n  }\n@-webkit-keyframes spin {\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\n  }\n@keyframes spin {\n    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\n    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\n  }"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Desktop\Git\RevatureProject2\Angular\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /home/kea/Desktop/Git/RevatureProject2/Angular/src/styles.css */"./src/styles.css");
 
 
 /***/ })
