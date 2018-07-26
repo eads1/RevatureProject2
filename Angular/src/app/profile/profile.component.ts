@@ -61,6 +61,7 @@ export class ProfileComponent implements OnInit {
   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -70,7 +71,7 @@ export class ProfileComponent implements OnInit {
     this.uploadedPic = true;
   }
 
-  /*At the moment, this function isn't implemented yet.
+  /*
     This function will be triggered when the updateButton is clicked. WHen it is triggered, it
     will grab all of the input values from the html side and check for each value.
     Once the checks are done, then these value will be sent to the middle-end to be send and
@@ -87,7 +88,9 @@ export class ProfileComponent implements OnInit {
       imageid: this.picDataUrl ? this.picDataUrl : null
     };
 
+    console.log(userObj['imageid']);
     this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
+      console.log(response);
       if (response && (response['email'] != null)) {
         const user = {
           userId: response['userId'] ? response['userId'] : this.userId,
