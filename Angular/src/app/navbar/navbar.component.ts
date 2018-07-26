@@ -12,8 +12,7 @@ export class NavbarComponent implements OnInit {
 
   userId: number;
 
-  constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService
-    ) { }
+  constructor(private _routeServ: Router, private user: UserService, private cookies: CookieService) { }
 
   logout() {
     this.user.logout();
