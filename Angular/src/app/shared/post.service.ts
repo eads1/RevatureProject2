@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PostObject } from '../shared/post';
+import { URL } from './URL';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
 
-  private apiURL = 'http://localhost:12345/Project2/';
+  private apiURL = URL;
   constructor(private client: HttpClient) { }
   getAllPostInfo(): Observable<string> {
     const url = this.apiURL + 'getAllPosts.do';

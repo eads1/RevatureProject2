@@ -2,7 +2,11 @@
   <div class="card-body">
     <div class="card" *ngFor="let user of users">
       <div class="card-body">
-        <div><a href='other/{{user.userId}}'> {{user.fname}} {{user.lname}}</a></div>
+          <div class='text-center round-img-container'>
+              <img src={{user.imageid}} class="round-contained-img" style='border: 2px solid black'/>
+          </div>
+
+        <div><a [routerLink]="['/other', user.userId]"> {{user.fname}} {{user.lname}}</a></div>
         <div>{{user.email}}</div>
       </div>
     </div>
