@@ -34,18 +34,9 @@ public class PostController {
 	@Autowired
 	private UserService us;
 	@PostMapping(value = "/submitPost.do")
-<<<<<<< HEAD
+
 	public Map<String, Boolean> submitPost(String email, String post) {
 		System.out.println(email);
-=======
-	public Map<String, Boolean> submitPost(@RequestBody PostWrapper postWrapper) {
-		System.out.println(postWrapper);
-		User user = us.getUserByEmail(postWrapper.getEmail());
-		postWrapper.setUser(user);
-		Date d = new Date();
-		Post post = new Post(user, postWrapper.getPost(), d);
-		post.setImageList(postWrapper.getImages());
->>>>>>> dev
 		System.out.println(post);
 		User user = us.getUserByEmail(email);
 		Date d = new Date();
