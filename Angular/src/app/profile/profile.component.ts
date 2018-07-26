@@ -18,19 +18,24 @@ export class ProfileComponent implements OnInit {
   email: string;
   private uploadedPic = false;
   private loading = false;
-  private picDataUrl: string;
 
   // to display success message
   displaySuccess = false;
   displayError = false;
 
   _inputFname = '';
-  _inputLname  = '';
+  _inputLname = '';
   _inputEmail = '';
   _inputPassword = '';
 
   // default profile_pic if none is provided
   profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+
+
+  picDataUrl: string;
+  currentPassword: string;
+
+
   constructor(private user: UserService, private route: ActivatedRoute,
     private router: Router, private cookies: CookieService) {
   }
@@ -43,15 +48,11 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    // console.log(this.cookies.get('userId'));
-    // console.log(this.cookies.get('firstName'));
-    // console.log(this.cookies.get('lastName'));
-    // console.log(this.cookies.get('email'));
-
-    this.userId = parseInt(this.cookies.get('userId'), 10);
-    this.fname = this.cookies.get('firstName');
-    this.lname = this.cookies.get('lastName');
-    this.email = this.cookies.get('email');
+    this.userId = this.user.userId;
+    this.fname = this.user.firstName;
+    this.lname = this.user.lastName;
+    this.email = this.user.email;
+    this.profile_pic = this.user.picUrl;
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
@@ -60,6 +61,7 @@ export class ProfileComponent implements OnInit {
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     const reader = new FileReader();
+
     reader.onload = () => {
       this.picDataUrl = reader.result;
     };
@@ -74,129 +76,31 @@ export class ProfileComponent implements OnInit {
     update the database of the respective user
   */
   updateAccount() {
-    const tempFName = this.checkEmpty(this.fname, this._inputFname);
-    const tempLname = this.checkEmpty(this.lname, this._inputLname);
-    const tempEmail = this.checkEmpty(this.email, this._inputEmail);
-    const determine = this.checkPassword(this._inputPassword);
-    let inputParam = {};
-    if (determine === 0) { // no need to modify password
-      if (this.uploadedPic === true) { // a picture has been uploaded
-        inputParam = {
-          'userId': this.userId,
-          'fname': tempFName,
-          'lname': tempLname,
-          'email': tempEmail,
-          'somePic': this.picDataUrl
-        };
-        // send it to the middle-end and subscribe
-        this.user.updateAccount2(inputParam).subscribe(response => {
-          if (response['success'] === true ) {
-            console.log(response);
-            this.fname = tempFName;
-            this.lname = tempLname;
-            this.email = tempEmail;
-            this.cookies.set('firstName', tempFName);
-            this.cookies.set('lastName', tempLname);
-            this.cookies.set('email', tempEmail);
-            this.displaySuccess = true;
-          } else {
-            this.displayError = true;
-          }
-        });
-      } else { // a picture hasn't been uploaded
-        inputParam = {
-          'userId': this.userId,
-          'fname': tempFName,
-          'lname': tempLname,
-          'email': tempEmail,
-        };
-        // send it to the middle-end and subscribe
-        this.user.updateAccount(inputParam).subscribe(response => {
-          if (response['success'] === true ) {
-            console.log(response);
-            this.fname = tempFName;
-            this.lname = tempLname;
-            this.email = tempEmail;
-            this.cookies.set('firstName', tempFName);
-            this.cookies.set('lastName', tempLname);
-            this.cookies.set('email', tempEmail);
-            this.displaySuccess = true;
-          } else {
-            this.displayError = true;
-          }
-        });
-      }
-    } else if (determine === 1) { // need to modify password
-      if (this.uploadedPic === true) { // a picture has been uploaded
-        inputParam = {
-          'userId': this.userId,
-          'fname': tempFName,
-          'lname': tempLname,
-          'email': tempEmail,
-          'password': this._inputPassword,
-          'somePic': this.picDataUrl
-        };
-        // send it to the middle-end and subscribe
-        this.user.updateAccountWithPassword2(inputParam).subscribe(response => {
-          if (response['success'] === true ) {
-            console.log(response);
-            this.fname = tempFName;
-            this.lname = tempLname;
-            this.email = tempEmail;
-            this.cookies.set('firstName', tempFName);
-            this.cookies.set('lastName', tempLname);
-            this.cookies.set('email', tempEmail);
-            this.displaySuccess = true;
-          } else {
-            this.displayError = true;
-          }
-        });
-      } else { // a picture hasn't been uploaded
-        inputParam = {
-          'userId': this.userId,
-          'fname': tempFName,
-          'lname': tempLname,
-          'email': tempEmail,
-          'password': this._inputPassword
-        };
-        // send it to the middle-end and subscribe
-        this.user.updateAccountWithPassword(inputParam).subscribe(response => {
-          if (response['success'] === true ) {
-            console.log(response);
-            this.fname = tempFName;
-            this.lname = tempLname;
-            this.email = tempEmail;
-            this.cookies.set('firstName', tempFName);
-            this.cookies.set('lastName', tempLname);
-            this.cookies.set('email', tempEmail);
-            this.displaySuccess = true;
-          } else {
-            this.displayError = true;
-          }
-        });
-      }
-    }
-  }
 
-  /*
-  --> If the value is empty, return the original value from the variables above.
-  --> If the value isn't empty, then replace the original value with the inputted value from
-        the user, if it passes any authentications.
-  */
-  checkEmpty(original_input: string, target_input: string): string {
-    if (target_input === '') {
-      return original_input;
-    } else {
-      return target_input;
-    }
-  }
+    const userObj = {
+      userId: this.userId,
+      fname: this._inputFname ? this._inputFname : null,
+      lname: this._inputLname ? this._inputLname : null,
+      email: this._inputEmail ? this._inputEmail : null,
+      password: this._inputPassword ? this._inputPassword : null,
+      imageid: this.picDataUrl ? this.picDataUrl : null
+    };
 
-  checkPassword(target: string): number {
-    if (target === '') {
-      return 0; // if nothing is inputted
-    } else {
-      return 1; // if something is inputted
-    }
+    this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
+      if (response && (response['email'] != null)) {
+        const user = {
+          userId: response['userId'] ? response['userId'] : this.userId,
+          firstName: response['fname'] ? response['fname'] : this.fname,
+          lastName: response['lname'] ? response['lname'] : this.lname,
+          email: response['email'] ? response['email'] : this.email,
+          picUrl: response['imageid'] ? response['imageid'] : this.profile_pic,
+        };
+        this.user.setLoggedIn(user);
+        this.displaySuccess = true;
+      } else {
+        this.displayError = true;
+      }
+    });
   }
 
   displayAlertFunc() {

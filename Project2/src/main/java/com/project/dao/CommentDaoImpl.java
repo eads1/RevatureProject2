@@ -19,7 +19,6 @@ public class CommentDaoImpl implements CommentDao {
 	@Override
 	public Comment getCommentById(int commentId) {
 		Comment c = sessFact.getCurrentSession().get(Comment.class, commentId);
-		System.out.println(c);
 		return c;
 	}
 
