@@ -1,0 +1,24 @@
+<div class='card-group'>
+  <div class='card border-light'>
+    <div class='card-body'>
+      <div class='form-group' id='profileTable' style='background-color: cadetblue'>
+        <div class='text-center round-img-container'>
+          <img src={{profile_pic}} class="round-contained-img" style='border: 2px solid black'/>
+        </div>
+        <br/>
+        <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
+        <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
+        <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
+      </div>
+    </div>
+  </div>
+  <div class='card border-light'>
+    <div class="card-body">
+      <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="85" (update)="viewPortItems = $event"
+      style='height:550px'>
+        <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
+        </app-post>
+      </virtual-scroll>
+    </div>
+  </div>
+</div>

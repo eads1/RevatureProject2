@@ -1,14 +1,13 @@
 package com.project.controller;
 
-import java.util.Collections;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.User;
+import com.project.service.ImageService;
 import com.project.service.UserService;
 
 @RestController
@@ -17,22 +16,72 @@ public class UpdateController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	public UpdateController() {
-		
-	}	
-	/*
-	 	This method will instantiate a new User object with the constructor(int userId, String fname, String lname, String email).
-	 	Because the password isn't passed around throughout the application, we'll be comparing with the userId. This method will
-	 	then send the object to the UserService interface, which sends it to the UserDao for update.
-	 	
-	 	There are no checks because all of that has already been done on the front-end side. This will return a success either way
-	 	since there is no way to check the output at the moment.
+
+	}
+
+	/**
+	 * Deserializes the POST body into a User object. The password parameter is the
+	 * OLD password. The user is authenticated with this.
+	 * 
+	 * @param user
+	 * @param password
+	 * @return If something goes wrong, null. Otherwise the new User data.
 	 */
-	@PostMapping(value="/updateAccount.do", produces = "application/json")
-	public Map<String, Boolean> updateProfile(String userID, String fname, String lname, String email) {
-		User user = new User(Integer.parseInt(userID), fname, lname, email);
-		userService.updateUserProfile(user);
-		return Collections.singletonMap("success", true);
+	@PostMapping(value = "/updateAccount.do")
+	public User updateProfile(String password, @RequestBody User user) {
+		if (password == null) {
+			return null;
+		}
+
+		User existingUser = userService.getUserById(user.getUserId() + "");
+		password = userService.hashPassword(password);
+
+		// If the credentials are wrong.
+		if (existingUser == null || !existingUser.getPassword().equals(password)) {
+			return null;
+		}
+
+		// If the email is already in use, and does not belong to the logged in user.
+		User userWithEmail = userService.getUserByEmail(user.getEmail());
+		if (userWithEmail != null) {
+			int emailUserId = userWithEmail.getUserId();
+			int existingUserId = existingUser.getUserId();
+			int loggedInUserId = user.getUserId();
+			if (existingUserId == emailUserId && existingUserId != loggedInUserId) {
+				user.setEmail(null);
+				return user;
+			}
+		}
+
+		// If the user specified no changes, make no changes.
+		if (user.getFname() == null) {
+			user.setFname(existingUser.getFname());
+		}
+		if (user.getLname() == null) {
+			user.setLname(existingUser.getLname());
+		}
+		if (user.getEmail() == null) {
+			user.setEmail(existingUser.getEmail());
+		}
+
+		if (user.getPassword() == null) {
+			user.setPassword(password);
+		} else {
+			user.setPassword(userService.hashPassword(user.getPassword()));
+		}
+
+		if (user.getImageid() == null) {
+			user.setImageid(existingUser.getImageid());
+		} else {
+			// Slightly confusing, as the user's "imageid" is actually
+			// a dataURL at this point.
+			user.setImageid(ImageService.uploadImage(user.getUserId() + "profile", user.getImageid()));
+		}
+
+		userService.updateUserNewPassword(user);
+
+		return user;
 	}
 }

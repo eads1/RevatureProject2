@@ -16,41 +16,26 @@ export class ProfileComponent implements OnInit {
   fname: string;
   lname: string;
   email: string;
+  private uploadedPic = false;
+  private loading = false;
 
   // to display success message
   displaySuccess = false;
   displayError = false;
 
   _inputFname = '';
-  // return the variable automatically each time there's a change
-  get inputFname(): string {
-    return this._inputFname;
-  }
-  // set the inputted value automatically into the variable
-  set inputFname(temp: string) {
-    this._inputFname = temp;
-  }
-  _inputLname  = '';
-  // return the variable automatically each time there's a change
-  get inputLname(): string {
-    return this._inputLname;
-  }
-  // set the inputted value automatically into the variable
-  set inputLname(temp: string) {
-    this._inputLname = temp;
-  }
+  _inputLname = '';
   _inputEmail = '';
-  // return the variable automatically each time there's a change
-  get inputEmail(): string {
-    return this._inputEmail;
-  }
-  // set the inputted value automatically into the variable
-  set inputEmail(temp: string) {
-    this._inputEmail = temp;
-  }
+  _inputPassword = '';
 
-// default profile_pic if none is provided
-  profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  // default profile_pic if none is provided
+  // profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  profile_pic = '../assets/gao_pencil.png';
+
+  picDataUrl: string;
+  currentPassword: string;
+
+
   constructor(private user: UserService, private route: ActivatedRoute,
     private router: Router, private cookies: CookieService) {
   }
@@ -63,15 +48,12 @@ export class ProfileComponent implements OnInit {
     the user info. If not, then we'll have to do this manually like this.
   */
   ngOnInit() {
-    // console.log(this.cookies.get('userId'));
-    // console.log(this.cookies.get('firstName'));
-    // console.log(this.cookies.get('lastName'));
-    // console.log(this.cookies.get('email'));
-
-    this.userId = parseInt(this.cookies.get('userId'), 10);
-    this.fname = this.cookies.get('firstName');
-    this.lname = this.cookies.get('lastName');
-    this.email = this.cookies.get('email');
+    this.userId = this.user.userId;
+    this.fname = this.user.firstName;
+    this.lname = this.user.lastName;
+    this.email = this.user.email;
+    // this.profile_pic = this.user.picUrl;
+    this.profile_pic = this.user.picUrl ? this.user.picUrl : this.profile_pic;
   }
   /*
     Same function as in RegisterComponent and PostComponent. This just takes the file selected by
@@ -79,57 +61,60 @@ export class ProfileComponent implements OnInit {
   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.picDataUrl = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+    this.uploadedPic = true;
   }
 
-  /*At the moment, this function isn't implemented yet.
+  /*
     This function will be triggered when the updateButton is clicked. WHen it is triggered, it
     will grab all of the input values from the html side and check for each value.
     Once the checks are done, then these value will be sent to the middle-end to be send and
     update the database of the respective user
   */
   updateAccount() {
-    // console.log('First Name: ' + this._inputFname);
-    // console.log('Last Name: ' + this._inputLname);
-    // console.log('Email: ' + this._inputEmail);
 
-    const tempFName = this.checkEmpty(this.fname, this._inputFname);
-    const tempLname = this.checkEmpty(this.lname, this._inputLname);
-    const tempEmail = this.checkEmpty(this.email, this._inputEmail);
-    const inputParam = {
-      'userId': this.userId,
-      'fname': tempFName,
-      'lname': tempLname,
-      'email': tempEmail,
+    const userObj = {
+      userId: this.userId,
+      fname: this._inputFname ? this._inputFname : null,
+      lname: this._inputLname ? this._inputLname : null,
+      email: this._inputEmail ? this._inputEmail : null,
+      password: this._inputPassword ? this._inputPassword : null,
+      imageid: this.picDataUrl ? this.picDataUrl : null
     };
 
-    /* This function has been s
-    */
-    this.user.updateAccount(inputParam).subscribe(response => {
-      if (response) {
-        this.fname = tempFName;
-        this.lname = tempLname;
-        this.email = tempEmail;
-        this.cookies.set('firstName', tempFName);
-        this.cookies.set('lastName', tempLname);
-        this.cookies.set('email', tempEmail);
+    this.loading = true;
+
+    this.user.updateAccount(userObj, this.currentPassword).subscribe(response => {
+      if (response && (response['email'] != null)) {
+        const user = {
+          userId: response['userId'] ? response['userId'] : this.userId,
+          firstName: response['fname'] ? response['fname'] : this.fname,
+          lastName: response['lname'] ? response['lname'] : this.lname,
+          email: response['email'] ? response['email'] : this.email,
+          picUrl: response['imageid'] ? response['imageid'] : this.profile_pic,
+        };
+
+
+        this._inputFname = '';
+        this._inputLname = '';
+        this._inputEmail = '';
+        this._inputPassword = '';
+        this.profile_pic = response['imageid'] ? response['imageid'] : this.profile_pic;
+        this.picDataUrl = undefined;
+
+        this.user.setLoggedIn(user);
         this.displaySuccess = true;
       } else {
         this.displayError = true;
       }
-    });
-  }
 
-  /*
-  --> If the value is empty, return the original value from the variables above.
-  --> If the value isn't empty, then replace the original value with the inputted value from
-        the user, if it passes any authentications.
-  */
-  checkEmpty(original_input: string, target_input: string): string {
-    if (target_input === '') {
-      return original_input;
-    } else {
-      return target_input;
-    }
+      this.loading = false;
+    });
   }
 
   displayAlertFunc() {

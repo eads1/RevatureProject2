@@ -1,0 +1,52 @@
+.card {
+    max-width: 35rem;
+    background-color: rgba(0,0,0,0);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+.card-header {
+    background-color: #f7f7f7;
+}
+.card-body {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.post-image {
+    width:50%;
+    max-width: 50%;
+    height:50%;
+    max-height: 50%;
+}
+.two {
+    max-width: 40rem;
+    height: 50vh;
+    margin-bottom: 5px;
+}
+
+#post {
+    resize: none;
+}
+#form-signin {
+    margin-bottom: 10px;
+}
+virtual-scroll {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+   
+app-post {
+    display: block;
+    width: 100%;
+}
+
+.total-padding {
+    height: 1000px;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
