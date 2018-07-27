@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           firstName: response['fname'],
           lastName: response['lname'],
           email: response['email'],
-          picUrl: response['imageid'],
+          picUrl: response['imageid'] ? response['imageid'] : '',
         };
         this.user.setLoggedIn(user);
       } else {

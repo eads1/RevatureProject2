@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       lname: this.lastname,
       email: this.email,
       password: this.password,
-      imageid: this.picDataUrl,
+      imageid: this.picDataUrl ? this.picDataUrl : null,
     };
 
     this.loading = true;

@@ -43,8 +43,8 @@ public class RegisterController {
 			System.out.println("Create failed. User already exists");
 			mapping.put("emailTaken", true);
 		} else {
-			String picUrl = "https://s3.amazonaws.com/gaochain-images/Bobbybbprofile.png";
-			if (!picDataUrl.isEmpty()) {
+			String picUrl = null;
+			if (picDataUrl != null && !picDataUrl.isEmpty()) {
 				picUrl = ImageService.uploadImage(email + "profile", picDataUrl);
 			}
 
