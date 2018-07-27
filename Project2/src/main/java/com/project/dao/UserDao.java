@@ -1,8 +1,6 @@
 package com.project.dao;
 
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
@@ -21,10 +19,7 @@ public class UserDao {
 	public void insert(User user) {
 		sessFact.getCurrentSession().save(user);
 	}
-	public List<User> selectAllUsers() {
-		List<User> users = sessFact.getCurrentSession().createQuery("FROM User", User.class).list();
-		return users;
-	}
+
 	public User selectUserByEmail(String email) {
 		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE lower(email) = lower(:email)", User.class).setParameter("email", email).uniqueResult();
 		return user;
@@ -40,16 +35,6 @@ public class UserDao {
 	
 	public void updateUserWithNewEmail(User user) {
 		sessFact.getCurrentSession().update(user);
-	}
-	
-	public void updateUserWithNewPassword(User user) {
-		sessFact.getCurrentSession().update(user);
-	}
-	
-	public User selectUserByID(String id) {
-		User user = sessFact.getCurrentSession().createQuery("FROM User WHERE user_id = :id", User.class)
-				.setParameter("id", Integer.parseInt(id)).uniqueResult();
-		return user;
 	}
 
 }

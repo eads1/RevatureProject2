@@ -26,10 +26,7 @@ public class PostServiceImpl implements PostService {
 	public Post getPostById(long id) {
 		return pd.getPostById(id);
 	}
-	@Override
-	public List<Post> getPostsByOffset(int offset, int limit) {
-		return pd.getPostsByOffset(offset, limit);
-	}
+
 	@Override
 	public List<Post> getAllPosts() {
 		return pd.getAllPosts();

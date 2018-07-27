@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 import { CommentData } from '../models/commentdata.class';
 import { map } from '../../../node_modules/rxjs/operators';
-import { URL } from './URL';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,11 @@ export class CommentService {
   constructor(private client: HttpClient) { }
 
   newComment(comment: CommentData) {
+    console.log('commentService');
     const userId = '' + comment.user.userId;
     const postId = '' + comment.post;
     const text = comment.text;
-    const url = URL + 'newComment.do';
+    const url = 'http://localhost:12345/Project2/newComment.do';
     return this.client.post(url, null, {
       params: {
         userId,
@@ -26,8 +26,9 @@ export class CommentService {
   }
 
   deleteComment(comment: CommentData) {
+    console.log('commentService');
     const commentId = comment.commentId + '';
-    const url = URL + 'deleteComment.do?commentId=' + commentId;
+    const url = 'http://localhost:12345/Project2/deleteComment.do?commentId=' + commentId;
     return this.client.get(url);
   }
 }

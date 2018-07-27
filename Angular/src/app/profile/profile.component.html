@@ -1,65 +1,39 @@
 <div class='form-group' id='profileTable' style='background-color: cadetblue'>
-
-  <div class='text-center round-img-container'>
-    <img src={{profile_pic}} class="round-contained-img" />
-  </div>
-
-  <br/>
-  <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
-  <div class='form-label-group'>
-    <input type='text' id='fname' class='form-control' placeholder='first name' required
-      autofocus [(ngModel)]='_inputFname' />
-    <label for='fname'>new first name</label>
-  </div>
-  <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
-  <div class='form-label-group'>
-    <input type='text' id='lname' class='form-control' placeholder='first name' required
-      autofocus [(ngModel)]='_inputLname' />
-    <label for='lname'>new last name</label>
-  </div>
-  <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
-  <div class='form-label-group'>
-    <input type='email' id='email' class='form-control' placeholder='email' required
-      autofocus [(ngModel)]='_inputEmail' />
-    <label for='email'>new email</label>
-  </div>
-  <h6 class='text-left mb-3 font-weight-bold'>To Change Password, Enter New Password:</h6>
-  <div class='form-label-group'>
-    <input type='password' id='password' class='form-control' placeholder='password'
-      required autofocus [(ngModel)]='_inputPassword' />
-    <label for='password'>new password</label>
-  </div>
-  <div class='form-label-group'>
-    <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)'
-    />
-    <span class='col-sm-1'>
-      <span class='font-weight-bold'>Change Profile Pic:</span>&nbsp;
-      <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
-    </span>
-  </div>
-
-  <div *ngIf="!!picDataUrl" class="round-img-container" style="margin-bottom: 20px;">
-    <img class="round-contained-img" [src]="picDataUrl">
-  </div>
-  <h6 class='text-left mb-3 font-weight-bold'>To Confirm Changes, Enter Current Password:</h6>
-  <div class="form-label-group">
-    <input type="password" id="currentPassword" class="form-control" placeholder="Current password"
-      required [(ngModel)]="currentPassword" />
-    <label for="currentPassword">current password</label>
-  </div>
-
-  <div *ngIf="!loading" class='form-label-group'>
-    <button class='btn btn-lg btn-success btn-block' id='updateButton' (click)='updateAccount()'>Update</button>
-  </div>
-
-  <div *ngIf="loading" class="loader" ></div>
-
-  <div class="alert alert-success alert-dismissible" *ngIf='displaySuccess'>
-    <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
-    <strong>Success!</strong> Profile Update Successful!
-  </div>
-  <div class="alert alert-danger alert-dismissible" *ngIf='displayError'>
-    <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
-    <strong>Failure!</strong> Profile Update failed.
-  </div>
+    <div class='text-center'>
+        <img src={{profile_pic}} class='rounded-circle' style='border: 2px solid black' width="205" height="200" />
+    </div>
+    <br/>
+    <h6 class='text-left mb-3 font-weight-bold'>First Name: {{fname}}</h6>
+    <div class='form-label-group'>
+        <input type='text' id='fname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='inputFname' />
+        <label for='fname'>Enter New First Name</label>
+    </div>
+    <h6 class='text-left mb-3 font-weight-bold'>Last Name: {{lname}}</h6>
+    <div class='form-label-group'>
+        <input type='text' id='lname' class='form-control' placeholder='first name' required autofocus [(ngModel)]='inputLname' />
+        <label for='lname'>Enter New Last Name</label>
+    </div>
+    <h6 class='text-left mb-3 font-weight-bold'>Email: {{email}}</h6>
+    <div class='form-label-group'>
+        <input type='email' id='email' class='form-control' placeholder='email' required autofocus [(ngModel)]='inputEmail' />
+        <label for='email'>Enter New Email</label>
+    </div>
+    <div class='form-label-group'>
+        <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)' />
+        <span class='col-sm-1'>
+            <span class='font-weight-bold'>Upload Profile Pic:</span>&nbsp;
+            <button class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
+        </span>
+    </div>
+    <div class='form-label-group'>
+        <button class='btn btn-lg btn-success btn-block' id='updateButton' (click)='updateAccount()'>Update</button>
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf='displaySuccess'>
+        <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
+        <strong>Success!</strong> Profile Update Successful!.
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf='displayError'>
+        <button type="button" class="close" data-dismiss="alert" (click)='displayAlertFunc()'>&times;</button>
+        <strong>Success!</strong> Profile Update Successful!.
+    </div>
 </div>

@@ -28,7 +28,7 @@ public class User {
 
 	//Iffy
 	@JoinColumn(name="imageid", referencedColumnName="link")
-	private String imageid = "";
+	private String imageid;
 	
 	@Column(name="email",unique=true)
 	private String email;

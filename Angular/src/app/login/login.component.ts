@@ -22,14 +22,17 @@ export class LoginComponent implements OnInit {
   submit() {
     this.user.login(this.email, this.password).subscribe(response => {
       if (response) {
-        const user = {
-          userId: response['userId'],
-          firstName: response['fname'],
-          lastName: response['lname'],
-          email: response['email'],
-          picUrl: response['imageid'],
-        };
-        this.user.setLoggedIn(user);
+        console.log(response);
+        this.user.userId = response['userId'];
+        this.user.firstName = response['fname'];
+        this.user.lastName = response['lname'];
+        this.user.email = response['email'];
+        this.user.isLoggedIn = true;
+        this.cookies.set('userId', response['userId']);
+        this.cookies.set('firstName', response['fname']);
+        this.cookies.set('lastName', response['lname']);
+        this.cookies.set('email', response['email']);
+        this.cookies.set('isLoggedIn', 'true');
       } else {
         this.failed = true;
         this.labelStyles = { 'color': 'red' };

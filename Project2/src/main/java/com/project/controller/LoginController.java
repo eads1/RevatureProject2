@@ -1,12 +1,10 @@
 package com.project.controller;
 
-import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.aspect.Project2Aspect;
 import com.project.model.User;
 import com.project.service.UserService;
 
@@ -14,8 +12,6 @@ import com.project.service.UserService;
 @CrossOrigin
 public class LoginController {
 
-	Logger logger = Logger.getLogger(Project2Aspect.class);
-	
 	@Autowired
 	private UserService userService;
 
@@ -25,7 +21,6 @@ public class LoginController {
 
 	@PostMapping(value = "/login.do")
 	public User login(String email, String password) {
-		logger.info("");
 		password = userService.hashPassword(password);
 		User user = userService.getUserByEmail(email);
 		boolean success = false;

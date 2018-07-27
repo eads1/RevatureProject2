@@ -27,8 +27,9 @@ export class PasswordComponent implements OnInit {
   resetPassword() {
     this.displayMessage = false;
     this.userServ.resetPassword(this.inputEmail).subscribe(response => {
+      console.log(response);
       if (response['success'] === true) {
-        this.router.navigateByUrl('/');
+        // this.router.navigateByUrl('/');
       } else {
         this.displayMessage = true;
       }

@@ -4,35 +4,6 @@
     --input-padding-y: .75rem;
   }
 
-  .back-ground {
-    background-image: url('./assets/bg-4.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-  }
-
   html, body{
     height:100%;
-  }
-
-  .loader {
-
-    /* Make a circle */
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-radius: 50%;
-    /* Make 1/4th of it a different color */
-    border-top: 5px solid grey;
-
-    /* Center it */
-    margin: auto;
-    
-    /* Make it spin */
-    animation: spin 2s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
   }

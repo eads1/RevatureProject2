@@ -11,7 +11,6 @@ public interface PostService {
 	
 	//READ
 	public Post getPostById(long id);
-	public List<Post> getPostsByOffset(int offset, int limit);
 	/*
 	 * I wanted to condense two calls into one. This will check if the user has liked the post and count how many likes the post has.
 	 * structure "<succes/failure>:<likeCount>"
