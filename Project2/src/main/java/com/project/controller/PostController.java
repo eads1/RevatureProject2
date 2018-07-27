@@ -35,8 +35,8 @@ public class PostController {
 
 	@Autowired
 	private UserService us;
-
-
+	
+	@PostMapping(value = "/submitPost.do")
 	public Map<String, Boolean> submitPost(@RequestBody PostWrapper postWrapper) {
 		System.out.println(postWrapper);
 		User user = us.getUserByEmail(postWrapper.getEmail());
