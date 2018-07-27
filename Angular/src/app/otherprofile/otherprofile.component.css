@@ -125,3 +125,8 @@ app-post {
     /* Maintain aspect ratio */
     flex-shrink: 0;
   }
+
+
+  .card{
+      background-color: transparent;
+  }
