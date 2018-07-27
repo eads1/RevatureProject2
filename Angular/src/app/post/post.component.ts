@@ -154,7 +154,7 @@ prevImage() {
  incrementLimit() {
    if (this.limit <= this.comments.length) {
     this.limit *= 2;
-   }
+  }
 
  }
   /*
