@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <div class='card-body border-top border-dark'>
+    <div class='card-body border-top border-dark' *ngIf="comments.length > 2 && limit <= comments.length">
       <button class='btn btn-secondary offset-3' id='loadMoreButton' (click)='incrementLimit()'>Load More</button>
     </div>
 
