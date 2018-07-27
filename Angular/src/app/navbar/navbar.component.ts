@@ -28,4 +28,7 @@ export class NavbarComponent implements OnInit {
     console.log(searchText);
     this._routeServ.navigate(['search/' + searchText]);
   }
+  updateUserId() {
+    this.userId = this.user.userId;
+  }
 }

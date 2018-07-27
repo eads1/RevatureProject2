@@ -12,7 +12,7 @@
       <div class='form-label-group'>
         <input style='display: none' type='file' #findFile class='form-control-file' (change)='onFileChanged($event)'
           accept="image/*" />
-        <span class='col-sm-1' style="float: left;max-width: 100%;">
+        <span class='col-sm-1' style="float: left;max-width: 100%; padding-bottom: 10px">
           <span class='font-weight-bold'>Upload Pic: </span>
           <button type="button" class='btn btn-primary' id='findButton' (click)='findFile.click()'>Find File</button>
         </span>
@@ -23,7 +23,7 @@
     </form>
   </div>
   <div class="card-body">
-    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="85"
+    <virtual-scroll [items]="userPosts" [bufferAmount]="5" [childHeight]="200"
         (update)="viewPortItems = $event">
       <app-post *ngFor="let userPost of viewPortItems" [userPost]="userPost">
       </app-post>
